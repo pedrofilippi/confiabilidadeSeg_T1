@@ -33,7 +33,6 @@ SRC_FILES=\
   src/radix_sort.c \
   src/selection_sort.c \
   src/sort.c \
-  src/foo.c \
   test/Test.c \
   test/test_runners/Test_Runner.c \
   test/test_runners/all_tests.c
