@@ -21,7 +21,7 @@ TEST(Sort, TestSort1)
 {
   int numeros[5] = {3, 1, 4, 5, 2};
   // All of these should pass
-  TEST_ASSERT_EQUAL(0, sort(numeros,5, complexity1,BUBBLE));
+  TEST_ASSERT_EQUAL(0, sort(numeros,5, complexity2,BUBBLE));
   //TEST_ASSERT_EQUAL(-1, Sort(2,2));
 }
 
