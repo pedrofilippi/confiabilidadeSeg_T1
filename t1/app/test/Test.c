@@ -3,17 +3,6 @@
 #include "unity.h"
 #include "unity_fixture.h"
 
-typedef enum {
-    COUNTING,
-    RADIX,
-    BUBBLE,
-    INSERTION,
-    SELECTION,
-    HEAP,
-    MERGE,
-    QUICK
-} SortingAlgorithm;
-
 TEST_GROUP(Sort);
 
 TEST_SETUP(Sort)
