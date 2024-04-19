@@ -5,4 +5,5 @@ TEST_GROUP_RUNNER(Foo)
 {
   RUN_TEST_CASE(Foo, TestFoo1);
   RUN_TEST_CASE(Foo, TestFoo2);
+  RUN_TEST_CASE(Foo, TestFoo3);
 }
