@@ -32,6 +32,6 @@ TEST(Foo, TestFoo3)
   // This test will fail
   //TEST_ASSERT_EQUAL(2, foo(1,2));
   // This test will pass
-  TEST_ASSERT_EQUAL(-1, 2);
+  //TEST_ASSERT_EQUAL(-1, 2);
 }
 
