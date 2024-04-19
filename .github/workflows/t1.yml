@@ -20,7 +20,7 @@ jobs:
     - name: make
       run: "cd t1; cd app; make"
     - name: cov
-      run: "cd t1; cd app; make cov"
+      run: "cd t1; cd app; sudo make cov"
     - name: valgrind
       run: "cd t1; cd app; make valgrind"
     - name: sanitizer
