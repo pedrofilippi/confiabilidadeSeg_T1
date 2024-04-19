@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: install_packages
       run: "sudo apt-get update; sudo apt-get -y install cppcheck-gui cppcheck clang valgrind"
-    - run: "cd warm-up"
+      run: "cd warm-up"
     - name: cppcheck
       run: "cd app; make cppcheck"
     - name: make
