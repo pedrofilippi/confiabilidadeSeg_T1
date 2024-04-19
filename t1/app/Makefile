@@ -52,7 +52,7 @@ valgrind:
 	valgrind --leak-check=full --show-leak-kinds=all ./$(TARGET) -v
 
 sanitizer:
-	$(CLANG_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
+	$(GCC_COMPILER) -g -Wall -Wfatal-errors -fsanitize=address $(INC_DIRS) $(SRC_FILES) -o $(TARGET)
 	./$(TARGET) -v
 
 cov:
