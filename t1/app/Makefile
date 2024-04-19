@@ -29,7 +29,7 @@ SRC_FILES=\
   src/heap_sort.c \
   src/insertion_sort.c \
   src/merge_sort.c \
-  src/quick_sort \
+  src/quick_sort.c \
   src/radix_sort.c \
   src/selection_sort.c \
   src/sort.c \
