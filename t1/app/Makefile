@@ -31,7 +31,7 @@ SRC_FILES=\
   src/merge_sort.c \
   src/quick_sort \
   src/radix_sort.c \
-  src/selection_sort.c99
+  src/selection_sort.c \
   src/sort.c \
   src/foo.c \
   test/Test.c \
