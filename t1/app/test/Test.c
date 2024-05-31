@@ -424,7 +424,6 @@ TEST(Sort, WrongTypeQuick) {
     TEST_ASSERT_EQUAL(1, status);
 }
 
-
 TEST(Sort, WrongLenghtQuick) {
     int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
     int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
