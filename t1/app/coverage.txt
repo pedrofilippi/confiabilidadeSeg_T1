@@ -1,0 +1,133 @@
+gcc -std=c99 -Wall -Wextra -Wpointer-arith -Wcast-align -Wwrite-strings -Wswitch-default -Wunreachable-code -Winit-self -Wmissing-field-initializers -Wno-unknown-pragmas -Wstrict-prototypes -Wundef -Wold-style-definition -fprofile-arcs -ftest-coverage -Isrc -I../Unity/src -I../Unity/extras/fixture/src ../Unity/src/unity.c ../Unity/extras/fixture/src/unity_fixture.c src/bubble_sort.c src/counting_sort.c src/heap_sort.c src/insertion_sort.c src/merge_sort.c src/quick_sort.c src/radix_sort.c src/selection_sort.c src/sort.c test/Test.c test/test_runners/Test_Runner.c test/test_runners/all_tests.c -o all_tests.out
+./all_tests.out -v
+Unity test run 1 of 1
+TEST(Sort, TestSort1) PASS
+TEST(Sort, TestSort2) PASS
+TEST(Sort, TestSort3) PASS
+TEST(Sort, InvalidLengthBelowMin) PASS
+TEST(Sort, InvalidLengthAboveMax) PASS
+TEST(Sort, ValidLengthAndCountingSort) PASS
+TEST(Sort, InvalidTypeForCountingSort) PASS
+TEST(Sort, ValidLengthAndRadixSort) PASS
+TEST(Sort, ValidLengthAndBubbleSort) PASS
+TEST(Sort, ValidLengthAndInsertionSort) PASS
+TEST(Sort, ValidLengthAndSelectionSort) PASS
+TEST(Sort, ValidLengthAndHeapSort) PASS
+TEST(Sort, ValidLengthAndMergeSort) PASS
+TEST(Sort, ValidLengthAndQuickSort) PASS
+TEST(Sort, InvalidAlgorithm) PASS
+TEST(Sort, CountingSortAlreadySorted) PASS
+TEST(Sort, CountingSortReversed) PASS
+TEST(Sort, BubbleSortWithDuplicates) PASS
+TEST(Sort, QuickSortEdgeCases) PASS
+TEST(Sort, MergeSortEmpty) PASS
+TEST(Sort, RadixSortLargeNumbers) PASS
+TEST(Sort, InvalidTypeForRadixSort) PASS
+TEST(Sort, InvalidTypeForBubbleSort) PASS
+TEST(Sort, InvalidTypeForInsertionSort) PASS
+TEST(Sort, InvalidTypeForSelectionSort) PASS
+TEST(Sort, InvalidTypeForHeapSort) PASS
+TEST(Sort, InvalidTypeForMergeSort) PASS
+TEST(Sort, InvalidTypeForQuickSort) PASS
+TEST(Sort, InvalidAlgorithmOutOfSwitch) PASS
+
+-----------------------
+29 Tests 0 Failures 0 Ignored 
+OK
+gcov -b *.gcda
+File 'test/Test.c'
+Lines executed:100.00% of 175
+No branches
+No calls
+Creating 'Test.c.gcov'
+
+File 'test/test_runners/Test_Runner.c'
+Lines executed:100.00% of 31
+No branches
+Calls executed:100.00% of 29
+Creating 'Test_Runner.c.gcov'
+
+File 'test/test_runners/all_tests.c'
+Lines executed:100.00% of 5
+No branches
+Calls executed:100.00% of 2
+Creating 'all_tests.c.gcov'
+
+File 'src/bubble_sort.c'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 8
+Taken at least once:87.50% of 8
+No calls
+Creating 'bubble_sort.c.gcov'
+
+File 'src/counting_sort.c'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 14
+Taken at least once:100.00% of 14
+Calls executed:100.00% of 1
+Creating 'counting_sort.c.gcov'
+
+File 'src/heap_sort.c'
+Lines executed:81.25% of 32
+Branches executed:100.00% of 14
+Taken at least once:78.57% of 14
+Calls executed:83.33% of 6
+Creating 'heap_sort.c.gcov'
+
+File 'src/insertion_sort.c'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+Creating 'insertion_sort.c.gcov'
+
+File 'src/merge_sort.c'
+Lines executed:100.00% of 26
+Branches executed:100.00% of 16
+Taken at least once:87.50% of 16
+Calls executed:100.00% of 3
+Creating 'merge_sort.c.gcov'
+
+File 'src/quick_sort.c'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+Calls executed:100.00% of 4
+Creating 'quick_sort.c.gcov'
+
+File 'src/radix_sort.c'
+Lines executed:92.73% of 55
+Branches executed:100.00% of 26
+Taken at least once:88.46% of 26
+Calls executed:60.00% of 10
+Creating 'radix_sort.c.gcov'
+
+File 'src/selection_sort.c'
+Lines executed:100.00% of 8
+Branches executed:100.00% of 8
+Taken at least once:87.50% of 8
+No calls
+Creating 'selection_sort.c.gcov'
+
+File 'src/sort.c'
+Lines executed:100.00% of 53
+Branches executed:100.00% of 29
+Taken at least once:100.00% of 29
+Calls executed:100.00% of 8
+Creating 'sort.c.gcov'
+
+File '../Unity/src/unity.c'
+Lines executed:12.19% of 640
+Branches executed:11.44% of 437
+Taken at least once:6.41% of 437
+Calls executed:6.51% of 261
+Creating 'unity.c.gcov'
+
+File '../Unity/extras/fixture/src/unity_fixture.c'
+Lines executed:41.21% of 199
+Branches executed:38.00% of 100
+Taken at least once:21.00% of 100
+Calls executed:56.86% of 51
+Creating 'unity_fixture.c.gcov'
+
+Lines executed:46.09% of 1278

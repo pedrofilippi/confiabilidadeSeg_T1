@@ -1,0 +1,64 @@
+        -:    0:Source:src/merge_sort.c
+        -:    1://Implementation of Merge Sort in C
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:typedef int TYPE;
+        -:    5:void merge(TYPE [], int, int, int);
+        -:    6:void merge_sort(TYPE [], int, int);
+        -:    7:
+function merge called 26 returned 100% blocks executed 100%
+       26:    8:void merge(TYPE A[], int p, int q, int r) {
+        -:    9:    int i, j, k;
+       26:   10:    int nL = q - p + 1; 
+       26:   11:    int nR = r - q;
+        -:   12:
+       26:   13:    TYPE *L = malloc(sizeof(TYPE)*nL);
+       26:   14:    TYPE *R = malloc(sizeof(TYPE)*nR);
+        -:   15:    
+       85:   16:    for (i = 0; i < nL; i++)    
+branch  0 taken 69%
+branch  1 taken 31% (fallthrough)
+       59:   17:        L[i] = A[p + i];
+        -:   18:    
+       74:   19:    for (j = 0; j < nR; j++)    
+branch  0 taken 65%
+branch  1 taken 35% (fallthrough)
+       48:   20:        R[j] = A[q + 1 + j];
+        -:   21:    
+       26:   22:    i = j = 0;
+       26:   23:    k = p;
+        -:   24:    
+      100:   25:    while (i < nL && j < nR) 
+branch  0 taken 93% (fallthrough)
+branch  1 taken 7%
+branch  2 taken 80%
+branch  3 taken 20% (fallthrough)
+       74:   26:        if (L[i] <= R[j])  A[k++] = L[i++];
+branch  0 taken 45% (fallthrough)
+branch  1 taken 55%
+       41:   27:        else  A[k++] = R[j++];
+        -:   28:    
+       52:   29:    while (i < nL)    A[k++] = L[i++];
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+       33:   30:    while (j < nR)    A[k++] = R[j++];
+branch  0 taken 21%
+branch  1 taken 79% (fallthrough)
+        -:   31:        
+       26:   32:    free(L);
+       26:   33:    free(R);
+       26:   34:}
+function merge_sort called 56 returned 100% blocks executed 100%
+       56:   35:void merge_sort(TYPE A[], int p, int r) {
+       56:   36:    if(p < r) {
+branch  0 taken 46% (fallthrough)
+branch  1 taken 54%
+       26:   37:        int q = (p + r) / 2;
+       26:   38:        merge_sort(A, p, q);
+call    0 returned 100%
+       26:   39:        merge_sort(A, q + 1, r);
+call    0 returned 100%
+       26:   40:        merge(A, p, q, r);
+call    0 returned 100%
+        -:   41:    }
+       56:   42:}

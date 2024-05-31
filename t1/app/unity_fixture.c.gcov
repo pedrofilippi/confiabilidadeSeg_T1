@@ -1,0 +1,628 @@
+        -:    0:Source:../Unity/extras/fixture/src/unity_fixture.c
+        -:    1:/* Copyright (c) 2010 James Grenning and Contributed to Unity Project
+        -:    2: * ==========================================
+        -:    3: *  Unity Project - A Test Framework for C
+        -:    4: *  Copyright (c) 2007 Mike Karlesky, Mark VanderVoord, Greg Williams
+        -:    5: *  [Released under MIT License. Please refer to license.txt for details]
+        -:    6: * ========================================== */
+        -:    7:
+        -:    8:#include "unity_fixture.h"
+        -:    9:#include "unity_internals.h"
+        -:   10:#include <string.h>
+        -:   11:
+        -:   12:struct UNITY_FIXTURE_T UnityFixture;
+        -:   13:
+        -:   14:/* If you decide to use the function pointer approach.
+        -:   15: * Build with -D UNITY_OUTPUT_CHAR=outputChar and include <stdio.h>
+        -:   16: * int (*outputChar)(int) = putchar; */
+        -:   17:
+function setUp called 0 returned 0% blocks executed 0%
+    #####:   18:void setUp(void)    { /*does nothing*/ }
+function tearDown called 0 returned 0% blocks executed 0%
+    #####:   19:void tearDown(void) { /*does nothing*/ }
+        -:   20:
+function announceTestRun called 1 returned 100% blocks executed 100%
+        1:   21:static void announceTestRun(unsigned int runNumber)
+        -:   22:{
+        1:   23:    UnityPrint("Unity test run ");
+call    0 returned 100%
+        1:   24:    UnityPrintNumberUnsigned(runNumber+1);
+call    0 returned 100%
+        1:   25:    UnityPrint(" of ");
+call    0 returned 100%
+        1:   26:    UnityPrintNumberUnsigned(UnityFixture.RepeatCount);
+call    0 returned 100%
+        1:   27:    UNITY_PRINT_EOL();
+call    0 returned 100%
+        1:   28:}
+        -:   29:
+function UnityMain called 1 returned 100% blocks executed 86%
+        1:   30:int UnityMain(int argc, const char* argv[], void (*runAllTests)(void))
+        -:   31:{
+        1:   32:    int result = UnityGetCommandLineOptions(argc, argv);
+call    0 returned 100%
+        -:   33:    unsigned int r;
+        1:   34:    if (result != 0)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:   35:        return result;
+        -:   36:
+        2:   37:    for (r = 0; r < UnityFixture.RepeatCount; r++)
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        -:   38:    {
+        1:   39:        UnityBegin(argv[0]);
+call    0 returned 100%
+        1:   40:        announceTestRun(r);
+call    0 returned 100%
+        1:   41:        runAllTests();
+call    0 returned 100%
+       1*:   42:        if (!UnityFixture.Verbose) UNITY_PRINT_EOL();
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+        1:   43:        UnityEnd();
+call    0 returned 100%
+        -:   44:    }
+        -:   45:
+        1:   46:    return (int)Unity.TestFailures;
+        -:   47:}
+        -:   48:
+function selected called 118 returned 100% blocks executed 75%
+      118:   49:static int selected(const char* filter, const char* name)
+        -:   50:{
+      118:   51:    if (filter == 0)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+      118:   52:        return 1;
+    #####:   53:    return strstr(name, filter) ? 1 : 0;
+        -:   54:}
+        -:   55:
+function testSelected called 59 returned 100% blocks executed 100%
+       59:   56:static int testSelected(const char* test)
+        -:   57:{
+       59:   58:    return selected(UnityFixture.NameFilter, test);
+call    0 returned 100%
+        -:   59:}
+        -:   60:
+function groupSelected called 59 returned 100% blocks executed 100%
+       59:   61:static int groupSelected(const char* group)
+        -:   62:{
+       59:   63:    return selected(UnityFixture.GroupFilter, group);
+call    0 returned 100%
+        -:   64:}
+        -:   65:
+function UnityTestRunner called 59 returned 100% blocks executed 88%
+       59:   66:void UnityTestRunner(unityfunction* setup,
+        -:   67:                     unityfunction* testBody,
+        -:   68:                     unityfunction* teardown,
+        -:   69:                     const char* printableName,
+        -:   70:                     const char* group,
+        -:   71:                     const char* name,
+        -:   72:                     const char* file,
+        -:   73:                     unsigned int line)
+        -:   74:{
+       59:   75:    if (testSelected(name) && groupSelected(group))
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0%
+        -:   76:    {
+       59:   77:        Unity.TestFile = file;
+       59:   78:        Unity.CurrentTestName = printableName;
+       59:   79:        Unity.CurrentTestLineNumber = line;
+       59:   80:        if (UnityFixture.Verbose)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:   81:        {
+       59:   82:            UnityPrint(printableName);
+call    0 returned 100%
+        -:   83:        #ifndef UNITY_REPEAT_TEST_NAME
+       59:   84:            Unity.CurrentTestName = NULL;
+        -:   85:        #endif
+        -:   86:        }
+    #####:   87:        else if (UnityFixture.Silent)
+branch  0 never executed
+branch  1 never executed
+        -:   88:        {
+        -:   89:            /* Do Nothing */
+        -:   90:        }
+        -:   91:        else
+        -:   92:        {
+    #####:   93:            UNITY_OUTPUT_CHAR('.');
+call    0 never executed
+        -:   94:        }
+        -:   95:
+       59:   96:        Unity.NumberOfTests++;
+       59:   97:        UnityMalloc_StartTest();
+call    0 returned 100%
+       59:   98:        UnityPointer_Init();
+call    0 returned 100%
+        -:   99:
+        -:  100:        UNITY_EXEC_TIME_START();
+        -:  101:
+       59:  102:        if (TEST_PROTECT())
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+        -:  103:        {
+       59:  104:            setup();
+call    0 returned 100%
+       59:  105:            testBody();
+call    0 returned 100%
+        -:  106:        }
+       59:  107:        if (TEST_PROTECT())
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+        -:  108:        {
+       59:  109:            teardown();
+call    0 returned 100%
+        -:  110:        }
+       59:  111:        if (TEST_PROTECT())
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+        -:  112:        {
+       59:  113:            UnityPointer_UndoAllSets();
+call    0 returned 100%
+       59:  114:            if (!Unity.CurrentTestFailed)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+       59:  115:                UnityMalloc_EndTest();
+call    0 returned 100%
+        -:  116:        }
+       59:  117:        UnityConcludeFixtureTest();
+call    0 returned 100%
+        -:  118:    }
+       59:  119:}
+        -:  120:
+function UnityIgnoreTest called 0 returned 0% blocks executed 0%
+    #####:  121:void UnityIgnoreTest(const char* printableName, const char* group, const char* name)
+        -:  122:{
+    #####:  123:    if (testSelected(name) && groupSelected(group))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+        -:  124:    {
+    #####:  125:        Unity.NumberOfTests++;
+    #####:  126:        Unity.TestIgnores++;
+    #####:  127:        if (UnityFixture.Verbose)
+branch  0 never executed
+branch  1 never executed
+        -:  128:        {
+    #####:  129:            UnityPrint(printableName);
+call    0 never executed
+    #####:  130:            UNITY_PRINT_EOL();
+call    0 never executed
+        -:  131:        }
+    #####:  132:        else if (UnityFixture.Silent)
+branch  0 never executed
+branch  1 never executed
+        -:  133:        {
+        -:  134:            /* Do Nothing */
+        -:  135:        }
+        -:  136:        else
+        -:  137:        {
+    #####:  138:            UNITY_OUTPUT_CHAR('!');
+call    0 never executed
+        -:  139:        }
+        -:  140:    }
+    #####:  141:}
+        -:  142:
+        -:  143:
+        -:  144:/*------------------------------------------------- */
+        -:  145:/* Malloc and free stuff */
+        -:  146:#define MALLOC_DONT_FAIL -1
+        -:  147:static int malloc_count;
+        -:  148:static int malloc_fail_countdown = MALLOC_DONT_FAIL;
+        -:  149:
+function UnityMalloc_StartTest called 59 returned 100% blocks executed 100%
+       59:  150:void UnityMalloc_StartTest(void)
+        -:  151:{
+       59:  152:    malloc_count = 0;
+       59:  153:    malloc_fail_countdown = MALLOC_DONT_FAIL;
+       59:  154:}
+        -:  155:
+function UnityMalloc_EndTest called 59 returned 100% blocks executed 67%
+       59:  156:void UnityMalloc_EndTest(void)
+        -:  157:{
+       59:  158:    malloc_fail_countdown = MALLOC_DONT_FAIL;
+       59:  159:    if (malloc_count != 0)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:  160:    {
+    #####:  161:        UNITY_TEST_FAIL(Unity.CurrentTestLineNumber, "This test leaks!");
+call    0 never executed
+        -:  162:    }
+       59:  163:}
+        -:  164:
+function UnityMalloc_MakeMallocFailAfterCount called 0 returned 0% blocks executed 0%
+    #####:  165:void UnityMalloc_MakeMallocFailAfterCount(int countdown)
+        -:  166:{
+    #####:  167:    malloc_fail_countdown = countdown;
+    #####:  168:}
+        -:  169:
+        -:  170:/* These definitions are always included from unity_fixture_malloc_overrides.h */
+        -:  171:/* We undef to use them or avoid conflict with <stdlib.h> per the C standard */
+        -:  172:#undef malloc
+        -:  173:#undef free
+        -:  174:#undef calloc
+        -:  175:#undef realloc
+        -:  176:
+        -:  177:#ifdef UNITY_EXCLUDE_STDLIB_MALLOC
+        -:  178:static unsigned char unity_heap[UNITY_INTERNAL_HEAP_SIZE_BYTES];
+        -:  179:static size_t heap_index;
+        -:  180:#else
+        -:  181:#include <stdlib.h>
+        -:  182:#endif
+        -:  183:
+        -:  184:typedef struct GuardBytes
+        -:  185:{
+        -:  186:    size_t size;
+        -:  187:    size_t guard_space;
+        -:  188:} Guard;
+        -:  189:
+        -:  190:
+        -:  191:static const char end[] = "END";
+        -:  192:
+function unity_malloc called 0 returned 0% blocks executed 0%
+    #####:  193:void* unity_malloc(size_t size)
+        -:  194:{
+        -:  195:    char* mem;
+        -:  196:    Guard* guard;
+    #####:  197:    size_t total_size = size + sizeof(Guard) + sizeof(end);
+        -:  198:
+    #####:  199:    if (malloc_fail_countdown != MALLOC_DONT_FAIL)
+branch  0 never executed
+branch  1 never executed
+        -:  200:    {
+    #####:  201:        if (malloc_fail_countdown == 0)
+branch  0 never executed
+branch  1 never executed
+    #####:  202:            return NULL;
+    #####:  203:        malloc_fail_countdown--;
+        -:  204:    }
+        -:  205:
+    #####:  206:    if (size == 0) return NULL;
+branch  0 never executed
+branch  1 never executed
+        -:  207:#ifdef UNITY_EXCLUDE_STDLIB_MALLOC
+        -:  208:    if (heap_index + total_size > UNITY_INTERNAL_HEAP_SIZE_BYTES)
+        -:  209:    {
+        -:  210:        guard = NULL;
+        -:  211:    }
+        -:  212:    else
+        -:  213:    {
+        -:  214:        guard = (Guard*)&unity_heap[heap_index];
+        -:  215:        heap_index += total_size;
+        -:  216:    }
+        -:  217:#else
+    #####:  218:    guard = (Guard*)UNITY_FIXTURE_MALLOC(total_size);
+        -:  219:#endif
+    #####:  220:    if (guard == NULL) return NULL;
+branch  0 never executed
+branch  1 never executed
+    #####:  221:    malloc_count++;
+    #####:  222:    guard->size = size;
+    #####:  223:    guard->guard_space = 0;
+    #####:  224:    mem = (char*)&(guard[1]);
+    #####:  225:    memcpy(&mem[size], end, sizeof(end));
+        -:  226:
+    #####:  227:    return (void*)mem;
+        -:  228:}
+        -:  229:
+function isOverrun called 0 returned 0% blocks executed 0%
+    #####:  230:static int isOverrun(void* mem)
+        -:  231:{
+    #####:  232:    Guard* guard = (Guard*)mem;
+    #####:  233:    char* memAsChar = (char*)mem;
+    #####:  234:    guard--;
+        -:  235:
+    #####:  236:    return guard->guard_space != 0 || strcmp(&memAsChar[guard->size], end) != 0;
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+        -:  237:}
+        -:  238:
+function release_memory called 0 returned 0% blocks executed 0%
+    #####:  239:static void release_memory(void* mem)
+        -:  240:{
+    #####:  241:    Guard* guard = (Guard*)mem;
+    #####:  242:    guard--;
+        -:  243:
+    #####:  244:    malloc_count--;
+        -:  245:#ifdef UNITY_EXCLUDE_STDLIB_MALLOC
+        -:  246:    if (mem == unity_heap + heap_index - guard->size - sizeof(end))
+        -:  247:    {
+        -:  248:        heap_index -= (guard->size + sizeof(Guard) + sizeof(end));
+        -:  249:    }
+        -:  250:#else
+    #####:  251:    UNITY_FIXTURE_FREE(guard);
+        -:  252:#endif
+    #####:  253:}
+        -:  254:
+function unity_free called 0 returned 0% blocks executed 0%
+    #####:  255:void unity_free(void* mem)
+        -:  256:{
+        -:  257:    int overrun;
+        -:  258:
+    #####:  259:    if (mem == NULL)
+branch  0 never executed
+branch  1 never executed
+        -:  260:    {
+    #####:  261:        return;
+        -:  262:    }
+        -:  263:
+    #####:  264:    overrun = isOverrun(mem);
+call    0 never executed
+    #####:  265:    release_memory(mem);
+call    0 never executed
+    #####:  266:    if (overrun)
+branch  0 never executed
+branch  1 never executed
+        -:  267:    {
+    #####:  268:        UNITY_TEST_FAIL(Unity.CurrentTestLineNumber, "Buffer overrun detected during free()");
+call    0 never executed
+        -:  269:    }
+        -:  270:}
+        -:  271:
+function unity_calloc called 0 returned 0% blocks executed 0%
+    #####:  272:void* unity_calloc(size_t num, size_t size)
+        -:  273:{
+    #####:  274:    void* mem = unity_malloc(num * size);
+call    0 never executed
+    #####:  275:    if (mem == NULL) return NULL;
+branch  0 never executed
+branch  1 never executed
+    #####:  276:    memset(mem, 0, num * size);
+    #####:  277:    return mem;
+        -:  278:}
+        -:  279:
+function unity_realloc called 0 returned 0% blocks executed 0%
+    #####:  280:void* unity_realloc(void* oldMem, size_t size)
+        -:  281:{
+    #####:  282:    Guard* guard = (Guard*)oldMem;
+        -:  283:    void* newMem;
+        -:  284:
+    #####:  285:    if (oldMem == NULL) return unity_malloc(size);
+branch  0 never executed
+branch  1 never executed
+call    2 never executed
+        -:  286:
+    #####:  287:    guard--;
+    #####:  288:    if (isOverrun(oldMem))
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  289:    {
+    #####:  290:        release_memory(oldMem);
+call    0 never executed
+    #####:  291:        UNITY_TEST_FAIL(Unity.CurrentTestLineNumber, "Buffer overrun detected during realloc()");
+call    0 never executed
+        -:  292:    }
+        -:  293:
+    #####:  294:    if (size == 0)
+branch  0 never executed
+branch  1 never executed
+        -:  295:    {
+    #####:  296:        release_memory(oldMem);
+call    0 never executed
+    #####:  297:        return NULL;
+        -:  298:    }
+        -:  299:
+    #####:  300:    if (guard->size >= size) return oldMem;
+branch  0 never executed
+branch  1 never executed
+        -:  301:
+        -:  302:#ifdef UNITY_EXCLUDE_STDLIB_MALLOC /* Optimization if memory is expandable */
+        -:  303:    if (oldMem == unity_heap + heap_index - guard->size - sizeof(end) &&
+        -:  304:        heap_index + size - guard->size <= UNITY_INTERNAL_HEAP_SIZE_BYTES)
+        -:  305:    {
+        -:  306:        release_memory(oldMem);    /* Not thread-safe, like unity_heap generally */
+        -:  307:        return unity_malloc(size); /* No memcpy since data is in place */
+        -:  308:    }
+        -:  309:#endif
+    #####:  310:    newMem = unity_malloc(size);
+call    0 never executed
+    #####:  311:    if (newMem == NULL) return NULL; /* Do not release old memory */
+branch  0 never executed
+branch  1 never executed
+    #####:  312:    memcpy(newMem, oldMem, guard->size);
+    #####:  313:    release_memory(oldMem);
+call    0 never executed
+    #####:  314:    return newMem;
+        -:  315:}
+        -:  316:
+        -:  317:
+        -:  318:/*-------------------------------------------------------- */
+        -:  319:/*Automatic pointer restoration functions */
+        -:  320:struct PointerPair
+        -:  321:{
+        -:  322:    void** pointer;
+        -:  323:    void* old_value;
+        -:  324:};
+        -:  325:
+        -:  326:static struct PointerPair pointer_store[UNITY_MAX_POINTERS];
+        -:  327:static int pointer_index = 0;
+        -:  328:
+function UnityPointer_Init called 59 returned 100% blocks executed 100%
+       59:  329:void UnityPointer_Init(void)
+        -:  330:{
+       59:  331:    pointer_index = 0;
+       59:  332:}
+        -:  333:
+function UnityPointer_Set called 0 returned 0% blocks executed 0%
+    #####:  334:void UnityPointer_Set(void** pointer, void* newValue, UNITY_LINE_TYPE line)
+        -:  335:{
+    #####:  336:    if (pointer_index >= UNITY_MAX_POINTERS)
+branch  0 never executed
+branch  1 never executed
+        -:  337:    {
+    #####:  338:        UNITY_TEST_FAIL(line, "Too many pointers set");
+call    0 never executed
+        -:  339:    }
+        -:  340:    else
+        -:  341:    {
+    #####:  342:        pointer_store[pointer_index].pointer = pointer;
+    #####:  343:        pointer_store[pointer_index].old_value = *pointer;
+    #####:  344:        *pointer = newValue;
+    #####:  345:        pointer_index++;
+        -:  346:    }
+    #####:  347:}
+        -:  348:
+function UnityPointer_UndoAllSets called 59 returned 100% blocks executed 75%
+       59:  349:void UnityPointer_UndoAllSets(void)
+        -:  350:{
+       59:  351:    while (pointer_index > 0)
+branch  0 taken 0%
+branch  1 taken 100% (fallthrough)
+        -:  352:    {
+    #####:  353:        pointer_index--;
+    #####:  354:        *(pointer_store[pointer_index].pointer) =
+    #####:  355:            pointer_store[pointer_index].old_value;
+        -:  356:    }
+       59:  357:}
+        -:  358:
+function UnityGetCommandLineOptions called 1 returned 100% blocks executed 25%
+        1:  359:int UnityGetCommandLineOptions(int argc, const char* argv[])
+        -:  360:{
+        -:  361:    int i;
+        1:  362:    UnityFixture.Verbose = 0;
+        1:  363:    UnityFixture.Silent = 0;
+        1:  364:    UnityFixture.GroupFilter = 0;
+        1:  365:    UnityFixture.NameFilter = 0;
+        1:  366:    UnityFixture.RepeatCount = 1;
+        -:  367:
+        1:  368:    if (argc == 1)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+    #####:  369:        return 0;
+        -:  370:
+        2:  371:    for (i = 1; i < argc; )
+branch  0 taken 50%
+branch  1 taken 50% (fallthrough)
+        -:  372:    {
+        1:  373:        if (strcmp(argv[i], "-v") == 0)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:  374:        {
+        1:  375:            UnityFixture.Verbose = 1;
+        1:  376:            i++;
+        -:  377:        }
+    #####:  378:        else if (strcmp(argv[i], "-s") == 0)
+branch  0 never executed
+branch  1 never executed
+        -:  379:        {
+    #####:  380:            UnityFixture.Silent = 1;
+    #####:  381:            i++;
+        -:  382:        }
+    #####:  383:        else if (strcmp(argv[i], "-g") == 0)
+branch  0 never executed
+branch  1 never executed
+        -:  384:        {
+    #####:  385:            i++;
+    #####:  386:            if (i >= argc)
+branch  0 never executed
+branch  1 never executed
+    #####:  387:                return 1;
+    #####:  388:            UnityFixture.GroupFilter = argv[i];
+    #####:  389:            i++;
+        -:  390:        }
+    #####:  391:        else if (strcmp(argv[i], "-n") == 0)
+branch  0 never executed
+branch  1 never executed
+        -:  392:        {
+    #####:  393:            i++;
+    #####:  394:            if (i >= argc)
+branch  0 never executed
+branch  1 never executed
+    #####:  395:                return 1;
+    #####:  396:            UnityFixture.NameFilter = argv[i];
+    #####:  397:            i++;
+        -:  398:        }
+    #####:  399:        else if (strcmp(argv[i], "-r") == 0)
+branch  0 never executed
+branch  1 never executed
+        -:  400:        {
+    #####:  401:            UnityFixture.RepeatCount = 2;
+    #####:  402:            i++;
+    #####:  403:            if (i < argc)
+branch  0 never executed
+branch  1 never executed
+        -:  404:            {
+    #####:  405:                if (*(argv[i]) >= '0' && *(argv[i]) <= '9')
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+        -:  406:                {
+    #####:  407:                    unsigned int digit = 0;
+    #####:  408:                    UnityFixture.RepeatCount = 0;
+    #####:  409:                    while (argv[i][digit] >= '0' && argv[i][digit] <= '9')
+branch  0 never executed
+branch  1 never executed
+branch  2 never executed
+branch  3 never executed
+        -:  410:                    {
+    #####:  411:                        UnityFixture.RepeatCount *= 10;
+    #####:  412:                        UnityFixture.RepeatCount += (unsigned int)argv[i][digit++] - '0';
+        -:  413:                    }
+    #####:  414:                    i++;
+        -:  415:                }
+        -:  416:            }
+        -:  417:        }
+        -:  418:        else
+        -:  419:        {
+        -:  420:            /* ignore unknown parameter */
+    #####:  421:            i++;
+        -:  422:        }
+        -:  423:    }
+        1:  424:    return 0;
+        -:  425:}
+        -:  426:
+function UnityConcludeFixtureTest called 59 returned 100% blocks executed 78%
+       59:  427:void UnityConcludeFixtureTest(void)
+        -:  428:{
+       59:  429:    if (Unity.CurrentTestIgnored)
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+        -:  430:    {
+    #####:  431:        Unity.TestIgnores++;
+    #####:  432:        UNITY_PRINT_EOL();
+call    0 never executed
+        -:  433:    }
+       59:  434:    else if (!Unity.CurrentTestFailed)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:  435:    {
+       59:  436:        if (UnityFixture.Verbose)
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+        -:  437:        {
+       59:  438:            UnityPrint(" ");
+call    0 returned 100%
+       59:  439:            UnityPrint(UnityStrPass);
+call    0 returned 100%
+        -:  440:            UNITY_EXEC_TIME_STOP();
+        -:  441:            UNITY_PRINT_EXEC_TIME();
+       59:  442:            UNITY_PRINT_EOL();
+call    0 returned 100%
+        -:  443:        }
+        -:  444:    }
+        -:  445:    else /* Unity.CurrentTestFailed */
+        -:  446:    {
+    #####:  447:        Unity.TestFailures++;
+    #####:  448:        UNITY_PRINT_EOL();
+call    0 never executed
+        -:  449:    }
+        -:  450:
+       59:  451:    Unity.CurrentTestFailed = 0;
+       59:  452:    Unity.CurrentTestIgnored = 0;
+       59:  453:}

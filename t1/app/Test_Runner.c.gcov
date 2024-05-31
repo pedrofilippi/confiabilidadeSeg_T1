@@ -1,0 +1,167 @@
+        -:    0:Source:test/test_runners/Test_Runner.c
+        -:    1:#include "unity.h"
+        -:    2:#include "unity_fixture.h"
+        -:    3:
+function TEST_Sort_GROUP_RUNNER called 1 returned 100% blocks executed 100%
+        1:    4:TEST_GROUP_RUNNER(Sort)
+        -:    5:{
+        1:    6:  RUN_TEST_CASE(Sort, TestSort1);
+call    0 returned 100%
+        1:    7:  RUN_TEST_CASE(Sort, TestSort2);
+call    0 returned 100%
+        1:    8:  RUN_TEST_CASE(Sort, TestSort3);
+call    0 returned 100%
+        -:    9:/*
+        -:   10:  RUN_TEST_CASE(Sort, InvalidLengthBelowMin);
+        -:   11:  RUN_TEST_CASE(Sort, InvalidLengthAboveMax);
+        -:   12:
+        -:   13:  RUN_TEST_CASE(Sort, ValidLengthAndCountingSort);
+        -:   14:  RUN_TEST_CASE(Sort, InvalidTypeForCountingSort);
+        -:   15:
+        -:   16:  RUN_TEST_CASE(Sort, ValidLengthAndRadixSort);
+        -:   17:  RUN_TEST_CASE(Sort, ValidLengthAndBubbleSort);
+        -:   18:  RUN_TEST_CASE(Sort, ValidLengthAndInsertionSort);
+        -:   19:  RUN_TEST_CASE(Sort, ValidLengthAndSelectionSort);
+        -:   20:  RUN_TEST_CASE(Sort, ValidLengthAndHeapSort);
+        -:   21:  RUN_TEST_CASE(Sort, ValidLengthAndMergeSort);
+        -:   22:  RUN_TEST_CASE(Sort, ValidLengthAndQuickSort);
+        -:   23:
+        -:   24:*/
+        -:   25:  /*RUN_TEST_CASE(Sort, InvalidAlgorithm);
+        -:   26:  
+        -:   27:  RUN_TEST_CASE(Sort, CountingSortAlreadySorted);
+        -:   28:  RUN_TEST_CASE(Sort, CountingSortReversed);
+        -:   29:  RUN_TEST_CASE(Sort, BubbleSortWithDuplicates);
+        -:   30:  RUN_TEST_CASE(Sort, QuickSortEdgeCases);
+        -:   31:  RUN_TEST_CASE(Sort, MergeSortEmpty);
+        -:   32:  RUN_TEST_CASE(Sort, RadixSortLargeNumbers);
+        -:   33:  RUN_TEST_CASE(Sort, InvalidTypeForRadixSort);
+        -:   34:
+        -:   35:  RUN_TEST_CASE(Sort, InvalidTypeForBubbleSort);
+        -:   36:  RUN_TEST_CASE(Sort, InvalidTypeForInsertionSort);
+        -:   37:  RUN_TEST_CASE(Sort, InvalidTypeForSelectionSort);
+        -:   38:  RUN_TEST_CASE(Sort, InvalidTypeForHeapSort);
+        -:   39:  RUN_TEST_CASE(Sort, InvalidTypeForMergeSort);
+        -:   40:  RUN_TEST_CASE(Sort, InvalidTypeForQuickSort);
+        -:   41:  RUN_TEST_CASE(Sort, InvalidAlgorithmOutOfSwitch);
+        -:   42:*/
+        1:   43:  RUN_TEST_CASE(Sort, AllCorrectCounting);
+call    0 returned 100%
+        1:   44:  RUN_TEST_CASE(Sort, BellowLimitCounting);
+call    0 returned 100%
+        1:   45:  RUN_TEST_CASE(Sort,  minLimitCounting);
+call    0 returned 100%
+        1:   46:  RUN_TEST_CASE(Sort, maxLimitCounting);
+call    0 returned 100%
+        1:   47:  RUN_TEST_CASE(Sort, aboveLimitCounting);
+call    0 returned 100%
+        1:   48:  RUN_TEST_CASE(Sort, WrongTypeCounting);
+call    0 returned 100%
+        1:   49:  RUN_TEST_CASE(Sort, WrongLenghtCounting);
+call    0 returned 100%
+        -:   50:
+        1:   51:  RUN_TEST_CASE(Sort, AllCorrectRadix);
+call    0 returned 100%
+        1:   52:  RUN_TEST_CASE(Sort, BellowLimitRadix);
+call    0 returned 100%
+        1:   53:  RUN_TEST_CASE(Sort,  minLimitRadix);
+call    0 returned 100%
+        1:   54:  RUN_TEST_CASE(Sort, maxLimitRadix);
+call    0 returned 100%
+        1:   55:  RUN_TEST_CASE(Sort, aboveLimitRadix);
+call    0 returned 100%
+        1:   56:  RUN_TEST_CASE(Sort, WrongTypeRadix);
+call    0 returned 100%
+        1:   57:  RUN_TEST_CASE(Sort, WrongLenghtRadix);
+call    0 returned 100%
+        -:   58:
+        1:   59:  RUN_TEST_CASE(Sort, AllCorrectBubble);
+call    0 returned 100%
+        1:   60:  RUN_TEST_CASE(Sort, BellowLimitBubble);
+call    0 returned 100%
+        1:   61:  RUN_TEST_CASE(Sort,  minLimitBubble);
+call    0 returned 100%
+        1:   62:  RUN_TEST_CASE(Sort, maxLimitBubble);
+call    0 returned 100%
+        1:   63:  RUN_TEST_CASE(Sort, aboveLimitBubble);
+call    0 returned 100%
+        1:   64:  RUN_TEST_CASE(Sort, WrongTypeBubble);
+call    0 returned 100%
+        1:   65:  RUN_TEST_CASE(Sort, WrongLenghtBubble);
+call    0 returned 100%
+        -:   66:
+        1:   67:  RUN_TEST_CASE(Sort, AllCorrectInsertion);
+call    0 returned 100%
+        1:   68:  RUN_TEST_CASE(Sort, BellowLimitInsertion);
+call    0 returned 100%
+        1:   69:  RUN_TEST_CASE(Sort,  minLimitInsertion);
+call    0 returned 100%
+        1:   70:  RUN_TEST_CASE(Sort, maxLimitInsertion);
+call    0 returned 100%
+        1:   71:  RUN_TEST_CASE(Sort, aboveLimitInsertion);
+call    0 returned 100%
+        1:   72:  RUN_TEST_CASE(Sort, WrongTypeInsertion);
+call    0 returned 100%
+        1:   73:  RUN_TEST_CASE(Sort, WrongLenghtInsertion);
+call    0 returned 100%
+        -:   74:
+        1:   75:    RUN_TEST_CASE(Sort, AllCorrectSelection);
+call    0 returned 100%
+        1:   76:  RUN_TEST_CASE(Sort, BellowLimitSelection);
+call    0 returned 100%
+        1:   77:  RUN_TEST_CASE(Sort,  minLimitSelection);
+call    0 returned 100%
+        1:   78:  RUN_TEST_CASE(Sort, maxLimitSelection);
+call    0 returned 100%
+        1:   79:  RUN_TEST_CASE(Sort, aboveLimitSelection);
+call    0 returned 100%
+        1:   80:  RUN_TEST_CASE(Sort, WrongTypeSelection);
+call    0 returned 100%
+        1:   81:  RUN_TEST_CASE(Sort, WrongLenghtSelection);
+call    0 returned 100%
+        -:   82:
+        1:   83:  RUN_TEST_CASE(Sort, AllCorrectHeap);
+call    0 returned 100%
+        1:   84:  RUN_TEST_CASE(Sort, BellowLimitHeap);
+call    0 returned 100%
+        1:   85:  RUN_TEST_CASE(Sort,  minLimitHeap);
+call    0 returned 100%
+        1:   86:  RUN_TEST_CASE(Sort, maxLimitHeap);
+call    0 returned 100%
+        1:   87:  RUN_TEST_CASE(Sort, aboveLimitHeap);
+call    0 returned 100%
+        1:   88:  RUN_TEST_CASE(Sort, WrongTypeHeap);
+call    0 returned 100%
+        1:   89:  RUN_TEST_CASE(Sort, WrongLenghtHeap);
+call    0 returned 100%
+        -:   90:
+        1:   91:  RUN_TEST_CASE(Sort, AllCorrectMerge);
+call    0 returned 100%
+        1:   92:  RUN_TEST_CASE(Sort, BellowLimitMerge);
+call    0 returned 100%
+        1:   93:  RUN_TEST_CASE(Sort,  minLimitMerge);
+call    0 returned 100%
+        1:   94:  RUN_TEST_CASE(Sort, maxLimitMerge);
+call    0 returned 100%
+        1:   95:  RUN_TEST_CASE(Sort, aboveLimitMerge);
+call    0 returned 100%
+        1:   96:  RUN_TEST_CASE(Sort, WrongTypeMerge);
+call    0 returned 100%
+        1:   97:  RUN_TEST_CASE(Sort, WrongLenghtMerge);
+call    0 returned 100%
+        -:   98:
+        1:   99:  RUN_TEST_CASE(Sort, AllCorrectQuick);
+call    0 returned 100%
+        1:  100:  RUN_TEST_CASE(Sort, BellowLimitQuick);
+call    0 returned 100%
+        1:  101:  RUN_TEST_CASE(Sort,  minLimitQuick);
+call    0 returned 100%
+        1:  102:  RUN_TEST_CASE(Sort, maxLimitQuick);
+call    0 returned 100%
+        1:  103:  RUN_TEST_CASE(Sort, aboveLimitQuick);
+call    0 returned 100%
+        1:  104:  RUN_TEST_CASE(Sort, WrongTypeQuick);
+call    0 returned 100%
+        1:  105:  RUN_TEST_CASE(Sort, WrongLenghtQuick);
+call    0 returned 100%
+        1:  106:}

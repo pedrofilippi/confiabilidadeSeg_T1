@@ -1,0 +1,30 @@
+        -:    0:Source:src/selection_sort.c
+        -:    1://Implementation of Selection sort in C
+        -:    2:#include <stdio.h>
+        -:    3:#include <stdlib.h>
+        -:    4:#define swap(t, x, y) t z = x; x = y; y = z;
+        -:    5:typedef int TYPE;
+        -:    6:void selection_sort(TYPE [], int);
+        -:    7:
+function selection_sort called 4 returned 100% blocks executed 100%
+        4:    8:void selection_sort(TYPE A[], int n) {
+        -:    9:    int i, j, min;
+       30:   10:    for(i = 0; i < n - 1; i++) {
+branch  0 taken 87%
+branch  1 taken 13% (fallthrough)
+       26:   11:        min = i;
+      230:   12:        for(j = i + 1; j < n; j++) {
+branch  0 taken 89%
+branch  1 taken 11% (fallthrough)
+      204:   13:            if(A[min] > A[j]) min = j;
+branch  0 taken 18% (fallthrough)
+branch  1 taken 82%
+        -:   14:        }
+       26:   15:        if(min != i) { 
+branch  0 taken 88% (fallthrough)
+branch  1 taken 12%
+       23:   16:            swap(TYPE, A[i], A[min]); 
+        -:   17:            // '{' and '}' are  needed when using macros inside condition
+        -:   18:        }
+        -:   19:    }
+        4:   20:}

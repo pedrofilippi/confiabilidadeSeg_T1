@@ -1,0 +1,178 @@
+gcc -std=c99 -Wall -Wextra -Wpointer-arith -Wcast-align -Wwrite-strings -Wswitch-default -Wunreachable-code -Winit-self -Wmissing-field-initializers -Wno-unknown-pragmas -Wstrict-prototypes -Wundef -Wold-style-definition -fprofile-arcs -ftest-coverage -Isrc -I../Unity/src -I../Unity/extras/fixture/src ../Unity/src/unity.c ../Unity/extras/fixture/src/unity_fixture.c src/bubble_sort.c src/counting_sort.c src/heap_sort.c src/insertion_sort.c src/merge_sort.c src/quick_sort.c src/radix_sort.c src/selection_sort.c src/sort.c test/Test.c test/test_runners/Test_Runner.c test/test_runners/all_tests.c -o all_tests.out
+./all_tests.out -v
+Unity test run 1 of 1
+TEST(Sort, TestSort1) PASS
+TEST(Sort, TestSort2) PASS
+TEST(Sort, TestSort3) PASS
+TEST(Sort, InvalidAlgorithm) PASS
+TEST(Sort, CountingSortAlreadySorted) PASS
+TEST(Sort, CountingSortReversed) PASS
+TEST(Sort, BubbleSortWithDuplicates) PASS
+TEST(Sort, QuickSortEdgeCases) PASS
+TEST(Sort, MergeSortEmpty) PASS
+TEST(Sort, RadixSortLargeNumbers) PASS
+TEST(Sort, InvalidTypeForRadixSort) PASS
+TEST(Sort, InvalidTypeForBubbleSort) PASS
+TEST(Sort, InvalidTypeForInsertionSort) PASS
+TEST(Sort, InvalidTypeForSelectionSort) PASS
+TEST(Sort, InvalidTypeForHeapSort) PASS
+TEST(Sort, InvalidTypeForMergeSort) PASS
+TEST(Sort, InvalidTypeForQuickSort) PASS
+TEST(Sort, InvalidAlgorithmOutOfSwitch) PASS
+TEST(Sort, AllCorrectCounting) PASS
+TEST(Sort, BellowLimitCounting) PASS
+TEST(Sort, minLimitCounting) PASS
+TEST(Sort, maxLimitCounting) PASS
+TEST(Sort, aboveLimitCounting) PASS
+TEST(Sort, WrongTypeCounting) PASS
+TEST(Sort, WrongLenghtCounting) PASS
+TEST(Sort, AllCorrectRadix) PASS
+TEST(Sort, BellowLimitRadix) PASS
+TEST(Sort, minLimitRadix) PASS
+TEST(Sort, maxLimitRadix) PASS
+TEST(Sort, aboveLimitRadix) PASS
+TEST(Sort, WrongTypeRadix) PASS
+TEST(Sort, WrongLenghtRadix) PASS
+TEST(Sort, AllCorrectBubble) PASS
+TEST(Sort, BellowLimitBubble) PASS
+TEST(Sort, minLimitBubble) PASS
+TEST(Sort, maxLimitBubble) PASS
+TEST(Sort, aboveLimitBubble) PASS
+TEST(Sort, WrongTypeBubble) PASS
+TEST(Sort, WrongLenghtBubble) PASS
+TEST(Sort, AllCorrectInsertion) PASS
+TEST(Sort, BellowLimitInsertion) PASS
+TEST(Sort, minLimitInsertion) PASS
+TEST(Sort, maxLimitInsertion) PASS
+TEST(Sort, aboveLimitInsertion) PASS
+TEST(Sort, WrongTypeInsertion) PASS
+TEST(Sort, WrongLenghtInsertion) PASS
+TEST(Sort, AllCorrectSelection) PASS
+TEST(Sort, BellowLimitSelection) PASS
+TEST(Sort, minLimitSelection) PASS
+TEST(Sort, maxLimitSelection) PASS
+TEST(Sort, aboveLimitSelection) PASS
+TEST(Sort, WrongTypeSelection) PASS
+TEST(Sort, WrongLenghtSelection) PASS
+TEST(Sort, AllCorrectHeap) PASS
+TEST(Sort, BellowLimitHeap) PASS
+TEST(Sort, minLimitHeap) PASS
+TEST(Sort, maxLimitHeap) PASS
+TEST(Sort, aboveLimitHeap) PASS
+TEST(Sort, WrongTypeHeap) PASS
+TEST(Sort, WrongLenghtHeap) PASS
+TEST(Sort, AllCorrectMerge) PASS
+TEST(Sort, BellowLimitMerge) PASS
+TEST(Sort, minLimitMerge) PASS
+TEST(Sort, maxLimitMerge) PASS
+TEST(Sort, aboveLimitMerge) PASS
+TEST(Sort, WrongTypeMerge) PASS
+TEST(Sort, WrongLenghtMerge) PASS
+TEST(Sort, AllCorrectQuick) PASS
+TEST(Sort, BellowLimitQuick) PASS
+TEST(Sort, minLimitQuick) PASS
+TEST(Sort, maxLimitQuick) PASS
+TEST(Sort, aboveLimitQuick) PASS
+TEST(Sort, WrongTypeQuick) PASS
+TEST(Sort, WrongLenghtQuick) PASS
+
+-----------------------
+74 Tests 0 Failures 0 Ignored 
+OK
+gcov -b *.gcda
+File 'test/Test.c'
+Lines executed:100.00% of 424
+No branches
+No calls
+Creating 'Test.c.gcov'
+
+File 'test/test_runners/Test_Runner.c'
+Lines executed:100.00% of 76
+No branches
+Calls executed:100.00% of 74
+Creating 'Test_Runner.c.gcov'
+
+File 'test/test_runners/all_tests.c'
+Lines executed:100.00% of 5
+No branches
+Calls executed:100.00% of 2
+Creating 'all_tests.c.gcov'
+
+File 'src/bubble_sort.c'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 8
+Taken at least once:87.50% of 8
+No calls
+Creating 'bubble_sort.c.gcov'
+
+File 'src/counting_sort.c'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 14
+Taken at least once:100.00% of 14
+Calls executed:100.00% of 1
+Creating 'counting_sort.c.gcov'
+
+File 'src/heap_sort.c'
+Lines executed:93.75% of 32
+Branches executed:100.00% of 14
+Taken at least once:100.00% of 14
+Calls executed:100.00% of 6
+Creating 'heap_sort.c.gcov'
+
+File 'src/insertion_sort.c'
+Lines executed:100.00% of 9
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+No calls
+Creating 'insertion_sort.c.gcov'
+
+File 'src/merge_sort.c'
+Lines executed:100.00% of 26
+Branches executed:100.00% of 16
+Taken at least once:100.00% of 16
+Calls executed:100.00% of 3
+Creating 'merge_sort.c.gcov'
+
+File 'src/quick_sort.c'
+Lines executed:100.00% of 18
+Branches executed:100.00% of 6
+Taken at least once:100.00% of 6
+Calls executed:100.00% of 4
+Creating 'quick_sort.c.gcov'
+
+File 'src/radix_sort.c'
+Lines executed:92.73% of 55
+Branches executed:100.00% of 26
+Taken at least once:92.31% of 26
+Calls executed:60.00% of 10
+Creating 'radix_sort.c.gcov'
+
+File 'src/selection_sort.c'
+Lines executed:100.00% of 8
+Branches executed:100.00% of 8
+Taken at least once:100.00% of 8
+No calls
+Creating 'selection_sort.c.gcov'
+
+File 'src/sort.c'
+Lines executed:100.00% of 53
+Branches executed:100.00% of 29
+Taken at least once:100.00% of 29
+Calls executed:100.00% of 8
+Creating 'sort.c.gcov'
+
+File '../Unity/src/unity.c'
+Lines executed:12.19% of 640
+Branches executed:11.44% of 437
+Taken at least once:6.41% of 437
+Calls executed:6.51% of 261
+Creating 'unity.c.gcov'
+
+File '../Unity/extras/fixture/src/unity_fixture.c'
+Lines executed:41.21% of 199
+Branches executed:38.00% of 100
+Taken at least once:21.00% of 100
+Calls executed:56.86% of 51
+Creating 'unity_fixture.c.gcov'
+
+Lines executed:56.42% of 1572
