@@ -68,32 +68,32 @@ call    0 returned 100%
         1:   46:    return (int)Unity.TestFailures;
         -:   47:}
         -:   48:
-function selected called 118 returned 100% blocks executed 75%
-      118:   49:static int selected(const char* filter, const char* name)
+function selected called 116 returned 100% blocks executed 75%
+      116:   49:static int selected(const char* filter, const char* name)
         -:   50:{
-      118:   51:    if (filter == 0)
+      116:   51:    if (filter == 0)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
-      118:   52:        return 1;
+      116:   52:        return 1;
     #####:   53:    return strstr(name, filter) ? 1 : 0;
         -:   54:}
         -:   55:
-function testSelected called 59 returned 100% blocks executed 100%
-       59:   56:static int testSelected(const char* test)
+function testSelected called 58 returned 100% blocks executed 100%
+       58:   56:static int testSelected(const char* test)
         -:   57:{
-       59:   58:    return selected(UnityFixture.NameFilter, test);
+       58:   58:    return selected(UnityFixture.NameFilter, test);
 call    0 returned 100%
         -:   59:}
         -:   60:
-function groupSelected called 59 returned 100% blocks executed 100%
-       59:   61:static int groupSelected(const char* group)
+function groupSelected called 58 returned 100% blocks executed 100%
+       58:   61:static int groupSelected(const char* group)
         -:   62:{
-       59:   63:    return selected(UnityFixture.GroupFilter, group);
+       58:   63:    return selected(UnityFixture.GroupFilter, group);
 call    0 returned 100%
         -:   64:}
         -:   65:
-function UnityTestRunner called 59 returned 100% blocks executed 88%
-       59:   66:void UnityTestRunner(unityfunction* setup,
+function UnityTestRunner called 58 returned 100% blocks executed 88%
+       58:   66:void UnityTestRunner(unityfunction* setup,
         -:   67:                     unityfunction* testBody,
         -:   68:                     unityfunction* teardown,
         -:   69:                     const char* printableName,
@@ -102,7 +102,7 @@ function UnityTestRunner called 59 returned 100% blocks executed 88%
         -:   72:                     const char* file,
         -:   73:                     unsigned int line)
         -:   74:{
-       59:   75:    if (testSelected(name) && groupSelected(group))
+       58:   75:    if (testSelected(name) && groupSelected(group))
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0%
@@ -110,17 +110,17 @@ call    3 returned 100%
 branch  4 taken 100% (fallthrough)
 branch  5 taken 0%
         -:   76:    {
-       59:   77:        Unity.TestFile = file;
-       59:   78:        Unity.CurrentTestName = printableName;
-       59:   79:        Unity.CurrentTestLineNumber = line;
-       59:   80:        if (UnityFixture.Verbose)
+       58:   77:        Unity.TestFile = file;
+       58:   78:        Unity.CurrentTestName = printableName;
+       58:   79:        Unity.CurrentTestLineNumber = line;
+       58:   80:        if (UnityFixture.Verbose)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
         -:   81:        {
-       59:   82:            UnityPrint(printableName);
+       58:   82:            UnityPrint(printableName);
 call    0 returned 100%
         -:   83:        #ifndef UNITY_REPEAT_TEST_NAME
-       59:   84:            Unity.CurrentTestName = NULL;
+       58:   84:            Unity.CurrentTestName = NULL;
         -:   85:        #endif
         -:   86:        }
     #####:   87:        else if (UnityFixture.Silent)
@@ -135,49 +135,49 @@ branch  1 never executed
 call    0 never executed
         -:   94:        }
         -:   95:
-       59:   96:        Unity.NumberOfTests++;
-       59:   97:        UnityMalloc_StartTest();
+       58:   96:        Unity.NumberOfTests++;
+       58:   97:        UnityMalloc_StartTest();
 call    0 returned 100%
-       59:   98:        UnityPointer_Init();
+       58:   98:        UnityPointer_Init();
 call    0 returned 100%
         -:   99:
         -:  100:        UNITY_EXEC_TIME_START();
         -:  101:
-       59:  102:        if (TEST_PROTECT())
+       58:  102:        if (TEST_PROTECT())
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0%
         -:  103:        {
-       59:  104:            setup();
+       58:  104:            setup();
 call    0 returned 100%
-       59:  105:            testBody();
+       58:  105:            testBody();
 call    0 returned 100%
         -:  106:        }
-       59:  107:        if (TEST_PROTECT())
+       58:  107:        if (TEST_PROTECT())
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0%
         -:  108:        {
-       59:  109:            teardown();
+       58:  109:            teardown();
 call    0 returned 100%
         -:  110:        }
-       59:  111:        if (TEST_PROTECT())
+       58:  111:        if (TEST_PROTECT())
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0%
         -:  112:        {
-       59:  113:            UnityPointer_UndoAllSets();
+       58:  113:            UnityPointer_UndoAllSets();
 call    0 returned 100%
-       59:  114:            if (!Unity.CurrentTestFailed)
+       58:  114:            if (!Unity.CurrentTestFailed)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
-       59:  115:                UnityMalloc_EndTest();
+       58:  115:                UnityMalloc_EndTest();
 call    0 returned 100%
         -:  116:        }
-       59:  117:        UnityConcludeFixtureTest();
+       58:  117:        UnityConcludeFixtureTest();
 call    0 returned 100%
         -:  118:    }
-       59:  119:}
+       58:  119:}
         -:  120:
 function UnityIgnoreTest called 0 returned 0% blocks executed 0%
     #####:  121:void UnityIgnoreTest(const char* printableName, const char* group, const char* name)
@@ -222,25 +222,25 @@ call    0 never executed
         -:  147:static int malloc_count;
         -:  148:static int malloc_fail_countdown = MALLOC_DONT_FAIL;
         -:  149:
-function UnityMalloc_StartTest called 59 returned 100% blocks executed 100%
-       59:  150:void UnityMalloc_StartTest(void)
+function UnityMalloc_StartTest called 58 returned 100% blocks executed 100%
+       58:  150:void UnityMalloc_StartTest(void)
         -:  151:{
-       59:  152:    malloc_count = 0;
-       59:  153:    malloc_fail_countdown = MALLOC_DONT_FAIL;
-       59:  154:}
+       58:  152:    malloc_count = 0;
+       58:  153:    malloc_fail_countdown = MALLOC_DONT_FAIL;
+       58:  154:}
         -:  155:
-function UnityMalloc_EndTest called 59 returned 100% blocks executed 67%
-       59:  156:void UnityMalloc_EndTest(void)
+function UnityMalloc_EndTest called 58 returned 100% blocks executed 67%
+       58:  156:void UnityMalloc_EndTest(void)
         -:  157:{
-       59:  158:    malloc_fail_countdown = MALLOC_DONT_FAIL;
-       59:  159:    if (malloc_count != 0)
+       58:  158:    malloc_fail_countdown = MALLOC_DONT_FAIL;
+       58:  159:    if (malloc_count != 0)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  160:    {
     #####:  161:        UNITY_TEST_FAIL(Unity.CurrentTestLineNumber, "This test leaks!");
 call    0 never executed
         -:  162:    }
-       59:  163:}
+       58:  163:}
         -:  164:
 function UnityMalloc_MakeMallocFailAfterCount called 0 returned 0% blocks executed 0%
     #####:  165:void UnityMalloc_MakeMallocFailAfterCount(int countdown)
@@ -452,11 +452,11 @@ call    0 never executed
         -:  326:static struct PointerPair pointer_store[UNITY_MAX_POINTERS];
         -:  327:static int pointer_index = 0;
         -:  328:
-function UnityPointer_Init called 59 returned 100% blocks executed 100%
-       59:  329:void UnityPointer_Init(void)
+function UnityPointer_Init called 58 returned 100% blocks executed 100%
+       58:  329:void UnityPointer_Init(void)
         -:  330:{
-       59:  331:    pointer_index = 0;
-       59:  332:}
+       58:  331:    pointer_index = 0;
+       58:  332:}
         -:  333:
 function UnityPointer_Set called 0 returned 0% blocks executed 0%
     #####:  334:void UnityPointer_Set(void** pointer, void* newValue, UNITY_LINE_TYPE line)
@@ -477,10 +477,10 @@ call    0 never executed
         -:  346:    }
     #####:  347:}
         -:  348:
-function UnityPointer_UndoAllSets called 59 returned 100% blocks executed 75%
-       59:  349:void UnityPointer_UndoAllSets(void)
+function UnityPointer_UndoAllSets called 58 returned 100% blocks executed 75%
+       58:  349:void UnityPointer_UndoAllSets(void)
         -:  350:{
-       59:  351:    while (pointer_index > 0)
+       58:  351:    while (pointer_index > 0)
 branch  0 taken 0%
 branch  1 taken 100% (fallthrough)
         -:  352:    {
@@ -488,7 +488,7 @@ branch  1 taken 100% (fallthrough)
     #####:  354:        *(pointer_store[pointer_index].pointer) =
     #####:  355:            pointer_store[pointer_index].old_value;
         -:  356:    }
-       59:  357:}
+       58:  357:}
         -:  358:
 function UnityGetCommandLineOptions called 1 returned 100% blocks executed 25%
         1:  359:int UnityGetCommandLineOptions(int argc, const char* argv[])
@@ -587,10 +587,10 @@ branch  3 never executed
         1:  424:    return 0;
         -:  425:}
         -:  426:
-function UnityConcludeFixtureTest called 59 returned 100% blocks executed 78%
-       59:  427:void UnityConcludeFixtureTest(void)
+function UnityConcludeFixtureTest called 58 returned 100% blocks executed 78%
+       58:  427:void UnityConcludeFixtureTest(void)
         -:  428:{
-       59:  429:    if (Unity.CurrentTestIgnored)
+       58:  429:    if (Unity.CurrentTestIgnored)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  430:    {
@@ -598,21 +598,21 @@ branch  1 taken 100%
     #####:  432:        UNITY_PRINT_EOL();
 call    0 never executed
         -:  433:    }
-       59:  434:    else if (!Unity.CurrentTestFailed)
+       58:  434:    else if (!Unity.CurrentTestFailed)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
         -:  435:    {
-       59:  436:        if (UnityFixture.Verbose)
+       58:  436:        if (UnityFixture.Verbose)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
         -:  437:        {
-       59:  438:            UnityPrint(" ");
+       58:  438:            UnityPrint(" ");
 call    0 returned 100%
-       59:  439:            UnityPrint(UnityStrPass);
+       58:  439:            UnityPrint(UnityStrPass);
 call    0 returned 100%
         -:  440:            UNITY_EXEC_TIME_STOP();
         -:  441:            UNITY_PRINT_EXEC_TIME();
-       59:  442:            UNITY_PRINT_EOL();
+       58:  442:            UNITY_PRINT_EOL();
 call    0 returned 100%
         -:  443:        }
         -:  444:    }
@@ -623,6 +623,6 @@ call    0 returned 100%
 call    0 never executed
         -:  449:    }
         -:  450:
-       59:  451:    Unity.CurrentTestFailed = 0;
-       59:  452:    Unity.CurrentTestIgnored = 0;
-       59:  453:}
+       58:  451:    Unity.CurrentTestFailed = 0;
+       58:  452:    Unity.CurrentTestIgnored = 0;
+       58:  453:}

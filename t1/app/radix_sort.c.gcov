@@ -22,54 +22,54 @@
         -:   21:int find_max_significant(TYPE [], int);
         -:   22:void radix_sort(TYPE [], int);
         -:   23:
-function radix_sort called 4 returned 100% blocks executed 100%
-        4:   24:void radix_sort(TYPE a[], int length){
+function radix_sort called 5 returned 100% blocks executed 100%
+        5:   24:void radix_sort(TYPE a[], int length){
         -:   25:    QUEUE buckets[MAX_BUCKETS]; // buckets for 0, 1, 2, ... 9 significant digits
         -:   26:    int i, j;
-       44:   27:    for(i = 0; i < MAX_BUCKETS; i++)
+       55:   27:    for(i = 0; i < MAX_BUCKETS; i++)
 branch  0 taken 91%
 branch  1 taken 9% (fallthrough)
-       40:   28:        init_queue(&buckets[i]);
+       50:   28:        init_queue(&buckets[i]);
 call    0 returned 100%
         -:   29:    
-        4:   30:    int k = find_max_significant(a, length);
+        5:   30:    int k = find_max_significant(a, length);
 call    0 returned 100%
-        4:   31:    int m = 10, n = 1, p;
+        5:   31:    int m = 10, n = 1, p;
         -:   32:    
-       11:   33:    for(i = 0; i < k; i++){
+       14:   33:    for(i = 0; i < k; i++){
 branch  0 taken 64%
 branch  1 taken 36% (fallthrough)
-       64:   34:        for(j = 0; j < length; j++){
-branch  0 taken 89%
-branch  1 taken 11% (fallthrough)
-       57:   35:            inqueue(&buckets[((int)a[j]%m)/n], a[j]);
+      106:   34:        for(j = 0; j < length; j++){
+branch  0 taken 92%
+branch  1 taken 8% (fallthrough)
+       97:   35:            inqueue(&buckets[((int)a[j]%m)/n], a[j]);
 call    0 returned 100%
         -:   36:        }
-       77:   37:        for(p = 0, j = 0; j < MAX_BUCKETS; j++){
+       99:   37:        for(p = 0, j = 0; j < MAX_BUCKETS; j++){
 branch  0 taken 91%
 branch  1 taken 9% (fallthrough)
-      127:   38:            while(!is_empty(buckets[j])) {
+      187:   38:            while(!is_empty(buckets[j])) {
 call    0 returned 100%
-branch  1 taken 45%
-branch  2 taken 55% (fallthrough)
-       57:   39:                a[p++] = dequeue(&buckets[j]); 
+branch  1 taken 52%
+branch  2 taken 48% (fallthrough)
+       97:   39:                a[p++] = dequeue(&buckets[j]); 
 call    0 returned 100%
         -:   40:                //first a[p] = ... is done and then p++ afterwards.
         -:   41:            }
         -:   42:        }
-        7:   43:        n*=10;
-        7:   44:        m*=10;
+        9:   43:        n*=10;
+        9:   44:        m*=10;
         -:   45:    }
-        4:   46:}
+        5:   46:}
         -:   47:
-function init_queue called 40 returned 100% blocks executed 100%
-       40:   48:void init_queue(QUEUE *pque){
-       40:   49:    pque->pbegin = pque->pend = NULL;
-       40:   50:} 
-function make_node called 57 returned 100% blocks executed 60%
-       57:   51:NODE *make_node(TYPE inf){
-       57:   52:    NODE *pnew = malloc(sizeof(NODE));
-       57:   53:    if(pnew == NULL){
+function init_queue called 50 returned 100% blocks executed 100%
+       50:   48:void init_queue(QUEUE *pque){
+       50:   49:    pque->pbegin = pque->pend = NULL;
+       50:   50:} 
+function make_node called 97 returned 100% blocks executed 60%
+       97:   51:NODE *make_node(TYPE inf){
+       97:   52:    NODE *pnew = malloc(sizeof(NODE));
+       97:   53:    if(pnew == NULL){
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
     #####:   54:        puts("ERROR: Out of RAM!");
@@ -77,30 +77,30 @@ call    0 never executed
     #####:   55:        exit(4);
 call    0 never executed
         -:   56:    }
-       57:   57:    pnew->inf = inf;
-       57:   58:    pnew->pnext = NULL;
-       57:   59:    return pnew;
+       97:   57:    pnew->inf = inf;
+       97:   58:    pnew->pnext = NULL;
+       97:   59:    return pnew;
         -:   60:}
-function inqueue called 57 returned 100% blocks executed 100%
-       57:   61:void inqueue(QUEUE *pque, TYPE inf){
-       57:   62:    NODE *pnew = make_node(inf);
+function inqueue called 97 returned 100% blocks executed 100%
+       97:   61:void inqueue(QUEUE *pque, TYPE inf){
+       97:   62:    NODE *pnew = make_node(inf);
 call    0 returned 100%
         -:   63:    
         -:   64:    /*This would mean that my queue is empty*/
-       57:   65:    if(pque->pbegin == NULL) {
-branch  0 taken 47% (fallthrough)
-branch  1 taken 53%
-       27:   66:        pque->pbegin = pque->pend = pnew;
+       97:   65:    if(pque->pbegin == NULL) {
+branch  0 taken 40% (fallthrough)
+branch  1 taken 60%
+       39:   66:        pque->pbegin = pque->pend = pnew;
         -:   67:    }
         -:   68:    else {
-       30:   69:        pque->pend->pnext = pnew;
-       30:   70:        pque->pend = pnew;
+       58:   69:        pque->pend->pnext = pnew;
+       58:   70:        pque->pend = pnew;
         -:   71:    }
-       57:   72:}
-function dequeue called 57 returned 100% blocks executed 75%
-       57:   73:TYPE dequeue(QUEUE *pque) {
-       57:   74:    NODE *ptemp = pque->pbegin;    
-       57:   75:    if(ptemp == NULL) {
+       97:   72:}
+function dequeue called 97 returned 100% blocks executed 75%
+       97:   73:TYPE dequeue(QUEUE *pque) {
+       97:   74:    NODE *ptemp = pque->pbegin;    
+       97:   75:    if(ptemp == NULL) {
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
     #####:   76:        puts("ERROR: You tried to dequeue an empty queue.");
@@ -113,42 +113,42 @@ call    0 never executed
         -:   81:    /*If below means that they are on last element (ex. pbegin--- 36 
         -:   82:                                                                                                /
         -:   83:                                                                                            pend    )*/
-       57:   84:    if(pque->pbegin == pque->pend) pque->pend = pque->pbegin = NULL;
-branch  0 taken 47% (fallthrough)
-branch  1 taken 53%
-       30:   85:    else pque->pbegin = ptemp->pnext;
-       57:   86:    x = ptemp->inf;
+       97:   84:    if(pque->pbegin == pque->pend) pque->pend = pque->pbegin = NULL;
+branch  0 taken 40% (fallthrough)
+branch  1 taken 60%
+       58:   85:    else pque->pbegin = ptemp->pnext;
+       97:   86:    x = ptemp->inf;
         -:   87:    
-       57:   88:    free(ptemp);
-       57:   89:    return x;
+       97:   88:    free(ptemp);
+       97:   89:    return x;
         -:   90:    
         -:   91:}
         -:   92:/*returns 1 if it is and 0 if it isn't*/
-function is_empty called 127 returned 100% blocks executed 100%
-      127:   93:int is_empty(QUEUE pque) {
-      127:   94:    if(pque.pbegin == NULL) return 1;
-branch  0 taken 55% (fallthrough)
-branch  1 taken 45%
-       57:   95:    else return 0;
+function is_empty called 187 returned 100% blocks executed 100%
+      187:   93:int is_empty(QUEUE pque) {
+      187:   94:    if(pque.pbegin == NULL) return 1;
+branch  0 taken 48% (fallthrough)
+branch  1 taken 52%
+       97:   95:    else return 0;
         -:   96:}
-function find_max_significant called 4 returned 100% blocks executed 100%
-        4:   97:int find_max_significant(TYPE a[], int length){
-        4:   98:    int i = 0; 
-        4:   99:    TYPE max = a[0];
+function find_max_significant called 5 returned 100% blocks executed 100%
+        5:   97:int find_max_significant(TYPE a[], int length){
+        5:   98:    int i = 0; 
+        5:   99:    TYPE max = a[0];
         -:  100:    
-       30:  101:    while(++i < length) {
-branch  0 taken 87%
-branch  1 taken 13% (fallthrough)
-       26:  102:        if(a[i] > max) max = a[i];
-branch  0 taken 12% (fallthrough)
-branch  1 taken 88%
+       50:  101:    while(++i < length) {
+branch  0 taken 90%
+branch  1 taken 10% (fallthrough)
+       45:  102:        if(a[i] > max) max = a[i];
+branch  0 taken 47% (fallthrough)
+branch  1 taken 53%
         -:  103:    }
-        4:  104:    int nb_digits = 0;
-       11:  105:    while(max != 0) {
+        5:  104:    int nb_digits = 0;
+       14:  105:    while(max != 0) {
 branch  0 taken 64%
 branch  1 taken 36% (fallthrough)
-        7:  106:        ++nb_digits;
-        7:  107:        max = (int)max / 10;
+        9:  106:        ++nb_digits;
+        9:  107:        max = (int)max / 10;
         -:  108:    }
-        4:  109:    return nb_digits;
+        5:  109:    return nb_digits;
         -:  110:}

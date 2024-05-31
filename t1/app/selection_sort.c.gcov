@@ -6,25 +6,25 @@
         -:    5:typedef int TYPE;
         -:    6:void selection_sort(TYPE [], int);
         -:    7:
-function selection_sort called 4 returned 100% blocks executed 100%
-        4:    8:void selection_sort(TYPE A[], int n) {
+function selection_sort called 5 returned 100% blocks executed 100%
+        5:    8:void selection_sort(TYPE A[], int n) {
         -:    9:    int i, j, min;
-       30:   10:    for(i = 0; i < n - 1; i++) {
-branch  0 taken 87%
-branch  1 taken 13% (fallthrough)
-       26:   11:        min = i;
-      230:   12:        for(j = i + 1; j < n; j++) {
-branch  0 taken 89%
-branch  1 taken 11% (fallthrough)
-      204:   13:            if(A[min] > A[j]) min = j;
-branch  0 taken 18% (fallthrough)
-branch  1 taken 82%
+       50:   10:    for(i = 0; i < n - 1; i++) {
+branch  0 taken 90%
+branch  1 taken 10% (fallthrough)
+       45:   11:        min = i;
+      439:   12:        for(j = i + 1; j < n; j++) {
+branch  0 taken 90%
+branch  1 taken 10% (fallthrough)
+      394:   13:            if(A[min] > A[j]) min = j;
+branch  0 taken 9% (fallthrough)
+branch  1 taken 91%
         -:   14:        }
-       26:   15:        if(min != i) { 
-branch  0 taken 88% (fallthrough)
-branch  1 taken 12%
+       45:   15:        if(min != i) { 
+branch  0 taken 51% (fallthrough)
+branch  1 taken 49%
        23:   16:            swap(TYPE, A[i], A[min]); 
         -:   17:            // '{' and '}' are  needed when using macros inside condition
         -:   18:        }
         -:   19:    }
-        4:   20:}
+        5:   20:}

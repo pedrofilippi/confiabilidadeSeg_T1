@@ -76,17 +76,17 @@
         -:   75:
         -:   76:/*-----------------------------------------------*/
         -:   77:/* Local helper function to print characters. */
-function UnityPrintChar called 1993 returned 100% blocks executed 31%
-     1993:   78:static void UnityPrintChar(const char* pch)
+function UnityPrintChar called 1969 returned 100% blocks executed 31%
+     1969:   78:static void UnityPrintChar(const char* pch)
         -:   79:{
         -:   80:    /* printable characters plus CR & LF are printed */
-     1993:   81:    if ((*pch <= 126) && (*pch >= 32))
+     1969:   81:    if ((*pch <= 126) && (*pch >= 32))
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
 branch  2 taken 100% (fallthrough)
 branch  3 taken 0%
         -:   82:    {
-     1993:   83:        UNITY_OUTPUT_CHAR(*pch);
+     1969:   83:        UNITY_OUTPUT_CHAR(*pch);
 call    0 returned 100%
         -:   84:    }
         -:   85:    /* write escaped carriage returns */
@@ -119,7 +119,7 @@ call    0 never executed
     #####:  102:        UnityPrintNumberHex((UNITY_UINT)*pch, 2);
 call    0 never executed
         -:  103:    }
-     1993:  104:}
+     1969:  104:}
         -:  105:
         -:  106:/*-----------------------------------------------*/
         -:  107:/* Local helper function to print ANSI escape strings e.g. "\033[42m". */
@@ -143,16 +143,16 @@ call    0 never executed
         -:  125:#endif
         -:  126:
         -:  127:/*-----------------------------------------------*/
-function UnityPrint called 184 returned 100% blocks executed 100%
-      184:  128:void UnityPrint(const char* string)
+function UnityPrint called 181 returned 100% blocks executed 100%
+      181:  128:void UnityPrint(const char* string)
         -:  129:{
-      184:  130:    const char* pch = string;
+      181:  130:    const char* pch = string;
         -:  131:
-      184:  132:    if (pch != NULL)
+      181:  132:    if (pch != NULL)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
         -:  133:    {
-     2177:  134:        while (*pch)
+     2150:  134:        while (*pch)
 branch  0 taken 92%
 branch  1 taken 8% (fallthrough)
         -:  135:        {
@@ -164,12 +164,12 @@ branch  1 taken 8% (fallthrough)
         -:  141:                continue;
         -:  142:            }
         -:  143:#endif
-     1993:  144:            UnityPrintChar(pch);
+     1969:  144:            UnityPrintChar(pch);
 call    0 returned 100%
-     1993:  145:            pch++;
+     1969:  145:            pch++;
         -:  146:        }
         -:  147:    }
-      184:  148:}
+      181:  148:}
         -:  149:
         -:  150:/*-----------------------------------------------*/
         -:  151:#ifdef UNITY_INCLUDE_PRINT_FORMATTED
@@ -913,19 +913,19 @@ call    0 never executed
         -:  694: *-----------------------------------------------*/
         -:  695:
         -:  696:/*-----------------------------------------------*/
-function UnityIsOneArrayNull called 32 returned 100% blocks executed 36%
-       32:  697:static int UnityIsOneArrayNull(UNITY_INTERNAL_PTR expected,
+function UnityIsOneArrayNull called 40 returned 100% blocks executed 36%
+       40:  697:static int UnityIsOneArrayNull(UNITY_INTERNAL_PTR expected,
         -:  698:                               UNITY_INTERNAL_PTR actual,
         -:  699:                               const UNITY_LINE_TYPE lineNumber,
         -:  700:                               const char* msg)
         -:  701:{
         -:  702:    /* Both are NULL or same pointer */
-      32*:  703:    if (expected == actual) { return 0; }
+      40*:  703:    if (expected == actual) { return 0; }
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  704:
         -:  705:    /* print and return true if just expected is NULL */
-       32:  706:    if (expected == NULL)
+       40:  706:    if (expected == NULL)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  707:    {
@@ -939,7 +939,7 @@ call    0 never executed
         -:  712:    }
         -:  713:
         -:  714:    /* print and return true if just actual is NULL */
-       32:  715:    if (actual == NULL)
+       40:  715:    if (actual == NULL)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  716:    {
@@ -952,7 +952,7 @@ call    0 never executed
     #####:  720:        return 1;
         -:  721:    }
         -:  722:
-       32:  723:    return 0; /* return false if neither is NULL */
+       40:  723:    return 0; /* return false if neither is NULL */
         -:  724:}
         -:  725:
         -:  726:/*-----------------------------------------------
@@ -995,20 +995,20 @@ call    0 never executed
         -:  749:}
         -:  750:
         -:  751:/*-----------------------------------------------*/
-function UnityAssertEqualNumber called 59 returned 100% blocks executed 33%
-       59:  752:void UnityAssertEqualNumber(const UNITY_INT expected,
+function UnityAssertEqualNumber called 66 returned 100% blocks executed 33%
+       66:  752:void UnityAssertEqualNumber(const UNITY_INT expected,
         -:  753:                            const UNITY_INT actual,
         -:  754:                            const char* msg,
         -:  755:                            const UNITY_LINE_TYPE lineNumber,
         -:  756:                            const UNITY_DISPLAY_STYLE_T style)
         -:  757:{
-      59*:  758:    RETURN_IF_FAIL_OR_IGNORE;
+      66*:  758:    RETURN_IF_FAIL_OR_IGNORE;
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
 branch  2 taken 0% (fallthrough)
 branch  3 taken 100%
         -:  759:
-       59:  760:    if (expected != actual)
+       66:  760:    if (expected != actual)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  761:    {
@@ -1122,8 +1122,8 @@ call    0 never executed
         -:  816:    UNITY_FAIL_AND_BAIL; }
         -:  817:
         -:  818:/*-----------------------------------------------*/
-function UnityAssertEqualIntArray called 32 returned 100% blocks executed 42%
-       32:  819:void UnityAssertEqualIntArray(UNITY_INTERNAL_PTR expected,
+function UnityAssertEqualIntArray called 40 returned 100% blocks executed 42%
+       40:  819:void UnityAssertEqualIntArray(UNITY_INTERNAL_PTR expected,
         -:  820:                              UNITY_INTERNAL_PTR actual,
         -:  821:                              const UNITY_UINT32 num_elements,
         -:  822:                              const char* msg,
@@ -1131,17 +1131,17 @@ function UnityAssertEqualIntArray called 32 returned 100% blocks executed 42%
         -:  824:                              const UNITY_DISPLAY_STYLE_T style,
         -:  825:                              const UNITY_FLAGS_T flags)
         -:  826:{
-       32:  827:    UNITY_UINT32 elements  = num_elements;
-       32:  828:    unsigned int length    = style & 0xF;
-       32:  829:    unsigned int increment = 0;
+       40:  827:    UNITY_UINT32 elements  = num_elements;
+       40:  828:    unsigned int length    = style & 0xF;
+       40:  829:    unsigned int increment = 0;
         -:  830:
-      32*:  831:    RETURN_IF_FAIL_OR_IGNORE;
+      40*:  831:    RETURN_IF_FAIL_OR_IGNORE;
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
 branch  2 taken 0% (fallthrough)
 branch  3 taken 100%
         -:  832:
-       32:  833:    if (num_elements == 0)
+       40:  833:    if (num_elements == 0)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  834:    {
@@ -1152,14 +1152,14 @@ call    2 never executed
 call    3 never executed
         -:  836:    }
         -:  837:
-       32:  838:    if (expected == actual)
+       40:  838:    if (expected == actual)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  839:    {
     #####:  840:        return; /* Both are NULL or same pointer */
         -:  841:    }
         -:  842:
-       32:  843:    if (UnityIsOneArrayNull(expected, actual, lineNumber, msg))
+       40:  843:    if (UnityIsOneArrayNull(expected, actual, lineNumber, msg))
 call    0 returned 100%
 branch  1 taken 0% (fallthrough)
 branch  2 taken 100%
@@ -1168,16 +1168,16 @@ branch  2 taken 100%
 call    0 never executed
         -:  846:    }
         -:  847:
-      392:  848:    while ((elements > 0) && (elements--))
-branch  0 taken 92% (fallthrough)
-branch  1 taken 8%
+      560:  848:    while ((elements > 0) && (elements--))
+branch  0 taken 93% (fallthrough)
+branch  1 taken 7%
 branch  2 taken 100%
 branch  3 taken 0% (fallthrough)
         -:  849:    {
         -:  850:        UNITY_INT expect_val;
         -:  851:        UNITY_INT actual_val;
         -:  852:
-      360:  853:        switch (length)
+      520:  853:        switch (length)
 branch  0 taken 0%
 branch  1 taken 0%
 branch  2 taken 0%
@@ -1203,16 +1203,16 @@ branch  3 taken 100%
     #####:  872:                break;
         -:  873:#endif
         -:  874:
-      360:  875:            default: /* default is length 4 bytes */
+      520:  875:            default: /* default is length 4 bytes */
         -:  876:            case 4:
-      360:  877:                expect_val = *(UNITY_PTR_ATTRIBUTE const UNITY_INT32*)expected;
-      360:  878:                actual_val = *(UNITY_PTR_ATTRIBUTE const UNITY_INT32*)actual;
-      360:  879:                increment  = sizeof(UNITY_INT32);
-      360:  880:                length = 4;
-      360:  881:                break;
+      520:  877:                expect_val = *(UNITY_PTR_ATTRIBUTE const UNITY_INT32*)expected;
+      520:  878:                actual_val = *(UNITY_PTR_ATTRIBUTE const UNITY_INT32*)actual;
+      520:  879:                increment  = sizeof(UNITY_INT32);
+      520:  880:                length = 4;
+      520:  881:                break;
         -:  882:        }
         -:  883:
-      360:  884:        if (expect_val != actual_val)
+      520:  884:        if (expect_val != actual_val)
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
         -:  885:        {
@@ -1247,13 +1247,13 @@ call    0 never executed
 call    0 never executed
         -:  902:        }
         -:  903:        /* Walk through array by incrementing the pointers */
-      360:  904:        if (flags == UNITY_ARRAY_TO_ARRAY)
+      520:  904:        if (flags == UNITY_ARRAY_TO_ARRAY)
 branch  0 taken 100% (fallthrough)
 branch  1 taken 0%
         -:  905:        {
-      360:  906:            expected = (UNITY_INTERNAL_PTR)((const char*)expected + increment);
+      520:  906:            expected = (UNITY_INTERNAL_PTR)((const char*)expected + increment);
         -:  907:        }
-      360:  908:        actual = (UNITY_INTERNAL_PTR)((const char*)actual + increment);
+      520:  908:        actual = (UNITY_INTERNAL_PTR)((const char*)actual + increment);
         -:  909:    }
         -:  910:}
         -:  911:

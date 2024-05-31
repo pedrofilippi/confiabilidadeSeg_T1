@@ -11,1694 +11,1515 @@
         -:   10:
         -:   11:TEST_GROUP(Sort);
         -:   12:
-function TEST_Sort_SETUP called 59 returned 100% blocks executed 100%
-       59:   13:TEST_SETUP(Sort)
+function TEST_Sort_SETUP called 58 returned 100% blocks executed 100%
+       58:   13:TEST_SETUP(Sort)
         -:   14:{
-       59:   15:}
+       58:   15:}
         -:   16:
-function TEST_Sort_TEAR_DOWN called 59 returned 100% blocks executed 100%
-       59:   17:TEST_TEAR_DOWN(Sort)
+function TEST_Sort_TEAR_DOWN called 58 returned 100% blocks executed 100%
+       58:   17:TEST_TEAR_DOWN(Sort)
         -:   18:{
-       59:   19:}
-        -:   20:
-        2:   21:TEST(Sort, TestSort1)
-        -:   22:{
-        1:   23:  int numeros[5] = {3, 1, 4, 5, 2};
-        -:   24:  // All of these should pass
-        1:   25:  TEST_ASSERT_EQUAL(0, sort(numeros,5, complexity2,BUBBLE));
-        -:   26:  //TEST_ASSERT_EQUAL(-1, Sort(2,2));
-        -:   27:  //oi
-        1:   28:}
-------------------
-TEST_Sort_TestSort1_:
-function TEST_Sort_TestSort1_ called 1 returned 100% blocks executed 100%
-        1:   21:TEST(Sort, TestSort1)
-        -:   22:{
-        1:   23:  int numeros[5] = {3, 1, 4, 5, 2};
-        -:   24:  // All of these should pass
-        1:   25:  TEST_ASSERT_EQUAL(0, sort(numeros,5, complexity2,BUBBLE));
-call    0 returned 100%
-call    1 returned 100%
-        -:   26:  //TEST_ASSERT_EQUAL(-1, Sort(2,2));
-        -:   27:  //oi
-        1:   28:}
-------------------
-TEST_Sort_TestSort1_run:
-function TEST_Sort_TestSort1_run called 1 returned 100% blocks executed 100%
-        1:   21:TEST(Sort, TestSort1)
-call    0 returned 100%
-------------------
-        -:   29:
-        2:   30:TEST(Sort, TestSort2)
-        -:   31:{
-        -:   32:  // This test will fail
-        -:   33:  //TEST_ASSERT_EQUAL(2, Sort(1,2));
-        -:   34:  // This test will pass
-        -:   35:  //TEST_ASSERT_EQUAL(-1, Sort(2,2));
-        1:   36:  TEST_ASSERT_EQUAL(-1, -1);
-        1:   37:}
-------------------
-TEST_Sort_TestSort2_:
-function TEST_Sort_TestSort2_ called 1 returned 100% blocks executed 100%
-        1:   30:TEST(Sort, TestSort2)
-        -:   31:{
-        -:   32:  // This test will fail
-        -:   33:  //TEST_ASSERT_EQUAL(2, Sort(1,2));
-        -:   34:  // This test will pass
-        -:   35:  //TEST_ASSERT_EQUAL(-1, Sort(2,2));
-        1:   36:  TEST_ASSERT_EQUAL(-1, -1);
-call    0 returned 100%
-        1:   37:}
-------------------
-TEST_Sort_TestSort2_run:
-function TEST_Sort_TestSort2_run called 1 returned 100% blocks executed 100%
-        1:   30:TEST(Sort, TestSort2)
-call    0 returned 100%
-------------------
-        -:   38:
-        2:   39:TEST(Sort, TestSort3)
-        -:   40:{
-        -:   41:  // This test will fail
-        -:   42:  //TEST_ASSERT_EQUAL(2, Sort(1,2));
-        -:   43:  // This test will pass
-        1:   44:  TEST_ASSERT_EQUAL(-1, -1);
-        1:   45:}
-------------------
-TEST_Sort_TestSort3_:
-function TEST_Sort_TestSort3_ called 1 returned 100% blocks executed 100%
-        1:   39:TEST(Sort, TestSort3)
-        -:   40:{
-        -:   41:  // This test will fail
-        -:   42:  //TEST_ASSERT_EQUAL(2, Sort(1,2));
-        -:   43:  // This test will pass
-        1:   44:  TEST_ASSERT_EQUAL(-1, -1);
-call    0 returned 100%
-        1:   45:}
-------------------
-TEST_Sort_TestSort3_run:
-function TEST_Sort_TestSort3_run called 1 returned 100% blocks executed 100%
-        1:   39:TEST(Sort, TestSort3)
-call    0 returned 100%
-------------------
-        -:   46:
-        -:   47:// Test cases
-        -:   48:   // int vet_ok[3] = {1,5,0};
-        -:   49:   // int vet_bellow[1] = {1};
-        -:   50:   // int vet_minLimit[2] = {7,15};
-        -:   51:   // int vet_ok[3] = {1,5,0};
-        -:   52:   // int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 13, 9, 18, 15};
-        -:   53:   // int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        -:   54:    
-        -:   55:    int expected_bellow[1] = {1};
-        -:   56:    int expected_minLimit[2] = {7,15};
-        -:   57:    int expected_ok[3] = {0, 1, 5};
-        -:   58:    int expected_maxLimit[20] = {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17,17, 18, 19, 20};
-        -:   59:    int expected_above[21] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21};
-        -:   60:    
-        -:   61://counting    
-        -:   62:
-        2:   63:TEST(Sort, AllCorrectCounting) {
-        1:   64:    int vet_ok[3] = {1,5,0};
-        1:   65:    int status = sort(vet_ok, 3, complexity1, COUNTING);
-        1:   66:    TEST_ASSERT_EQUAL(0, status);
-        1:   67:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:   68:}
+       58:   19:}
+        -:   20:  
+        -:   21:    int expected_bellow[1] = {1};
+        -:   22:    int expected_minLimit[2] = {7,15};
+        -:   23:    int expected_ok[3] = {0, 1, 5};
+        -:   24:    int expected_maxLimit[20] = {0, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 14, 15, 16, 17,17, 18, 19, 20};
+        -:   25:    int expected_above[21] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,21};
+        -:   26:    
+        -:   27://counting    
+        -:   28:
+        2:   29:TEST(Sort, AllCorrectCounting) {
+        1:   30:    int vet_ok[3] = {1,5,0};
+        1:   31:    int status = sort(vet_ok, 3, complexity1, COUNTING);
+        1:   32:    TEST_ASSERT_EQUAL(0, status);
+        1:   33:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:   34:}
 ------------------
 TEST_Sort_AllCorrectCounting_:
 function TEST_Sort_AllCorrectCounting_ called 1 returned 100% blocks executed 100%
-        1:   63:TEST(Sort, AllCorrectCounting) {
-        1:   64:    int vet_ok[3] = {1,5,0};
-        1:   65:    int status = sort(vet_ok, 3, complexity1, COUNTING);
+        1:   29:TEST(Sort, AllCorrectCounting) {
+        1:   30:    int vet_ok[3] = {1,5,0};
+        1:   31:    int status = sort(vet_ok, 3, complexity1, COUNTING);
 call    0 returned 100%
-        1:   66:    TEST_ASSERT_EQUAL(0, status);
+        1:   32:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:   67:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:   33:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:   68:}
+        1:   34:}
 ------------------
 TEST_Sort_AllCorrectCounting_run:
 function TEST_Sort_AllCorrectCounting_run called 1 returned 100% blocks executed 100%
-        1:   63:TEST(Sort, AllCorrectCounting) {
+        1:   29:TEST(Sort, AllCorrectCounting) {
 call    0 returned 100%
 ------------------
-        -:   69:
-        2:   70:TEST(Sort, BellowLimitCounting) {
-        1:   71:    int vet_bellow[1] = {1};
-        1:   72:    int status = sort(vet_bellow, 1, complexity1, COUNTING);
-        1:   73:    TEST_ASSERT_EQUAL(1, status);
-        1:   74:}
+        -:   35:
+        2:   36:TEST(Sort, BellowLimitCounting) {
+        1:   37:    int vet_bellow[1] = {1};
+        1:   38:    int status = sort(vet_bellow, 1, complexity1, COUNTING);
+        1:   39:    TEST_ASSERT_EQUAL(1, status);
+        1:   40:}
 ------------------
 TEST_Sort_BellowLimitCounting_:
 function TEST_Sort_BellowLimitCounting_ called 1 returned 100% blocks executed 100%
-        1:   70:TEST(Sort, BellowLimitCounting) {
-        1:   71:    int vet_bellow[1] = {1};
-        1:   72:    int status = sort(vet_bellow, 1, complexity1, COUNTING);
+        1:   36:TEST(Sort, BellowLimitCounting) {
+        1:   37:    int vet_bellow[1] = {1};
+        1:   38:    int status = sort(vet_bellow, 1, complexity1, COUNTING);
 call    0 returned 100%
-        1:   73:    TEST_ASSERT_EQUAL(1, status);
+        1:   39:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:   74:}
+        1:   40:}
 ------------------
 TEST_Sort_BellowLimitCounting_run:
 function TEST_Sort_BellowLimitCounting_run called 1 returned 100% blocks executed 100%
-        1:   70:TEST(Sort, BellowLimitCounting) {
+        1:   36:TEST(Sort, BellowLimitCounting) {
 call    0 returned 100%
 ------------------
-        -:   75:
-        2:   76:TEST(Sort, minLimitCounting) {
-        1:   77:    int vet_minLimit[2] = {15,7};
-        1:   78:    int status = sort(vet_minLimit, 2, complexity1, COUNTING);
-        1:   79:    TEST_ASSERT_EQUAL(0, status);
-        1:   80:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:   81:}
+        -:   41:
+        2:   42:TEST(Sort, minLimitCounting) {
+        1:   43:    int vet_minLimit[2] = {15,7};
+        1:   44:    int status = sort(vet_minLimit, 2, complexity1, COUNTING);
+        1:   45:    TEST_ASSERT_EQUAL(0, status);
+        1:   46:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:   47:}
 ------------------
 TEST_Sort_minLimitCounting_:
 function TEST_Sort_minLimitCounting_ called 1 returned 100% blocks executed 100%
-        1:   76:TEST(Sort, minLimitCounting) {
-        1:   77:    int vet_minLimit[2] = {15,7};
-        1:   78:    int status = sort(vet_minLimit, 2, complexity1, COUNTING);
+        1:   42:TEST(Sort, minLimitCounting) {
+        1:   43:    int vet_minLimit[2] = {15,7};
+        1:   44:    int status = sort(vet_minLimit, 2, complexity1, COUNTING);
 call    0 returned 100%
-        1:   79:    TEST_ASSERT_EQUAL(0, status);
+        1:   45:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:   80:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:   46:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:   81:}
+        1:   47:}
 ------------------
 TEST_Sort_minLimitCounting_run:
 function TEST_Sort_minLimitCounting_run called 1 returned 100% blocks executed 100%
-        1:   76:TEST(Sort, minLimitCounting) {
+        1:   42:TEST(Sort, minLimitCounting) {
 call    0 returned 100%
 ------------------
-        -:   82:
-        2:   83:TEST(Sort, maxLimitCounting) {
-        1:   84:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:   85:    int status = sort(vet_maxLimit, 20, complexity1, COUNTING);
-        1:   86:    TEST_ASSERT_EQUAL(0, status);
-        1:   87:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:   88:}
+        -:   48:
+        2:   49:TEST(Sort, maxLimitCounting) {
+        1:   50:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:   51:    int status = sort(vet_maxLimit, 20, complexity1, COUNTING);
+        1:   52:    TEST_ASSERT_EQUAL(0, status);
+        1:   53:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:   54:}
 ------------------
 TEST_Sort_maxLimitCounting_:
 function TEST_Sort_maxLimitCounting_ called 1 returned 100% blocks executed 100%
-        1:   83:TEST(Sort, maxLimitCounting) {
-        1:   84:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:   85:    int status = sort(vet_maxLimit, 20, complexity1, COUNTING);
+        1:   49:TEST(Sort, maxLimitCounting) {
+        1:   50:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:   51:    int status = sort(vet_maxLimit, 20, complexity1, COUNTING);
 call    0 returned 100%
-        1:   86:    TEST_ASSERT_EQUAL(0, status);
+        1:   52:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:   87:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:   53:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:   88:}
+        1:   54:}
 ------------------
 TEST_Sort_maxLimitCounting_run:
 function TEST_Sort_maxLimitCounting_run called 1 returned 100% blocks executed 100%
-        1:   83:TEST(Sort, maxLimitCounting) {
+        1:   49:TEST(Sort, maxLimitCounting) {
 call    0 returned 100%
 ------------------
-        -:   89:
-        2:   90:TEST(Sort, aboveLimitCounting) {
-        1:   91:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:   92:    int status = sort(vet_above, 21, complexity1, COUNTING);
-        1:   93:    TEST_ASSERT_EQUAL(1, status);
-        1:   94:}
+        -:   55:
+        2:   56:TEST(Sort, aboveLimitCounting) {
+        1:   57:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:   58:    int status = sort(vet_above, 21, complexity1, COUNTING);
+        1:   59:    TEST_ASSERT_EQUAL(1, status);
+        1:   60:}
 ------------------
 TEST_Sort_aboveLimitCounting_:
 function TEST_Sort_aboveLimitCounting_ called 1 returned 100% blocks executed 100%
-        1:   90:TEST(Sort, aboveLimitCounting) {
-        1:   91:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:   92:    int status = sort(vet_above, 21, complexity1, COUNTING);
+        1:   56:TEST(Sort, aboveLimitCounting) {
+        1:   57:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:   58:    int status = sort(vet_above, 21, complexity1, COUNTING);
 call    0 returned 100%
-        1:   93:    TEST_ASSERT_EQUAL(1, status);
+        1:   59:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:   94:}
+        1:   60:}
 ------------------
 TEST_Sort_aboveLimitCounting_run:
 function TEST_Sort_aboveLimitCounting_run called 1 returned 100% blocks executed 100%
-        1:   90:TEST(Sort, aboveLimitCounting) {
+        1:   56:TEST(Sort, aboveLimitCounting) {
 call    0 returned 100%
 ------------------
-        -:   95:
-        2:   96:TEST(Sort, WrongTypeCounting) {
-        1:   97:    int vet_ok[3] = {1,5,0};
-        1:   98:    int status = sort(vet_ok, 3, complexity2, COUNTING);
-        1:   99:    TEST_ASSERT_EQUAL(1, status);
-        1:  100:}
+        -:   61:
+        2:   62:TEST(Sort, WrongTypeCounting) {
+        1:   63:    int vet_ok[3] = {1,5,0};
+        1:   64:    int status = sort(vet_ok, 3, complexity2, COUNTING);
+        1:   65:    TEST_ASSERT_EQUAL(1, status);
+        1:   66:}
 ------------------
 TEST_Sort_WrongTypeCounting_:
 function TEST_Sort_WrongTypeCounting_ called 1 returned 100% blocks executed 100%
-        1:   96:TEST(Sort, WrongTypeCounting) {
-        1:   97:    int vet_ok[3] = {1,5,0};
-        1:   98:    int status = sort(vet_ok, 3, complexity2, COUNTING);
+        1:   62:TEST(Sort, WrongTypeCounting) {
+        1:   63:    int vet_ok[3] = {1,5,0};
+        1:   64:    int status = sort(vet_ok, 3, complexity2, COUNTING);
 call    0 returned 100%
-        1:   99:    TEST_ASSERT_EQUAL(1, status);
+        1:   65:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  100:}
+        1:   66:}
 ------------------
 TEST_Sort_WrongTypeCounting_run:
 function TEST_Sort_WrongTypeCounting_run called 1 returned 100% blocks executed 100%
-        1:   96:TEST(Sort, WrongTypeCounting) {
+        1:   62:TEST(Sort, WrongTypeCounting) {
 call    0 returned 100%
 ------------------
-        -:  101:
-        -:  102:
-        2:  103:TEST(Sort, WrongLenghtCounting) {
-        1:  104:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  105:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  106:    int status = sort(vet_maxLimit, 5, complexity1, COUNTING);
-        -:  107: //   printf("\n");
-        -:  108://for(int i=0; i<20;i++) printf(" %d ", vet_maxLimit[i]);
-        -:  109://printf("\n");
-        -:  110://for(int i=0; i<20;i++) printf(" %d ", vet_less[i]);
-        -:  111:
-        1:  112:    TEST_ASSERT_EQUAL(0, status);
-        1:  113:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  114:}
+        -:   67:
+        -:   68:
+        2:   69:TEST(Sort, WrongLenghtCounting) {
+        1:   70:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:   71:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:   72:    int status = sort(vet_maxLimit, 5, complexity1, COUNTING);
+        -:   73:
+        1:   74:    TEST_ASSERT_EQUAL(0, status);
+        1:   75:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:   76:}
 ------------------
 TEST_Sort_WrongLenghtCounting_:
 function TEST_Sort_WrongLenghtCounting_ called 1 returned 100% blocks executed 100%
-        1:  103:TEST(Sort, WrongLenghtCounting) {
-        1:  104:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  105:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  106:    int status = sort(vet_maxLimit, 5, complexity1, COUNTING);
+        1:   69:TEST(Sort, WrongLenghtCounting) {
+        1:   70:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:   71:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:   72:    int status = sort(vet_maxLimit, 5, complexity1, COUNTING);
 call    0 returned 100%
-        -:  107: //   printf("\n");
-        -:  108://for(int i=0; i<20;i++) printf(" %d ", vet_maxLimit[i]);
-        -:  109://printf("\n");
-        -:  110://for(int i=0; i<20;i++) printf(" %d ", vet_less[i]);
-        -:  111:
-        1:  112:    TEST_ASSERT_EQUAL(0, status);
+        -:   73:
+        1:   74:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  113:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:   75:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  114:}
+        1:   76:}
 ------------------
 TEST_Sort_WrongLenghtCounting_run:
 function TEST_Sort_WrongLenghtCounting_run called 1 returned 100% blocks executed 100%
-        1:  103:TEST(Sort, WrongLenghtCounting) {
+        1:   69:TEST(Sort, WrongLenghtCounting) {
 call    0 returned 100%
 ------------------
-        -:  115:
-        -:  116:
-        -:  117:// radix
-        -:  118:
-        2:  119:TEST(Sort, AllCorrectRadix) {
-        1:  120:    int vet_ok[3] = {1,5,0};
-        1:  121:    int status = sort(vet_ok, 3, complexity1, RADIX);
-        1:  122:    TEST_ASSERT_EQUAL(0, status);
-        1:  123:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  124:}
+        -:   77:
+        -:   78:
+        -:   79:// radix
+        -:   80:
+        2:   81:TEST(Sort, AllCorrectRadix) {
+        1:   82:    int vet_ok[3] = {1,5,0};
+        1:   83:    int status = sort(vet_ok, 3, complexity1, RADIX);
+        1:   84:    TEST_ASSERT_EQUAL(0, status);
+        1:   85:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:   86:}
 ------------------
 TEST_Sort_AllCorrectRadix_:
 function TEST_Sort_AllCorrectRadix_ called 1 returned 100% blocks executed 100%
-        1:  119:TEST(Sort, AllCorrectRadix) {
-        1:  120:    int vet_ok[3] = {1,5,0};
-        1:  121:    int status = sort(vet_ok, 3, complexity1, RADIX);
+        1:   81:TEST(Sort, AllCorrectRadix) {
+        1:   82:    int vet_ok[3] = {1,5,0};
+        1:   83:    int status = sort(vet_ok, 3, complexity1, RADIX);
 call    0 returned 100%
-        1:  122:    TEST_ASSERT_EQUAL(0, status);
+        1:   84:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  123:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:   85:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  124:}
+        1:   86:}
 ------------------
 TEST_Sort_AllCorrectRadix_run:
 function TEST_Sort_AllCorrectRadix_run called 1 returned 100% blocks executed 100%
-        1:  119:TEST(Sort, AllCorrectRadix) {
+        1:   81:TEST(Sort, AllCorrectRadix) {
 call    0 returned 100%
 ------------------
-        -:  125:
-        2:  126:TEST(Sort, BellowLimitRadix) {
-        1:  127:    int vet_bellow[1] = {1};
-        1:  128:    int status = sort(vet_bellow, 1, complexity1, RADIX);
-        1:  129:    TEST_ASSERT_EQUAL(1, status);
-        1:  130:}
+        -:   87:
+        2:   88:TEST(Sort, BellowLimitRadix) {
+        1:   89:    int vet_bellow[1] = {1};
+        1:   90:    int status = sort(vet_bellow, 1, complexity1, RADIX);
+        1:   91:    TEST_ASSERT_EQUAL(1, status);
+        1:   92:}
 ------------------
 TEST_Sort_BellowLimitRadix_:
 function TEST_Sort_BellowLimitRadix_ called 1 returned 100% blocks executed 100%
-        1:  126:TEST(Sort, BellowLimitRadix) {
-        1:  127:    int vet_bellow[1] = {1};
-        1:  128:    int status = sort(vet_bellow, 1, complexity1, RADIX);
+        1:   88:TEST(Sort, BellowLimitRadix) {
+        1:   89:    int vet_bellow[1] = {1};
+        1:   90:    int status = sort(vet_bellow, 1, complexity1, RADIX);
 call    0 returned 100%
-        1:  129:    TEST_ASSERT_EQUAL(1, status);
+        1:   91:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  130:}
+        1:   92:}
 ------------------
 TEST_Sort_BellowLimitRadix_run:
 function TEST_Sort_BellowLimitRadix_run called 1 returned 100% blocks executed 100%
-        1:  126:TEST(Sort, BellowLimitRadix) {
+        1:   88:TEST(Sort, BellowLimitRadix) {
 call    0 returned 100%
 ------------------
-        -:  131:
-        2:  132:TEST(Sort, minLimitRadix) {
-        1:  133:    int vet_minLimit[2] = {15,7};
-        1:  134:    int status = sort(vet_minLimit, 2, complexity1, RADIX);
-        1:  135:    TEST_ASSERT_EQUAL(0, status);
-        1:  136:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  137:}
+        -:   93:
+        2:   94:TEST(Sort, minLimitRadix) {
+        1:   95:    int vet_minLimit[2] = {15,7};
+        1:   96:    int status = sort(vet_minLimit, 2, complexity1, RADIX);
+        1:   97:    TEST_ASSERT_EQUAL(0, status);
+        1:   98:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:   99:}
 ------------------
 TEST_Sort_minLimitRadix_:
 function TEST_Sort_minLimitRadix_ called 1 returned 100% blocks executed 100%
-        1:  132:TEST(Sort, minLimitRadix) {
-        1:  133:    int vet_minLimit[2] = {15,7};
-        1:  134:    int status = sort(vet_minLimit, 2, complexity1, RADIX);
+        1:   94:TEST(Sort, minLimitRadix) {
+        1:   95:    int vet_minLimit[2] = {15,7};
+        1:   96:    int status = sort(vet_minLimit, 2, complexity1, RADIX);
 call    0 returned 100%
-        1:  135:    TEST_ASSERT_EQUAL(0, status);
+        1:   97:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  136:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:   98:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  137:}
+        1:   99:}
 ------------------
 TEST_Sort_minLimitRadix_run:
 function TEST_Sort_minLimitRadix_run called 1 returned 100% blocks executed 100%
-        1:  132:TEST(Sort, minLimitRadix) {
+        1:   94:TEST(Sort, minLimitRadix) {
 call    0 returned 100%
 ------------------
-        -:  138:
-        2:  139:TEST(Sort, maxLimitRadix) {
-        1:  140:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  141:    int status = sort(vet_maxLimit, 20, complexity1, RADIX);
-        1:  142:    TEST_ASSERT_EQUAL(0, status);
-        1:  143:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  144:}
+        -:  100:
+        2:  101:TEST(Sort, maxLimitRadix) {
+        1:  102:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  103:    int status = sort(vet_maxLimit, 20, complexity1, RADIX);
+        1:  104:    TEST_ASSERT_EQUAL(0, status);
+        1:  105:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  106:}
 ------------------
 TEST_Sort_maxLimitRadix_:
 function TEST_Sort_maxLimitRadix_ called 1 returned 100% blocks executed 100%
-        1:  139:TEST(Sort, maxLimitRadix) {
-        1:  140:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  141:    int status = sort(vet_maxLimit, 20, complexity1, RADIX);
+        1:  101:TEST(Sort, maxLimitRadix) {
+        1:  102:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  103:    int status = sort(vet_maxLimit, 20, complexity1, RADIX);
 call    0 returned 100%
-        1:  142:    TEST_ASSERT_EQUAL(0, status);
+        1:  104:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  143:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  105:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  144:}
+        1:  106:}
 ------------------
 TEST_Sort_maxLimitRadix_run:
 function TEST_Sort_maxLimitRadix_run called 1 returned 100% blocks executed 100%
-        1:  139:TEST(Sort, maxLimitRadix) {
+        1:  101:TEST(Sort, maxLimitRadix) {
 call    0 returned 100%
 ------------------
-        -:  145:
-        2:  146:TEST(Sort, aboveLimitRadix) {
-        1:  147:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  148:    int status = sort(vet_above, 21, complexity1, RADIX);
-        1:  149:    TEST_ASSERT_EQUAL(1, status);
-        1:  150:}
+        -:  107:
+        2:  108:TEST(Sort, aboveLimitRadix) {
+        1:  109:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  110:    int status = sort(vet_above, 21, complexity1, RADIX);
+        1:  111:    TEST_ASSERT_EQUAL(1, status);
+        1:  112:}
 ------------------
 TEST_Sort_aboveLimitRadix_:
 function TEST_Sort_aboveLimitRadix_ called 1 returned 100% blocks executed 100%
-        1:  146:TEST(Sort, aboveLimitRadix) {
-        1:  147:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  148:    int status = sort(vet_above, 21, complexity1, RADIX);
+        1:  108:TEST(Sort, aboveLimitRadix) {
+        1:  109:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  110:    int status = sort(vet_above, 21, complexity1, RADIX);
 call    0 returned 100%
-        1:  149:    TEST_ASSERT_EQUAL(1, status);
+        1:  111:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  150:}
+        1:  112:}
 ------------------
 TEST_Sort_aboveLimitRadix_run:
 function TEST_Sort_aboveLimitRadix_run called 1 returned 100% blocks executed 100%
-        1:  146:TEST(Sort, aboveLimitRadix) {
+        1:  108:TEST(Sort, aboveLimitRadix) {
 call    0 returned 100%
 ------------------
-        -:  151:
-        2:  152:TEST(Sort, WrongTypeRadix) {
-        1:  153:    int vet_ok[3] = {1,5,0};
-        1:  154:    int status = sort(vet_ok, 3, complexity2, RADIX);
-        1:  155:    TEST_ASSERT_EQUAL(1, status);
-        1:  156:}
+        -:  113:
+        2:  114:TEST(Sort, WrongTypeRadix) {
+        1:  115:    int vet_ok[3] = {1,5,0};
+        1:  116:    int status = sort(vet_ok, 3, complexity2, RADIX);
+        1:  117:    TEST_ASSERT_EQUAL(1, status);
+        1:  118:}
 ------------------
 TEST_Sort_WrongTypeRadix_:
 function TEST_Sort_WrongTypeRadix_ called 1 returned 100% blocks executed 100%
-        1:  152:TEST(Sort, WrongTypeRadix) {
-        1:  153:    int vet_ok[3] = {1,5,0};
-        1:  154:    int status = sort(vet_ok, 3, complexity2, RADIX);
+        1:  114:TEST(Sort, WrongTypeRadix) {
+        1:  115:    int vet_ok[3] = {1,5,0};
+        1:  116:    int status = sort(vet_ok, 3, complexity2, RADIX);
 call    0 returned 100%
-        1:  155:    TEST_ASSERT_EQUAL(1, status);
+        1:  117:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  156:}
+        1:  118:}
 ------------------
 TEST_Sort_WrongTypeRadix_run:
 function TEST_Sort_WrongTypeRadix_run called 1 returned 100% blocks executed 100%
-        1:  152:TEST(Sort, WrongTypeRadix) {
+        1:  114:TEST(Sort, WrongTypeRadix) {
 call    0 returned 100%
 ------------------
-        -:  157:
-        -:  158:
-        2:  159:TEST(Sort, WrongLenghtRadix) {
-        1:  160:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  161:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  162:    int status = sort(vet_maxLimit, 5, complexity1, RADIX);
-        1:  163:    TEST_ASSERT_EQUAL(0, status);
-        1:  164:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  165:}
+        -:  119:
+        -:  120:
+        2:  121:TEST(Sort, WrongLenghtRadix) {
+        1:  122:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  123:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  124:    int status = sort(vet_maxLimit, 5, complexity1, RADIX);
+        1:  125:    TEST_ASSERT_EQUAL(0, status);
+        1:  126:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  127:}
 ------------------
 TEST_Sort_WrongLenghtRadix_:
 function TEST_Sort_WrongLenghtRadix_ called 1 returned 100% blocks executed 100%
-        1:  159:TEST(Sort, WrongLenghtRadix) {
-        1:  160:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  161:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  162:    int status = sort(vet_maxLimit, 5, complexity1, RADIX);
+        1:  121:TEST(Sort, WrongLenghtRadix) {
+        1:  122:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  123:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  124:    int status = sort(vet_maxLimit, 5, complexity1, RADIX);
 call    0 returned 100%
-        1:  163:    TEST_ASSERT_EQUAL(0, status);
+        1:  125:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  164:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  126:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  165:}
+        1:  127:}
 ------------------
 TEST_Sort_WrongLenghtRadix_run:
 function TEST_Sort_WrongLenghtRadix_run called 1 returned 100% blocks executed 100%
-        1:  159:TEST(Sort, WrongLenghtRadix) {
+        1:  121:TEST(Sort, WrongLenghtRadix) {
 call    0 returned 100%
 ------------------
-        -:  166:
-        -:  167:
-        -:  168://bubble
-        -:  169:
-        2:  170:TEST(Sort, AllCorrectBubble) {
-        1:  171:    int vet_ok[3] = {1,5,0};
-        1:  172:    int status = sort(vet_ok, 3, complexity2, BUBBLE);
-        1:  173:    TEST_ASSERT_EQUAL(0, status);
-        1:  174:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  175:}
+        -:  128:
+        -:  129:
+        -:  130://bubble
+        -:  131:
+        2:  132:TEST(Sort, AllCorrectBubble) {
+        1:  133:    int vet_ok[3] = {1,5,0};
+        1:  134:    int status = sort(vet_ok, 3, complexity2, BUBBLE);
+        1:  135:    TEST_ASSERT_EQUAL(0, status);
+        1:  136:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  137:}
 ------------------
 TEST_Sort_AllCorrectBubble_:
 function TEST_Sort_AllCorrectBubble_ called 1 returned 100% blocks executed 100%
-        1:  170:TEST(Sort, AllCorrectBubble) {
-        1:  171:    int vet_ok[3] = {1,5,0};
-        1:  172:    int status = sort(vet_ok, 3, complexity2, BUBBLE);
+        1:  132:TEST(Sort, AllCorrectBubble) {
+        1:  133:    int vet_ok[3] = {1,5,0};
+        1:  134:    int status = sort(vet_ok, 3, complexity2, BUBBLE);
 call    0 returned 100%
-        1:  173:    TEST_ASSERT_EQUAL(0, status);
+        1:  135:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  174:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  136:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  175:}
+        1:  137:}
 ------------------
 TEST_Sort_AllCorrectBubble_run:
 function TEST_Sort_AllCorrectBubble_run called 1 returned 100% blocks executed 100%
-        1:  170:TEST(Sort, AllCorrectBubble) {
+        1:  132:TEST(Sort, AllCorrectBubble) {
 call    0 returned 100%
 ------------------
-        -:  176:
-        2:  177:TEST(Sort, BellowLimitBubble) {
-        1:  178:    int vet_bellow[1] = {1};
-        1:  179:    int status = sort(vet_bellow, 1, complexity1, BUBBLE);
-        1:  180:    TEST_ASSERT_EQUAL(1, status);
-        1:  181:}
+        -:  138:
+        2:  139:TEST(Sort, BellowLimitBubble) {
+        1:  140:    int vet_bellow[1] = {1};
+        1:  141:    int status = sort(vet_bellow, 1, complexity1, BUBBLE);
+        1:  142:    TEST_ASSERT_EQUAL(1, status);
+        1:  143:}
 ------------------
 TEST_Sort_BellowLimitBubble_:
 function TEST_Sort_BellowLimitBubble_ called 1 returned 100% blocks executed 100%
-        1:  177:TEST(Sort, BellowLimitBubble) {
-        1:  178:    int vet_bellow[1] = {1};
-        1:  179:    int status = sort(vet_bellow, 1, complexity1, BUBBLE);
+        1:  139:TEST(Sort, BellowLimitBubble) {
+        1:  140:    int vet_bellow[1] = {1};
+        1:  141:    int status = sort(vet_bellow, 1, complexity1, BUBBLE);
 call    0 returned 100%
-        1:  180:    TEST_ASSERT_EQUAL(1, status);
+        1:  142:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  181:}
+        1:  143:}
 ------------------
 TEST_Sort_BellowLimitBubble_run:
 function TEST_Sort_BellowLimitBubble_run called 1 returned 100% blocks executed 100%
-        1:  177:TEST(Sort, BellowLimitBubble) {
+        1:  139:TEST(Sort, BellowLimitBubble) {
 call    0 returned 100%
 ------------------
-        -:  182:
-        2:  183:TEST(Sort, minLimitBubble) {
-        1:  184:    int vet_minLimit[2] = {15,7};
-        1:  185:    int status = sort(vet_minLimit, 2, complexity2, BUBBLE);
-        1:  186:    TEST_ASSERT_EQUAL(0, status);
-        1:  187:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  188:}
+        -:  144:
+        2:  145:TEST(Sort, minLimitBubble) {
+        1:  146:    int vet_minLimit[2] = {15,7};
+        1:  147:    int status = sort(vet_minLimit, 2, complexity2, BUBBLE);
+        1:  148:    TEST_ASSERT_EQUAL(0, status);
+        1:  149:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  150:}
 ------------------
 TEST_Sort_minLimitBubble_:
 function TEST_Sort_minLimitBubble_ called 1 returned 100% blocks executed 100%
-        1:  183:TEST(Sort, minLimitBubble) {
-        1:  184:    int vet_minLimit[2] = {15,7};
-        1:  185:    int status = sort(vet_minLimit, 2, complexity2, BUBBLE);
+        1:  145:TEST(Sort, minLimitBubble) {
+        1:  146:    int vet_minLimit[2] = {15,7};
+        1:  147:    int status = sort(vet_minLimit, 2, complexity2, BUBBLE);
 call    0 returned 100%
-        1:  186:    TEST_ASSERT_EQUAL(0, status);
+        1:  148:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  187:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  149:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  188:}
+        1:  150:}
 ------------------
 TEST_Sort_minLimitBubble_run:
 function TEST_Sort_minLimitBubble_run called 1 returned 100% blocks executed 100%
-        1:  183:TEST(Sort, minLimitBubble) {
+        1:  145:TEST(Sort, minLimitBubble) {
 call    0 returned 100%
 ------------------
-        -:  189:
-        2:  190:TEST(Sort, maxLimitBubble) {
-        1:  191:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  192:    int status = sort(vet_maxLimit, 20, complexity2, BUBBLE);
-        1:  193:    TEST_ASSERT_EQUAL(0, status);
-        1:  194:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  195:}
+        -:  151:
+        2:  152:TEST(Sort, maxLimitBubble) {
+        1:  153:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  154:    int status = sort(vet_maxLimit, 20, complexity2, BUBBLE);
+        1:  155:    TEST_ASSERT_EQUAL(0, status);
+        1:  156:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  157:}
 ------------------
 TEST_Sort_maxLimitBubble_:
 function TEST_Sort_maxLimitBubble_ called 1 returned 100% blocks executed 100%
-        1:  190:TEST(Sort, maxLimitBubble) {
-        1:  191:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  192:    int status = sort(vet_maxLimit, 20, complexity2, BUBBLE);
+        1:  152:TEST(Sort, maxLimitBubble) {
+        1:  153:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  154:    int status = sort(vet_maxLimit, 20, complexity2, BUBBLE);
 call    0 returned 100%
-        1:  193:    TEST_ASSERT_EQUAL(0, status);
+        1:  155:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  194:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  156:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  195:}
+        1:  157:}
 ------------------
 TEST_Sort_maxLimitBubble_run:
 function TEST_Sort_maxLimitBubble_run called 1 returned 100% blocks executed 100%
-        1:  190:TEST(Sort, maxLimitBubble) {
+        1:  152:TEST(Sort, maxLimitBubble) {
 call    0 returned 100%
 ------------------
-        -:  196:
-        2:  197:TEST(Sort, aboveLimitBubble) {
-        1:  198:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  199:    int status = sort(vet_above, 21, complexity2, BUBBLE);
-        1:  200:    TEST_ASSERT_EQUAL(1, status);
-        1:  201:}
+        -:  158:
+        2:  159:TEST(Sort, aboveLimitBubble) {
+        1:  160:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  161:    int status = sort(vet_above, 21, complexity2, BUBBLE);
+        1:  162:    TEST_ASSERT_EQUAL(1, status);
+        1:  163:}
 ------------------
 TEST_Sort_aboveLimitBubble_:
 function TEST_Sort_aboveLimitBubble_ called 1 returned 100% blocks executed 100%
-        1:  197:TEST(Sort, aboveLimitBubble) {
-        1:  198:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  199:    int status = sort(vet_above, 21, complexity2, BUBBLE);
+        1:  159:TEST(Sort, aboveLimitBubble) {
+        1:  160:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  161:    int status = sort(vet_above, 21, complexity2, BUBBLE);
 call    0 returned 100%
-        1:  200:    TEST_ASSERT_EQUAL(1, status);
+        1:  162:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  201:}
+        1:  163:}
 ------------------
 TEST_Sort_aboveLimitBubble_run:
 function TEST_Sort_aboveLimitBubble_run called 1 returned 100% blocks executed 100%
-        1:  197:TEST(Sort, aboveLimitBubble) {
+        1:  159:TEST(Sort, aboveLimitBubble) {
 call    0 returned 100%
 ------------------
-        -:  202:
-        2:  203:TEST(Sort, WrongTypeBubble) {
-        1:  204:    int vet_ok[3] = {1,5,0};
-        1:  205:    int status = sort(vet_ok, 3, complexity1, BUBBLE);
-        1:  206:    TEST_ASSERT_EQUAL(1, status);
-        1:  207:}
+        -:  164:
+        2:  165:TEST(Sort, WrongTypeBubble) {
+        1:  166:    int vet_ok[3] = {1,5,0};
+        1:  167:    int status = sort(vet_ok, 3, complexity1, BUBBLE);
+        1:  168:    TEST_ASSERT_EQUAL(1, status);
+        1:  169:}
 ------------------
 TEST_Sort_WrongTypeBubble_:
 function TEST_Sort_WrongTypeBubble_ called 1 returned 100% blocks executed 100%
-        1:  203:TEST(Sort, WrongTypeBubble) {
-        1:  204:    int vet_ok[3] = {1,5,0};
-        1:  205:    int status = sort(vet_ok, 3, complexity1, BUBBLE);
+        1:  165:TEST(Sort, WrongTypeBubble) {
+        1:  166:    int vet_ok[3] = {1,5,0};
+        1:  167:    int status = sort(vet_ok, 3, complexity1, BUBBLE);
 call    0 returned 100%
-        1:  206:    TEST_ASSERT_EQUAL(1, status);
+        1:  168:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  207:}
+        1:  169:}
 ------------------
 TEST_Sort_WrongTypeBubble_run:
 function TEST_Sort_WrongTypeBubble_run called 1 returned 100% blocks executed 100%
-        1:  203:TEST(Sort, WrongTypeBubble) {
+        1:  165:TEST(Sort, WrongTypeBubble) {
 call    0 returned 100%
 ------------------
-        -:  208:
-        -:  209:
-        2:  210:TEST(Sort, WrongLenghtBubble) {
-        1:  211:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  212:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  213:    int status = sort(vet_maxLimit, 5, complexity2, BUBBLE);
-        1:  214:    TEST_ASSERT_EQUAL(0, status);
-        1:  215:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  216:}
+        -:  170:
+        -:  171:
+        2:  172:TEST(Sort, WrongLenghtBubble) {
+        1:  173:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  174:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  175:    int status = sort(vet_maxLimit, 5, complexity2, BUBBLE);
+        1:  176:    TEST_ASSERT_EQUAL(0, status);
+        1:  177:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  178:}
 ------------------
 TEST_Sort_WrongLenghtBubble_:
 function TEST_Sort_WrongLenghtBubble_ called 1 returned 100% blocks executed 100%
-        1:  210:TEST(Sort, WrongLenghtBubble) {
-        1:  211:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  212:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  213:    int status = sort(vet_maxLimit, 5, complexity2, BUBBLE);
+        1:  172:TEST(Sort, WrongLenghtBubble) {
+        1:  173:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  174:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  175:    int status = sort(vet_maxLimit, 5, complexity2, BUBBLE);
 call    0 returned 100%
-        1:  214:    TEST_ASSERT_EQUAL(0, status);
+        1:  176:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  215:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  177:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  216:}
+        1:  178:}
 ------------------
 TEST_Sort_WrongLenghtBubble_run:
 function TEST_Sort_WrongLenghtBubble_run called 1 returned 100% blocks executed 100%
-        1:  210:TEST(Sort, WrongLenghtBubble) {
+        1:  172:TEST(Sort, WrongLenghtBubble) {
 call    0 returned 100%
 ------------------
-        -:  217:
-        -:  218:
-        -:  219:
-        -:  220://insertion
-        -:  221:
-        -:  222:
-        2:  223:TEST(Sort, AllCorrectInsertion) {
-        1:  224:    int vet_ok[3] = {1,5,0};
-        1:  225:    int status = sort(vet_ok, 3, complexity2, INSERTION);
-        1:  226:    TEST_ASSERT_EQUAL(0, status);
-        1:  227:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  228:}
+        -:  179:
+        -:  180:
+        -:  181:
+        -:  182://insertion
+        -:  183:
+        -:  184:
+        2:  185:TEST(Sort, AllCorrectInsertion) {
+        1:  186:    int vet_ok[3] = {1,5,0};
+        1:  187:    int status = sort(vet_ok, 3, complexity2, INSERTION);
+        1:  188:    TEST_ASSERT_EQUAL(0, status);
+        1:  189:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  190:}
 ------------------
 TEST_Sort_AllCorrectInsertion_:
 function TEST_Sort_AllCorrectInsertion_ called 1 returned 100% blocks executed 100%
-        1:  223:TEST(Sort, AllCorrectInsertion) {
-        1:  224:    int vet_ok[3] = {1,5,0};
-        1:  225:    int status = sort(vet_ok, 3, complexity2, INSERTION);
+        1:  185:TEST(Sort, AllCorrectInsertion) {
+        1:  186:    int vet_ok[3] = {1,5,0};
+        1:  187:    int status = sort(vet_ok, 3, complexity2, INSERTION);
 call    0 returned 100%
-        1:  226:    TEST_ASSERT_EQUAL(0, status);
+        1:  188:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  227:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  189:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  228:}
+        1:  190:}
 ------------------
 TEST_Sort_AllCorrectInsertion_run:
 function TEST_Sort_AllCorrectInsertion_run called 1 returned 100% blocks executed 100%
-        1:  223:TEST(Sort, AllCorrectInsertion) {
+        1:  185:TEST(Sort, AllCorrectInsertion) {
 call    0 returned 100%
 ------------------
-        -:  229:
-        2:  230:TEST(Sort, BellowLimitInsertion) {
-        1:  231:    int vet_bellow[1] = {1};
-        1:  232:    int status = sort(vet_bellow, 1, complexity1, INSERTION);
-        1:  233:    TEST_ASSERT_EQUAL(1, status);
-        1:  234:}
+        -:  191:
+        2:  192:TEST(Sort, BellowLimitInsertion) {
+        1:  193:    int vet_bellow[1] = {1};
+        1:  194:    int status = sort(vet_bellow, 1, complexity1, INSERTION);
+        1:  195:    TEST_ASSERT_EQUAL(1, status);
+        1:  196:}
 ------------------
 TEST_Sort_BellowLimitInsertion_:
 function TEST_Sort_BellowLimitInsertion_ called 1 returned 100% blocks executed 100%
-        1:  230:TEST(Sort, BellowLimitInsertion) {
-        1:  231:    int vet_bellow[1] = {1};
-        1:  232:    int status = sort(vet_bellow, 1, complexity1, INSERTION);
+        1:  192:TEST(Sort, BellowLimitInsertion) {
+        1:  193:    int vet_bellow[1] = {1};
+        1:  194:    int status = sort(vet_bellow, 1, complexity1, INSERTION);
 call    0 returned 100%
-        1:  233:    TEST_ASSERT_EQUAL(1, status);
+        1:  195:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  234:}
+        1:  196:}
 ------------------
 TEST_Sort_BellowLimitInsertion_run:
 function TEST_Sort_BellowLimitInsertion_run called 1 returned 100% blocks executed 100%
-        1:  230:TEST(Sort, BellowLimitInsertion) {
+        1:  192:TEST(Sort, BellowLimitInsertion) {
 call    0 returned 100%
 ------------------
-        -:  235:
-        2:  236:TEST(Sort, minLimitInsertion) {
-        1:  237:    int vet_minLimit[2] = {15,7};
-        1:  238:    int status = sort(vet_minLimit, 2, complexity2, INSERTION);
-        1:  239:    TEST_ASSERT_EQUAL(0, status);
-        1:  240:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  241:}
+        -:  197:
+        2:  198:TEST(Sort, minLimitInsertion) {
+        1:  199:    int vet_minLimit[2] = {15,7};
+        1:  200:    int status = sort(vet_minLimit, 2, complexity2, INSERTION);
+        1:  201:    TEST_ASSERT_EQUAL(0, status);
+        1:  202:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  203:}
 ------------------
 TEST_Sort_minLimitInsertion_:
 function TEST_Sort_minLimitInsertion_ called 1 returned 100% blocks executed 100%
-        1:  236:TEST(Sort, minLimitInsertion) {
-        1:  237:    int vet_minLimit[2] = {15,7};
-        1:  238:    int status = sort(vet_minLimit, 2, complexity2, INSERTION);
+        1:  198:TEST(Sort, minLimitInsertion) {
+        1:  199:    int vet_minLimit[2] = {15,7};
+        1:  200:    int status = sort(vet_minLimit, 2, complexity2, INSERTION);
 call    0 returned 100%
-        1:  239:    TEST_ASSERT_EQUAL(0, status);
+        1:  201:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  240:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  202:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  241:}
+        1:  203:}
 ------------------
 TEST_Sort_minLimitInsertion_run:
 function TEST_Sort_minLimitInsertion_run called 1 returned 100% blocks executed 100%
-        1:  236:TEST(Sort, minLimitInsertion) {
+        1:  198:TEST(Sort, minLimitInsertion) {
 call    0 returned 100%
 ------------------
-        -:  242:
-        2:  243:TEST(Sort, maxLimitInsertion) {
-        1:  244:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  245:    int status = sort(vet_maxLimit, 20, complexity2, INSERTION);
-        1:  246:    TEST_ASSERT_EQUAL(0, status);
-        1:  247:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  248:}
+        -:  204:
+        2:  205:TEST(Sort, maxLimitInsertion) {
+        1:  206:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  207:    int status = sort(vet_maxLimit, 20, complexity2, INSERTION);
+        1:  208:    TEST_ASSERT_EQUAL(0, status);
+        1:  209:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  210:}
 ------------------
 TEST_Sort_maxLimitInsertion_:
 function TEST_Sort_maxLimitInsertion_ called 1 returned 100% blocks executed 100%
-        1:  243:TEST(Sort, maxLimitInsertion) {
-        1:  244:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  245:    int status = sort(vet_maxLimit, 20, complexity2, INSERTION);
+        1:  205:TEST(Sort, maxLimitInsertion) {
+        1:  206:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  207:    int status = sort(vet_maxLimit, 20, complexity2, INSERTION);
 call    0 returned 100%
-        1:  246:    TEST_ASSERT_EQUAL(0, status);
+        1:  208:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  247:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  209:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  248:}
+        1:  210:}
 ------------------
 TEST_Sort_maxLimitInsertion_run:
 function TEST_Sort_maxLimitInsertion_run called 1 returned 100% blocks executed 100%
-        1:  243:TEST(Sort, maxLimitInsertion) {
+        1:  205:TEST(Sort, maxLimitInsertion) {
 call    0 returned 100%
 ------------------
-        -:  249:
-        2:  250:TEST(Sort, aboveLimitInsertion) {
-        1:  251:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  252:    int status = sort(vet_above, 21, complexity2, INSERTION);
-        1:  253:    TEST_ASSERT_EQUAL(1, status);
-        1:  254:}
+        -:  211:
+        2:  212:TEST(Sort, aboveLimitInsertion) {
+        1:  213:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  214:    int status = sort(vet_above, 21, complexity2, INSERTION);
+        1:  215:    TEST_ASSERT_EQUAL(1, status);
+        1:  216:}
 ------------------
 TEST_Sort_aboveLimitInsertion_:
 function TEST_Sort_aboveLimitInsertion_ called 1 returned 100% blocks executed 100%
-        1:  250:TEST(Sort, aboveLimitInsertion) {
-        1:  251:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  252:    int status = sort(vet_above, 21, complexity2, INSERTION);
+        1:  212:TEST(Sort, aboveLimitInsertion) {
+        1:  213:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  214:    int status = sort(vet_above, 21, complexity2, INSERTION);
 call    0 returned 100%
-        1:  253:    TEST_ASSERT_EQUAL(1, status);
+        1:  215:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  254:}
+        1:  216:}
 ------------------
 TEST_Sort_aboveLimitInsertion_run:
 function TEST_Sort_aboveLimitInsertion_run called 1 returned 100% blocks executed 100%
-        1:  250:TEST(Sort, aboveLimitInsertion) {
+        1:  212:TEST(Sort, aboveLimitInsertion) {
 call    0 returned 100%
 ------------------
-        -:  255:
-        2:  256:TEST(Sort, WrongTypeInsertion) {
-        1:  257:    int vet_ok[3] = {1,5,0};
-        1:  258:    int status = sort(vet_ok, 3, complexity1, INSERTION);
-        1:  259:    TEST_ASSERT_EQUAL(1, status);
-        1:  260:}
+        -:  217:
+        2:  218:TEST(Sort, WrongTypeInsertion) {
+        1:  219:    int vet_ok[3] = {1,5,0};
+        1:  220:    int status = sort(vet_ok, 3, complexity1, INSERTION);
+        1:  221:    TEST_ASSERT_EQUAL(1, status);
+        1:  222:}
 ------------------
 TEST_Sort_WrongTypeInsertion_:
 function TEST_Sort_WrongTypeInsertion_ called 1 returned 100% blocks executed 100%
-        1:  256:TEST(Sort, WrongTypeInsertion) {
-        1:  257:    int vet_ok[3] = {1,5,0};
-        1:  258:    int status = sort(vet_ok, 3, complexity1, INSERTION);
+        1:  218:TEST(Sort, WrongTypeInsertion) {
+        1:  219:    int vet_ok[3] = {1,5,0};
+        1:  220:    int status = sort(vet_ok, 3, complexity1, INSERTION);
 call    0 returned 100%
-        1:  259:    TEST_ASSERT_EQUAL(1, status);
+        1:  221:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  260:}
+        1:  222:}
 ------------------
 TEST_Sort_WrongTypeInsertion_run:
 function TEST_Sort_WrongTypeInsertion_run called 1 returned 100% blocks executed 100%
-        1:  256:TEST(Sort, WrongTypeInsertion) {
+        1:  218:TEST(Sort, WrongTypeInsertion) {
 call    0 returned 100%
 ------------------
-        -:  261:
-        -:  262:
-        2:  263:TEST(Sort, WrongLenghtInsertion) {
-        1:  264:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  265:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  266:    int status = sort(vet_maxLimit, 5, complexity2, INSERTION);
-        1:  267:    TEST_ASSERT_EQUAL(0, status);
-        1:  268:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  269:}
+        -:  223:
+        -:  224:
+        2:  225:TEST(Sort, WrongLenghtInsertion) {
+        1:  226:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  227:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  228:    int status = sort(vet_maxLimit, 5, complexity2, INSERTION);
+        1:  229:    TEST_ASSERT_EQUAL(0, status);
+        1:  230:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  231:}
 ------------------
 TEST_Sort_WrongLenghtInsertion_:
 function TEST_Sort_WrongLenghtInsertion_ called 1 returned 100% blocks executed 100%
-        1:  263:TEST(Sort, WrongLenghtInsertion) {
-        1:  264:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  265:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  266:    int status = sort(vet_maxLimit, 5, complexity2, INSERTION);
+        1:  225:TEST(Sort, WrongLenghtInsertion) {
+        1:  226:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  227:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  228:    int status = sort(vet_maxLimit, 5, complexity2, INSERTION);
 call    0 returned 100%
-        1:  267:    TEST_ASSERT_EQUAL(0, status);
+        1:  229:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  268:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  230:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  269:}
+        1:  231:}
 ------------------
 TEST_Sort_WrongLenghtInsertion_run:
 function TEST_Sort_WrongLenghtInsertion_run called 1 returned 100% blocks executed 100%
-        1:  263:TEST(Sort, WrongLenghtInsertion) {
+        1:  225:TEST(Sort, WrongLenghtInsertion) {
 call    0 returned 100%
 ------------------
-        -:  270:
-        -:  271:
-        -:  272://selection
-        -:  273:
-        2:  274:TEST(Sort, AllCorrectSelection) {
-        1:  275:    int vet_ok[3] = {1,5,0};
-        1:  276:    int status = sort(vet_ok, 3, complexity2, SELECTION);
-        1:  277:    TEST_ASSERT_EQUAL(0, status);
-        1:  278:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  279:}
+        -:  232:
+        -:  233:
+        -:  234://selection
+        -:  235:
+        2:  236:TEST(Sort, AllCorrectSelection) {
+        1:  237:    int vet_ok[3] = {1,5,0};
+        1:  238:    int status = sort(vet_ok, 3, complexity2, SELECTION);
+        1:  239:    TEST_ASSERT_EQUAL(0, status);
+        1:  240:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  241:}
 ------------------
 TEST_Sort_AllCorrectSelection_:
 function TEST_Sort_AllCorrectSelection_ called 1 returned 100% blocks executed 100%
-        1:  274:TEST(Sort, AllCorrectSelection) {
-        1:  275:    int vet_ok[3] = {1,5,0};
-        1:  276:    int status = sort(vet_ok, 3, complexity2, SELECTION);
+        1:  236:TEST(Sort, AllCorrectSelection) {
+        1:  237:    int vet_ok[3] = {1,5,0};
+        1:  238:    int status = sort(vet_ok, 3, complexity2, SELECTION);
 call    0 returned 100%
-        1:  277:    TEST_ASSERT_EQUAL(0, status);
+        1:  239:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  278:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  240:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  279:}
+        1:  241:}
 ------------------
 TEST_Sort_AllCorrectSelection_run:
 function TEST_Sort_AllCorrectSelection_run called 1 returned 100% blocks executed 100%
-        1:  274:TEST(Sort, AllCorrectSelection) {
+        1:  236:TEST(Sort, AllCorrectSelection) {
 call    0 returned 100%
 ------------------
-        -:  280:
-        2:  281:TEST(Sort, BellowLimitSelection) {
-        1:  282:    int vet_bellow[1] = {1};
-        1:  283:    int status = sort(vet_bellow, 1, complexity1, SELECTION);
-        1:  284:    TEST_ASSERT_EQUAL(1, status);
-        1:  285:}
+        -:  242:
+        2:  243:TEST(Sort, BellowLimitSelection) {
+        1:  244:    int vet_bellow[1] = {1};
+        1:  245:    int status = sort(vet_bellow, 1, complexity1, SELECTION);
+        1:  246:    TEST_ASSERT_EQUAL(1, status);
+        1:  247:}
 ------------------
 TEST_Sort_BellowLimitSelection_:
 function TEST_Sort_BellowLimitSelection_ called 1 returned 100% blocks executed 100%
-        1:  281:TEST(Sort, BellowLimitSelection) {
-        1:  282:    int vet_bellow[1] = {1};
-        1:  283:    int status = sort(vet_bellow, 1, complexity1, SELECTION);
+        1:  243:TEST(Sort, BellowLimitSelection) {
+        1:  244:    int vet_bellow[1] = {1};
+        1:  245:    int status = sort(vet_bellow, 1, complexity1, SELECTION);
 call    0 returned 100%
-        1:  284:    TEST_ASSERT_EQUAL(1, status);
+        1:  246:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  285:}
+        1:  247:}
 ------------------
 TEST_Sort_BellowLimitSelection_run:
 function TEST_Sort_BellowLimitSelection_run called 1 returned 100% blocks executed 100%
-        1:  281:TEST(Sort, BellowLimitSelection) {
+        1:  243:TEST(Sort, BellowLimitSelection) {
 call    0 returned 100%
 ------------------
-        -:  286:
-        2:  287:TEST(Sort, minLimitSelection) {
-        1:  288:    int vet_minLimit[2] = {15,7};
-        1:  289:    int status = sort(vet_minLimit, 2, complexity2, SELECTION);
-        1:  290:    TEST_ASSERT_EQUAL(0, status);
-        1:  291:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  292:}
+        -:  248:
+        2:  249:TEST(Sort, minLimitSelection) {
+        1:  250:    int vet_minLimit[2] = {15,7};
+        1:  251:    int status = sort(vet_minLimit, 2, complexity2, SELECTION);
+        1:  252:    TEST_ASSERT_EQUAL(0, status);
+        1:  253:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  254:}
 ------------------
 TEST_Sort_minLimitSelection_:
 function TEST_Sort_minLimitSelection_ called 1 returned 100% blocks executed 100%
-        1:  287:TEST(Sort, minLimitSelection) {
-        1:  288:    int vet_minLimit[2] = {15,7};
-        1:  289:    int status = sort(vet_minLimit, 2, complexity2, SELECTION);
+        1:  249:TEST(Sort, minLimitSelection) {
+        1:  250:    int vet_minLimit[2] = {15,7};
+        1:  251:    int status = sort(vet_minLimit, 2, complexity2, SELECTION);
 call    0 returned 100%
-        1:  290:    TEST_ASSERT_EQUAL(0, status);
+        1:  252:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  291:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  253:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  292:}
+        1:  254:}
 ------------------
 TEST_Sort_minLimitSelection_run:
 function TEST_Sort_minLimitSelection_run called 1 returned 100% blocks executed 100%
-        1:  287:TEST(Sort, minLimitSelection) {
+        1:  249:TEST(Sort, minLimitSelection) {
 call    0 returned 100%
 ------------------
-        -:  293:
-        2:  294:TEST(Sort, maxLimitSelection) {
-        1:  295:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  296:    int status = sort(vet_maxLimit, 20, complexity2, SELECTION);
-        1:  297:    TEST_ASSERT_EQUAL(0, status);
-        1:  298:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  299:}
+        -:  255:
+        2:  256:TEST(Sort, maxLimitSelection) {
+        1:  257:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  258:    int status = sort(vet_maxLimit, 20, complexity2, SELECTION);
+        1:  259:    TEST_ASSERT_EQUAL(0, status);
+        1:  260:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  261:}
 ------------------
 TEST_Sort_maxLimitSelection_:
 function TEST_Sort_maxLimitSelection_ called 1 returned 100% blocks executed 100%
-        1:  294:TEST(Sort, maxLimitSelection) {
-        1:  295:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  296:    int status = sort(vet_maxLimit, 20, complexity2, SELECTION);
+        1:  256:TEST(Sort, maxLimitSelection) {
+        1:  257:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  258:    int status = sort(vet_maxLimit, 20, complexity2, SELECTION);
 call    0 returned 100%
-        1:  297:    TEST_ASSERT_EQUAL(0, status);
+        1:  259:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  298:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  260:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  299:}
+        1:  261:}
 ------------------
 TEST_Sort_maxLimitSelection_run:
 function TEST_Sort_maxLimitSelection_run called 1 returned 100% blocks executed 100%
-        1:  294:TEST(Sort, maxLimitSelection) {
+        1:  256:TEST(Sort, maxLimitSelection) {
 call    0 returned 100%
 ------------------
-        -:  300:
-        2:  301:TEST(Sort, aboveLimitSelection) {
-        1:  302:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  303:    int status = sort(vet_above, 21, complexity2, SELECTION);
-        1:  304:    TEST_ASSERT_EQUAL(1, status);
-        1:  305:}
+        -:  262:
+        2:  263:TEST(Sort, aboveLimitSelection) {
+        1:  264:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  265:    int status = sort(vet_above, 21, complexity2, SELECTION);
+        1:  266:    TEST_ASSERT_EQUAL(1, status);
+        1:  267:}
 ------------------
 TEST_Sort_aboveLimitSelection_:
 function TEST_Sort_aboveLimitSelection_ called 1 returned 100% blocks executed 100%
-        1:  301:TEST(Sort, aboveLimitSelection) {
-        1:  302:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  303:    int status = sort(vet_above, 21, complexity2, SELECTION);
+        1:  263:TEST(Sort, aboveLimitSelection) {
+        1:  264:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  265:    int status = sort(vet_above, 21, complexity2, SELECTION);
 call    0 returned 100%
-        1:  304:    TEST_ASSERT_EQUAL(1, status);
+        1:  266:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  305:}
+        1:  267:}
 ------------------
 TEST_Sort_aboveLimitSelection_run:
 function TEST_Sort_aboveLimitSelection_run called 1 returned 100% blocks executed 100%
-        1:  301:TEST(Sort, aboveLimitSelection) {
+        1:  263:TEST(Sort, aboveLimitSelection) {
 call    0 returned 100%
 ------------------
-        -:  306:
-        2:  307:TEST(Sort, WrongTypeSelection) {
-        1:  308:    int vet_ok[3] = {1,5,0};
-        1:  309:    int status = sort(vet_ok, 3, complexity1, SELECTION);
-        1:  310:    TEST_ASSERT_EQUAL(1, status);
-        1:  311:}
+        -:  268:
+        2:  269:TEST(Sort, WrongTypeSelection) {
+        1:  270:    int vet_ok[3] = {1,5,0};
+        1:  271:    int status = sort(vet_ok, 3, complexity1, SELECTION);
+        1:  272:    TEST_ASSERT_EQUAL(1, status);
+        1:  273:}
 ------------------
 TEST_Sort_WrongTypeSelection_:
 function TEST_Sort_WrongTypeSelection_ called 1 returned 100% blocks executed 100%
-        1:  307:TEST(Sort, WrongTypeSelection) {
-        1:  308:    int vet_ok[3] = {1,5,0};
-        1:  309:    int status = sort(vet_ok, 3, complexity1, SELECTION);
+        1:  269:TEST(Sort, WrongTypeSelection) {
+        1:  270:    int vet_ok[3] = {1,5,0};
+        1:  271:    int status = sort(vet_ok, 3, complexity1, SELECTION);
 call    0 returned 100%
-        1:  310:    TEST_ASSERT_EQUAL(1, status);
+        1:  272:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  311:}
+        1:  273:}
 ------------------
 TEST_Sort_WrongTypeSelection_run:
 function TEST_Sort_WrongTypeSelection_run called 1 returned 100% blocks executed 100%
-        1:  307:TEST(Sort, WrongTypeSelection) {
+        1:  269:TEST(Sort, WrongTypeSelection) {
 call    0 returned 100%
 ------------------
-        -:  312:
-        -:  313:
-        2:  314:TEST(Sort, WrongLenghtSelection) {
-        1:  315:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  316:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  317:    int status = sort(vet_maxLimit, 5, complexity2, SELECTION);
-        1:  318:    TEST_ASSERT_EQUAL(0, status);
-        1:  319:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  320:}
+        -:  274:
+        -:  275:
+        2:  276:TEST(Sort, WrongLenghtSelection) {
+        1:  277:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  278:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  279:    int status = sort(vet_maxLimit, 5, complexity2, SELECTION);
+        1:  280:    TEST_ASSERT_EQUAL(0, status);
+        1:  281:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  282:}
 ------------------
 TEST_Sort_WrongLenghtSelection_:
 function TEST_Sort_WrongLenghtSelection_ called 1 returned 100% blocks executed 100%
-        1:  314:TEST(Sort, WrongLenghtSelection) {
-        1:  315:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  316:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  317:    int status = sort(vet_maxLimit, 5, complexity2, SELECTION);
+        1:  276:TEST(Sort, WrongLenghtSelection) {
+        1:  277:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  278:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  279:    int status = sort(vet_maxLimit, 5, complexity2, SELECTION);
 call    0 returned 100%
-        1:  318:    TEST_ASSERT_EQUAL(0, status);
+        1:  280:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  319:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  281:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  320:}
+        1:  282:}
 ------------------
 TEST_Sort_WrongLenghtSelection_run:
 function TEST_Sort_WrongLenghtSelection_run called 1 returned 100% blocks executed 100%
-        1:  314:TEST(Sort, WrongLenghtSelection) {
+        1:  276:TEST(Sort, WrongLenghtSelection) {
 call    0 returned 100%
 ------------------
-        -:  321:
-        -:  322://heap 
-        -:  323:
-        -:  324:
-        2:  325:TEST(Sort, AllCorrectHeap) {
-        1:  326:    int vet_ok[3] = {1,5,0};
-        1:  327:    int status = sort(vet_ok, 3, complexity3, HEAP);
-        1:  328:    TEST_ASSERT_EQUAL(0, status);
-        1:  329:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  330:}
+        -:  283:
+        -:  284://heap 
+        -:  285:
+        -:  286:
+        2:  287:TEST(Sort, AllCorrectHeap) {
+        1:  288:    int vet_ok[3] = {1,5,0};
+        1:  289:    int status = sort(vet_ok, 3, complexity3, HEAP);
+        1:  290:    TEST_ASSERT_EQUAL(0, status);
+        1:  291:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  292:}
 ------------------
 TEST_Sort_AllCorrectHeap_:
 function TEST_Sort_AllCorrectHeap_ called 1 returned 100% blocks executed 100%
-        1:  325:TEST(Sort, AllCorrectHeap) {
-        1:  326:    int vet_ok[3] = {1,5,0};
-        1:  327:    int status = sort(vet_ok, 3, complexity3, HEAP);
+        1:  287:TEST(Sort, AllCorrectHeap) {
+        1:  288:    int vet_ok[3] = {1,5,0};
+        1:  289:    int status = sort(vet_ok, 3, complexity3, HEAP);
 call    0 returned 100%
-        1:  328:    TEST_ASSERT_EQUAL(0, status);
+        1:  290:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  329:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  291:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  330:}
+        1:  292:}
 ------------------
 TEST_Sort_AllCorrectHeap_run:
 function TEST_Sort_AllCorrectHeap_run called 1 returned 100% blocks executed 100%
-        1:  325:TEST(Sort, AllCorrectHeap) {
+        1:  287:TEST(Sort, AllCorrectHeap) {
 call    0 returned 100%
 ------------------
-        -:  331:
-        2:  332:TEST(Sort, BellowLimitHeap) {
-        1:  333:    int vet_bellow[1] = {1};
-        1:  334:    int status = sort(vet_bellow, 1, complexity1, HEAP);
-        1:  335:    TEST_ASSERT_EQUAL(1, status);
-        1:  336:}
+        -:  293:
+        2:  294:TEST(Sort, BellowLimitHeap) {
+        1:  295:    int vet_bellow[1] = {1};
+        1:  296:    int status = sort(vet_bellow, 1, complexity1, HEAP);
+        1:  297:    TEST_ASSERT_EQUAL(1, status);
+        1:  298:}
 ------------------
 TEST_Sort_BellowLimitHeap_:
 function TEST_Sort_BellowLimitHeap_ called 1 returned 100% blocks executed 100%
-        1:  332:TEST(Sort, BellowLimitHeap) {
-        1:  333:    int vet_bellow[1] = {1};
-        1:  334:    int status = sort(vet_bellow, 1, complexity1, HEAP);
+        1:  294:TEST(Sort, BellowLimitHeap) {
+        1:  295:    int vet_bellow[1] = {1};
+        1:  296:    int status = sort(vet_bellow, 1, complexity1, HEAP);
 call    0 returned 100%
-        1:  335:    TEST_ASSERT_EQUAL(1, status);
+        1:  297:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  336:}
+        1:  298:}
 ------------------
 TEST_Sort_BellowLimitHeap_run:
 function TEST_Sort_BellowLimitHeap_run called 1 returned 100% blocks executed 100%
-        1:  332:TEST(Sort, BellowLimitHeap) {
+        1:  294:TEST(Sort, BellowLimitHeap) {
 call    0 returned 100%
 ------------------
-        -:  337:
-        2:  338:TEST(Sort, minLimitHeap) {
-        1:  339:    int vet_minLimit[2] = {15,7};
-        1:  340:    int status = sort(vet_minLimit, 2, complexity3, HEAP);
-        1:  341:    TEST_ASSERT_EQUAL(0, status);
-        1:  342:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  343:}
+        -:  299:
+        2:  300:TEST(Sort, minLimitHeap) {
+        1:  301:    int vet_minLimit[2] = {15,7};
+        1:  302:    int status = sort(vet_minLimit, 2, complexity3, HEAP);
+        1:  303:    TEST_ASSERT_EQUAL(0, status);
+        1:  304:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  305:}
 ------------------
 TEST_Sort_minLimitHeap_:
 function TEST_Sort_minLimitHeap_ called 1 returned 100% blocks executed 100%
-        1:  338:TEST(Sort, minLimitHeap) {
-        1:  339:    int vet_minLimit[2] = {15,7};
-        1:  340:    int status = sort(vet_minLimit, 2, complexity3, HEAP);
+        1:  300:TEST(Sort, minLimitHeap) {
+        1:  301:    int vet_minLimit[2] = {15,7};
+        1:  302:    int status = sort(vet_minLimit, 2, complexity3, HEAP);
 call    0 returned 100%
-        1:  341:    TEST_ASSERT_EQUAL(0, status);
+        1:  303:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  342:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  304:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  343:}
+        1:  305:}
 ------------------
 TEST_Sort_minLimitHeap_run:
 function TEST_Sort_minLimitHeap_run called 1 returned 100% blocks executed 100%
-        1:  338:TEST(Sort, minLimitHeap) {
+        1:  300:TEST(Sort, minLimitHeap) {
 call    0 returned 100%
 ------------------
-        -:  344:
-        2:  345:TEST(Sort, maxLimitHeap) {
-        1:  346:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  347:    int status = sort(vet_maxLimit, 20, complexity3, HEAP);
-        1:  348:    TEST_ASSERT_EQUAL(0, status);
-        1:  349:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  350:}
+        -:  306:
+        2:  307:TEST(Sort, maxLimitHeap) {
+        1:  308:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  309:    int status = sort(vet_maxLimit, 20, complexity3, HEAP);
+        1:  310:    TEST_ASSERT_EQUAL(0, status);
+        1:  311:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  312:}
 ------------------
 TEST_Sort_maxLimitHeap_:
 function TEST_Sort_maxLimitHeap_ called 1 returned 100% blocks executed 100%
-        1:  345:TEST(Sort, maxLimitHeap) {
-        1:  346:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  347:    int status = sort(vet_maxLimit, 20, complexity3, HEAP);
+        1:  307:TEST(Sort, maxLimitHeap) {
+        1:  308:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  309:    int status = sort(vet_maxLimit, 20, complexity3, HEAP);
 call    0 returned 100%
-        1:  348:    TEST_ASSERT_EQUAL(0, status);
+        1:  310:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  349:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  311:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  350:}
+        1:  312:}
 ------------------
 TEST_Sort_maxLimitHeap_run:
 function TEST_Sort_maxLimitHeap_run called 1 returned 100% blocks executed 100%
-        1:  345:TEST(Sort, maxLimitHeap) {
+        1:  307:TEST(Sort, maxLimitHeap) {
 call    0 returned 100%
 ------------------
-        -:  351:
-        2:  352:TEST(Sort, aboveLimitHeap) {
-        1:  353:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  354:    int status = sort(vet_above, 21, complexity3, HEAP);
-        1:  355:    TEST_ASSERT_EQUAL(1, status);
-        1:  356:}
+        -:  313:
+        2:  314:TEST(Sort, aboveLimitHeap) {
+        1:  315:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  316:    int status = sort(vet_above, 21, complexity3, HEAP);
+        1:  317:    TEST_ASSERT_EQUAL(1, status);
+        1:  318:}
 ------------------
 TEST_Sort_aboveLimitHeap_:
 function TEST_Sort_aboveLimitHeap_ called 1 returned 100% blocks executed 100%
-        1:  352:TEST(Sort, aboveLimitHeap) {
-        1:  353:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  354:    int status = sort(vet_above, 21, complexity3, HEAP);
+        1:  314:TEST(Sort, aboveLimitHeap) {
+        1:  315:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  316:    int status = sort(vet_above, 21, complexity3, HEAP);
 call    0 returned 100%
-        1:  355:    TEST_ASSERT_EQUAL(1, status);
+        1:  317:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  356:}
+        1:  318:}
 ------------------
 TEST_Sort_aboveLimitHeap_run:
 function TEST_Sort_aboveLimitHeap_run called 1 returned 100% blocks executed 100%
-        1:  352:TEST(Sort, aboveLimitHeap) {
+        1:  314:TEST(Sort, aboveLimitHeap) {
 call    0 returned 100%
 ------------------
-        -:  357:
-        2:  358:TEST(Sort, WrongTypeHeap) {
-        1:  359:    int vet_ok[3] = {1,5,0};
-        1:  360:    int status = sort(vet_ok, 3, complexity1, HEAP);
-        1:  361:    TEST_ASSERT_EQUAL(1, status);
-        1:  362:}
+        -:  319:
+        2:  320:TEST(Sort, WrongTypeHeap) {
+        1:  321:    int vet_ok[3] = {1,5,0};
+        1:  322:    int status = sort(vet_ok, 3, complexity1, HEAP);
+        1:  323:    TEST_ASSERT_EQUAL(1, status);
+        1:  324:}
 ------------------
 TEST_Sort_WrongTypeHeap_:
 function TEST_Sort_WrongTypeHeap_ called 1 returned 100% blocks executed 100%
-        1:  358:TEST(Sort, WrongTypeHeap) {
-        1:  359:    int vet_ok[3] = {1,5,0};
-        1:  360:    int status = sort(vet_ok, 3, complexity1, HEAP);
+        1:  320:TEST(Sort, WrongTypeHeap) {
+        1:  321:    int vet_ok[3] = {1,5,0};
+        1:  322:    int status = sort(vet_ok, 3, complexity1, HEAP);
 call    0 returned 100%
-        1:  361:    TEST_ASSERT_EQUAL(1, status);
+        1:  323:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  362:}
+        1:  324:}
 ------------------
 TEST_Sort_WrongTypeHeap_run:
 function TEST_Sort_WrongTypeHeap_run called 1 returned 100% blocks executed 100%
-        1:  358:TEST(Sort, WrongTypeHeap) {
+        1:  320:TEST(Sort, WrongTypeHeap) {
 call    0 returned 100%
 ------------------
-        -:  363:
-        -:  364:
-        2:  365:TEST(Sort, WrongLenghtHeap) {
-        1:  366:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  367:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  368:    int status = sort(vet_maxLimit, 5, complexity3, HEAP);
-        1:  369:    TEST_ASSERT_EQUAL(0, status);
-        1:  370:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  371:}
+        -:  325:
+        -:  326:
+        2:  327:TEST(Sort, WrongLenghtHeap) {
+        1:  328:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  329:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  330:    int status = sort(vet_maxLimit, 5, complexity3, HEAP);
+        1:  331:    TEST_ASSERT_EQUAL(0, status);
+        1:  332:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  333:}
 ------------------
 TEST_Sort_WrongLenghtHeap_:
 function TEST_Sort_WrongLenghtHeap_ called 1 returned 100% blocks executed 100%
-        1:  365:TEST(Sort, WrongLenghtHeap) {
-        1:  366:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  367:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  368:    int status = sort(vet_maxLimit, 5, complexity3, HEAP);
+        1:  327:TEST(Sort, WrongLenghtHeap) {
+        1:  328:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  329:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  330:    int status = sort(vet_maxLimit, 5, complexity3, HEAP);
 call    0 returned 100%
-        1:  369:    TEST_ASSERT_EQUAL(0, status);
+        1:  331:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  370:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  332:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  371:}
+        1:  333:}
 ------------------
 TEST_Sort_WrongLenghtHeap_run:
 function TEST_Sort_WrongLenghtHeap_run called 1 returned 100% blocks executed 100%
-        1:  365:TEST(Sort, WrongLenghtHeap) {
+        1:  327:TEST(Sort, WrongLenghtHeap) {
 call    0 returned 100%
 ------------------
-        -:  372:
-        -:  373:
-        -:  374://merge
-        -:  375:
-        2:  376:TEST(Sort, AllCorrectMerge) {
-        1:  377:    int vet_ok[3] = {1,5,0};
-        1:  378:    int status = sort(vet_ok, 3, complexity3, MERGE);
-        1:  379:    TEST_ASSERT_EQUAL(0, status);
-        1:  380:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  381:}
+        -:  334:
+        -:  335:
+        -:  336://merge
+        -:  337:
+        2:  338:TEST(Sort, AllCorrectMerge) {
+        1:  339:    int vet_ok[3] = {1,5,0};
+        1:  340:    int status = sort(vet_ok, 3, complexity3, MERGE);
+        1:  341:    TEST_ASSERT_EQUAL(0, status);
+        1:  342:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  343:}
 ------------------
 TEST_Sort_AllCorrectMerge_:
 function TEST_Sort_AllCorrectMerge_ called 1 returned 100% blocks executed 100%
-        1:  376:TEST(Sort, AllCorrectMerge) {
-        1:  377:    int vet_ok[3] = {1,5,0};
-        1:  378:    int status = sort(vet_ok, 3, complexity3, MERGE);
+        1:  338:TEST(Sort, AllCorrectMerge) {
+        1:  339:    int vet_ok[3] = {1,5,0};
+        1:  340:    int status = sort(vet_ok, 3, complexity3, MERGE);
 call    0 returned 100%
-        1:  379:    TEST_ASSERT_EQUAL(0, status);
+        1:  341:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  380:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  342:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  381:}
+        1:  343:}
 ------------------
 TEST_Sort_AllCorrectMerge_run:
 function TEST_Sort_AllCorrectMerge_run called 1 returned 100% blocks executed 100%
-        1:  376:TEST(Sort, AllCorrectMerge) {
+        1:  338:TEST(Sort, AllCorrectMerge) {
 call    0 returned 100%
 ------------------
-        -:  382:
-        2:  383:TEST(Sort, BellowLimitMerge) {
-        1:  384:    int vet_bellow[1] = {1};
-        1:  385:    int status = sort(vet_bellow, 1, complexity1, MERGE);
-        1:  386:    TEST_ASSERT_EQUAL(1, status);
-        1:  387:}
+        -:  344:
+        2:  345:TEST(Sort, BellowLimitMerge) {
+        1:  346:    int vet_bellow[1] = {1};
+        1:  347:    int status = sort(vet_bellow, 1, complexity1, MERGE);
+        1:  348:    TEST_ASSERT_EQUAL(1, status);
+        1:  349:}
 ------------------
 TEST_Sort_BellowLimitMerge_:
 function TEST_Sort_BellowLimitMerge_ called 1 returned 100% blocks executed 100%
-        1:  383:TEST(Sort, BellowLimitMerge) {
-        1:  384:    int vet_bellow[1] = {1};
-        1:  385:    int status = sort(vet_bellow, 1, complexity1, MERGE);
+        1:  345:TEST(Sort, BellowLimitMerge) {
+        1:  346:    int vet_bellow[1] = {1};
+        1:  347:    int status = sort(vet_bellow, 1, complexity1, MERGE);
 call    0 returned 100%
-        1:  386:    TEST_ASSERT_EQUAL(1, status);
+        1:  348:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  387:}
+        1:  349:}
 ------------------
 TEST_Sort_BellowLimitMerge_run:
 function TEST_Sort_BellowLimitMerge_run called 1 returned 100% blocks executed 100%
-        1:  383:TEST(Sort, BellowLimitMerge) {
+        1:  345:TEST(Sort, BellowLimitMerge) {
 call    0 returned 100%
 ------------------
-        -:  388:
-        2:  389:TEST(Sort, minLimitMerge) {
-        1:  390:    int vet_minLimit[2] = {15,7};
-        1:  391:    int status = sort(vet_minLimit, 2, complexity3, MERGE);
-        1:  392:    TEST_ASSERT_EQUAL(0, status);
-        1:  393:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  394:}
+        -:  350:
+        2:  351:TEST(Sort, minLimitMerge) {
+        1:  352:    int vet_minLimit[2] = {15,7};
+        1:  353:    int status = sort(vet_minLimit, 2, complexity3, MERGE);
+        1:  354:    TEST_ASSERT_EQUAL(0, status);
+        1:  355:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  356:}
 ------------------
 TEST_Sort_minLimitMerge_:
 function TEST_Sort_minLimitMerge_ called 1 returned 100% blocks executed 100%
-        1:  389:TEST(Sort, minLimitMerge) {
-        1:  390:    int vet_minLimit[2] = {15,7};
-        1:  391:    int status = sort(vet_minLimit, 2, complexity3, MERGE);
+        1:  351:TEST(Sort, minLimitMerge) {
+        1:  352:    int vet_minLimit[2] = {15,7};
+        1:  353:    int status = sort(vet_minLimit, 2, complexity3, MERGE);
 call    0 returned 100%
-        1:  392:    TEST_ASSERT_EQUAL(0, status);
+        1:  354:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  393:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  355:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  394:}
+        1:  356:}
 ------------------
 TEST_Sort_minLimitMerge_run:
 function TEST_Sort_minLimitMerge_run called 1 returned 100% blocks executed 100%
-        1:  389:TEST(Sort, minLimitMerge) {
+        1:  351:TEST(Sort, minLimitMerge) {
 call    0 returned 100%
 ------------------
-        -:  395:
-        2:  396:TEST(Sort, maxLimitMerge) {
-        1:  397:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  398:    int status = sort(vet_maxLimit, 20, complexity3, MERGE);
-        1:  399:    TEST_ASSERT_EQUAL(0, status);
-        1:  400:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  401:}
+        -:  357:
+        2:  358:TEST(Sort, maxLimitMerge) {
+        1:  359:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  360:    int status = sort(vet_maxLimit, 20, complexity3, MERGE);
+        1:  361:    TEST_ASSERT_EQUAL(0, status);
+        1:  362:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  363:}
 ------------------
 TEST_Sort_maxLimitMerge_:
 function TEST_Sort_maxLimitMerge_ called 1 returned 100% blocks executed 100%
-        1:  396:TEST(Sort, maxLimitMerge) {
-        1:  397:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  398:    int status = sort(vet_maxLimit, 20, complexity3, MERGE);
+        1:  358:TEST(Sort, maxLimitMerge) {
+        1:  359:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  360:    int status = sort(vet_maxLimit, 20, complexity3, MERGE);
 call    0 returned 100%
-        1:  399:    TEST_ASSERT_EQUAL(0, status);
+        1:  361:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  400:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  362:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  401:}
+        1:  363:}
 ------------------
 TEST_Sort_maxLimitMerge_run:
 function TEST_Sort_maxLimitMerge_run called 1 returned 100% blocks executed 100%
-        1:  396:TEST(Sort, maxLimitMerge) {
+        1:  358:TEST(Sort, maxLimitMerge) {
 call    0 returned 100%
 ------------------
-        -:  402:
-        2:  403:TEST(Sort, aboveLimitMerge) {
-        1:  404:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  405:    int status = sort(vet_above, 21, complexity3, MERGE);
-        1:  406:    TEST_ASSERT_EQUAL(1, status);
-        1:  407:}
+        -:  364:
+        2:  365:TEST(Sort, aboveLimitMerge) {
+        1:  366:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  367:    int status = sort(vet_above, 21, complexity3, MERGE);
+        1:  368:    TEST_ASSERT_EQUAL(1, status);
+        1:  369:}
 ------------------
 TEST_Sort_aboveLimitMerge_:
 function TEST_Sort_aboveLimitMerge_ called 1 returned 100% blocks executed 100%
-        1:  403:TEST(Sort, aboveLimitMerge) {
-        1:  404:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  405:    int status = sort(vet_above, 21, complexity3, MERGE);
+        1:  365:TEST(Sort, aboveLimitMerge) {
+        1:  366:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  367:    int status = sort(vet_above, 21, complexity3, MERGE);
 call    0 returned 100%
-        1:  406:    TEST_ASSERT_EQUAL(1, status);
+        1:  368:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  407:}
+        1:  369:}
 ------------------
 TEST_Sort_aboveLimitMerge_run:
 function TEST_Sort_aboveLimitMerge_run called 1 returned 100% blocks executed 100%
-        1:  403:TEST(Sort, aboveLimitMerge) {
+        1:  365:TEST(Sort, aboveLimitMerge) {
 call    0 returned 100%
 ------------------
-        -:  408:
-        2:  409:TEST(Sort, WrongTypeMerge) {
-        1:  410:    int vet_ok[3] = {1,5,0};
-        1:  411:    int status = sort(vet_ok, 3, complexity1, MERGE);
-        1:  412:    TEST_ASSERT_EQUAL(1, status);
-        1:  413:}
+        -:  370:
+        2:  371:TEST(Sort, WrongTypeMerge) {
+        1:  372:    int vet_ok[3] = {1,5,0};
+        1:  373:    int status = sort(vet_ok, 3, complexity1, MERGE);
+        1:  374:    TEST_ASSERT_EQUAL(1, status);
+        1:  375:}
 ------------------
 TEST_Sort_WrongTypeMerge_:
 function TEST_Sort_WrongTypeMerge_ called 1 returned 100% blocks executed 100%
-        1:  409:TEST(Sort, WrongTypeMerge) {
-        1:  410:    int vet_ok[3] = {1,5,0};
-        1:  411:    int status = sort(vet_ok, 3, complexity1, MERGE);
+        1:  371:TEST(Sort, WrongTypeMerge) {
+        1:  372:    int vet_ok[3] = {1,5,0};
+        1:  373:    int status = sort(vet_ok, 3, complexity1, MERGE);
 call    0 returned 100%
-        1:  412:    TEST_ASSERT_EQUAL(1, status);
+        1:  374:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  413:}
+        1:  375:}
 ------------------
 TEST_Sort_WrongTypeMerge_run:
 function TEST_Sort_WrongTypeMerge_run called 1 returned 100% blocks executed 100%
-        1:  409:TEST(Sort, WrongTypeMerge) {
+        1:  371:TEST(Sort, WrongTypeMerge) {
 call    0 returned 100%
 ------------------
-        -:  414:
-        -:  415:
-        2:  416:TEST(Sort, WrongLenghtMerge) {
-        1:  417:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  418:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  419:    int status = sort(vet_maxLimit, 5, complexity3, MERGE);
-        1:  420:    TEST_ASSERT_EQUAL(0, status);
-        1:  421:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  422:}
+        -:  376:
+        -:  377:
+        2:  378:TEST(Sort, WrongLenghtMerge) {
+        1:  379:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  380:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  381:    int status = sort(vet_maxLimit, 5, complexity3, MERGE);
+        1:  382:    TEST_ASSERT_EQUAL(0, status);
+        1:  383:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  384:}
 ------------------
 TEST_Sort_WrongLenghtMerge_:
 function TEST_Sort_WrongLenghtMerge_ called 1 returned 100% blocks executed 100%
-        1:  416:TEST(Sort, WrongLenghtMerge) {
-        1:  417:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  418:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  419:    int status = sort(vet_maxLimit, 5, complexity3, MERGE);
+        1:  378:TEST(Sort, WrongLenghtMerge) {
+        1:  379:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  380:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  381:    int status = sort(vet_maxLimit, 5, complexity3, MERGE);
 call    0 returned 100%
-        1:  420:    TEST_ASSERT_EQUAL(0, status);
+        1:  382:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  421:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  383:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  422:}
+        1:  384:}
 ------------------
 TEST_Sort_WrongLenghtMerge_run:
 function TEST_Sort_WrongLenghtMerge_run called 1 returned 100% blocks executed 100%
-        1:  416:TEST(Sort, WrongLenghtMerge) {
+        1:  378:TEST(Sort, WrongLenghtMerge) {
 call    0 returned 100%
 ------------------
-        -:  423:
-        -:  424://quick
-        -:  425:
-        2:  426:TEST(Sort, AllCorrectQuick) {
-        1:  427:    int vet_ok[3] = {1,5,0};
-        1:  428:    int status = sort(vet_ok, 3, complexity3, QUICK);
-        1:  429:    TEST_ASSERT_EQUAL(0, status);
-        1:  430:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
-        1:  431:}
+        -:  385:
+        -:  386://quick
+        -:  387:
+        2:  388:TEST(Sort, AllCorrectQuick) {
+        1:  389:    int vet_ok[3] = {1,5,0};
+        1:  390:    int status = sort(vet_ok, 3, complexity3, QUICK);
+        1:  391:    TEST_ASSERT_EQUAL(0, status);
+        1:  392:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  393:}
 ------------------
 TEST_Sort_AllCorrectQuick_:
 function TEST_Sort_AllCorrectQuick_ called 1 returned 100% blocks executed 100%
-        1:  426:TEST(Sort, AllCorrectQuick) {
-        1:  427:    int vet_ok[3] = {1,5,0};
-        1:  428:    int status = sort(vet_ok, 3, complexity3, QUICK);
+        1:  388:TEST(Sort, AllCorrectQuick) {
+        1:  389:    int vet_ok[3] = {1,5,0};
+        1:  390:    int status = sort(vet_ok, 3, complexity3, QUICK);
 call    0 returned 100%
-        1:  429:    TEST_ASSERT_EQUAL(0, status);
+        1:  391:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  430:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
+        1:  392:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_ok, vet_ok, 3);
 call    0 returned 100%
-        1:  431:}
+        1:  393:}
 ------------------
 TEST_Sort_AllCorrectQuick_run:
 function TEST_Sort_AllCorrectQuick_run called 1 returned 100% blocks executed 100%
-        1:  426:TEST(Sort, AllCorrectQuick) {
+        1:  388:TEST(Sort, AllCorrectQuick) {
 call    0 returned 100%
 ------------------
-        -:  432:
-        2:  433:TEST(Sort, BellowLimitQuick) {
-        1:  434:    int vet_bellow[1] = {1};
-        1:  435:    int status = sort(vet_bellow, 1, complexity1, QUICK);
-        1:  436:    TEST_ASSERT_EQUAL(1, status);
-        1:  437:}
+        -:  394:
+        2:  395:TEST(Sort, BellowLimitQuick) {
+        1:  396:    int vet_bellow[1] = {1};
+        1:  397:    int status = sort(vet_bellow, 1, complexity1, QUICK);
+        1:  398:    TEST_ASSERT_EQUAL(1, status);
+        1:  399:}
 ------------------
 TEST_Sort_BellowLimitQuick_:
 function TEST_Sort_BellowLimitQuick_ called 1 returned 100% blocks executed 100%
-        1:  433:TEST(Sort, BellowLimitQuick) {
-        1:  434:    int vet_bellow[1] = {1};
-        1:  435:    int status = sort(vet_bellow, 1, complexity1, QUICK);
+        1:  395:TEST(Sort, BellowLimitQuick) {
+        1:  396:    int vet_bellow[1] = {1};
+        1:  397:    int status = sort(vet_bellow, 1, complexity1, QUICK);
 call    0 returned 100%
-        1:  436:    TEST_ASSERT_EQUAL(1, status);
+        1:  398:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  437:}
+        1:  399:}
 ------------------
 TEST_Sort_BellowLimitQuick_run:
 function TEST_Sort_BellowLimitQuick_run called 1 returned 100% blocks executed 100%
-        1:  433:TEST(Sort, BellowLimitQuick) {
+        1:  395:TEST(Sort, BellowLimitQuick) {
 call    0 returned 100%
 ------------------
-        -:  438:
-        2:  439:TEST(Sort, minLimitQuick) {
-        1:  440:    int vet_minLimit[2] = {15,7};
-        1:  441:    int status = sort(vet_minLimit, 2, complexity3, QUICK);
-        1:  442:    TEST_ASSERT_EQUAL(0, status);
-        1:  443:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
-        1:  444:}
+        -:  400:
+        2:  401:TEST(Sort, minLimitQuick) {
+        1:  402:    int vet_minLimit[2] = {15,7};
+        1:  403:    int status = sort(vet_minLimit, 2, complexity3, QUICK);
+        1:  404:    TEST_ASSERT_EQUAL(0, status);
+        1:  405:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  406:}
 ------------------
 TEST_Sort_minLimitQuick_:
 function TEST_Sort_minLimitQuick_ called 1 returned 100% blocks executed 100%
-        1:  439:TEST(Sort, minLimitQuick) {
-        1:  440:    int vet_minLimit[2] = {15,7};
-        1:  441:    int status = sort(vet_minLimit, 2, complexity3, QUICK);
+        1:  401:TEST(Sort, minLimitQuick) {
+        1:  402:    int vet_minLimit[2] = {15,7};
+        1:  403:    int status = sort(vet_minLimit, 2, complexity3, QUICK);
 call    0 returned 100%
-        1:  442:    TEST_ASSERT_EQUAL(0, status);
+        1:  404:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  443:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
+        1:  405:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_minLimit, vet_minLimit, 2);
 call    0 returned 100%
-        1:  444:}
+        1:  406:}
 ------------------
 TEST_Sort_minLimitQuick_run:
 function TEST_Sort_minLimitQuick_run called 1 returned 100% blocks executed 100%
-        1:  439:TEST(Sort, minLimitQuick) {
+        1:  401:TEST(Sort, minLimitQuick) {
 call    0 returned 100%
 ------------------
-        -:  445:
-        2:  446:TEST(Sort, maxLimitQuick) {
-        1:  447:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  448:    int status = sort(vet_maxLimit, 20, complexity3, QUICK);
-        1:  449:    TEST_ASSERT_EQUAL(0, status);
-        1:  450:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
-        1:  451:}
+        -:  407:
+        2:  408:TEST(Sort, maxLimitQuick) {
+        1:  409:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  410:    int status = sort(vet_maxLimit, 20, complexity3, QUICK);
+        1:  411:    TEST_ASSERT_EQUAL(0, status);
+        1:  412:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  413:}
 ------------------
 TEST_Sort_maxLimitQuick_:
 function TEST_Sort_maxLimitQuick_ called 1 returned 100% blocks executed 100%
-        1:  446:TEST(Sort, maxLimitQuick) {
-        1:  447:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  448:    int status = sort(vet_maxLimit, 20, complexity3, QUICK);
+        1:  408:TEST(Sort, maxLimitQuick) {
+        1:  409:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  410:    int status = sort(vet_maxLimit, 20, complexity3, QUICK);
 call    0 returned 100%
-        1:  449:    TEST_ASSERT_EQUAL(0, status);
+        1:  411:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  450:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
+        1:  412:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_maxLimit, vet_maxLimit, 20);
 call    0 returned 100%
-        1:  451:}
+        1:  413:}
 ------------------
 TEST_Sort_maxLimitQuick_run:
 function TEST_Sort_maxLimitQuick_run called 1 returned 100% blocks executed 100%
-        1:  446:TEST(Sort, maxLimitQuick) {
+        1:  408:TEST(Sort, maxLimitQuick) {
 call    0 returned 100%
 ------------------
-        -:  452:
-        2:  453:TEST(Sort, aboveLimitQuick) {
-        1:  454:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  455:    int status = sort(vet_above, 21, complexity3, QUICK);
-        1:  456:    TEST_ASSERT_EQUAL(1, status);
-        1:  457:}
+        -:  414:
+        2:  415:TEST(Sort, aboveLimitQuick) {
+        1:  416:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  417:    int status = sort(vet_above, 21, complexity3, QUICK);
+        1:  418:    TEST_ASSERT_EQUAL(1, status);
+        1:  419:}
 ------------------
 TEST_Sort_aboveLimitQuick_:
 function TEST_Sort_aboveLimitQuick_ called 1 returned 100% blocks executed 100%
-        1:  453:TEST(Sort, aboveLimitQuick) {
-        1:  454:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
-        1:  455:    int status = sort(vet_above, 21, complexity3, QUICK);
+        1:  415:TEST(Sort, aboveLimitQuick) {
+        1:  416:    int vet_above[21] = {14, 3, 20, 7, 1, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16,21, 13, 9, 18, 15};
+        1:  417:    int status = sort(vet_above, 21, complexity3, QUICK);
 call    0 returned 100%
-        1:  456:    TEST_ASSERT_EQUAL(1, status);
+        1:  418:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  457:}
+        1:  419:}
 ------------------
 TEST_Sort_aboveLimitQuick_run:
 function TEST_Sort_aboveLimitQuick_run called 1 returned 100% blocks executed 100%
-        1:  453:TEST(Sort, aboveLimitQuick) {
+        1:  415:TEST(Sort, aboveLimitQuick) {
 call    0 returned 100%
 ------------------
-        -:  458:
-        2:  459:TEST(Sort, WrongTypeQuick) {
-        1:  460:    int vet_ok[3] = {1,5,0};
-        1:  461:    int status = sort(vet_ok, 3, complexityFail, QUICK);
-        1:  462:    TEST_ASSERT_EQUAL(1, status);
-        1:  463:}
+        -:  420:
+        2:  421:TEST(Sort, WrongTypeQuick) {
+        1:  422:    int vet_ok[3] = {1,5,0};
+        1:  423:    int status = sort(vet_ok, 3, complexityFail, QUICK);
+        1:  424:    TEST_ASSERT_EQUAL(1, status);
+        1:  425:}
 ------------------
 TEST_Sort_WrongTypeQuick_:
 function TEST_Sort_WrongTypeQuick_ called 1 returned 100% blocks executed 100%
-        1:  459:TEST(Sort, WrongTypeQuick) {
-        1:  460:    int vet_ok[3] = {1,5,0};
-        1:  461:    int status = sort(vet_ok, 3, complexityFail, QUICK);
+        1:  421:TEST(Sort, WrongTypeQuick) {
+        1:  422:    int vet_ok[3] = {1,5,0};
+        1:  423:    int status = sort(vet_ok, 3, complexityFail, QUICK);
 call    0 returned 100%
-        1:  462:    TEST_ASSERT_EQUAL(1, status);
+        1:  424:    TEST_ASSERT_EQUAL(1, status);
 call    0 returned 100%
-        1:  463:}
+        1:  425:}
 ------------------
 TEST_Sort_WrongTypeQuick_run:
 function TEST_Sort_WrongTypeQuick_run called 1 returned 100% blocks executed 100%
-        1:  459:TEST(Sort, WrongTypeQuick) {
+        1:  421:TEST(Sort, WrongTypeQuick) {
 call    0 returned 100%
 ------------------
-        -:  464:
-        -:  465:
-        2:  466:TEST(Sort, WrongLenghtQuick) {
-        1:  467:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  468:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  469:    int status = sort(vet_maxLimit, 5, complexity3, QUICK);
-        1:  470:    TEST_ASSERT_EQUAL(0, status);
-        1:  471:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
-        1:  472:}
+        -:  426:
+        -:  427:
+        2:  428:TEST(Sort, WrongLenghtQuick) {
+        1:  429:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  430:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  431:    int status = sort(vet_maxLimit, 5, complexity3, QUICK);
+        1:  432:    TEST_ASSERT_EQUAL(0, status);
+        1:  433:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  434:}
 ------------------
 TEST_Sort_WrongLenghtQuick_:
 function TEST_Sort_WrongLenghtQuick_ called 1 returned 100% blocks executed 100%
-        1:  466:TEST(Sort, WrongLenghtQuick) {
-        1:  467:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  468:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
-        1:  469:    int status = sort(vet_maxLimit, 5, complexity3, QUICK);
+        1:  428:TEST(Sort, WrongLenghtQuick) {
+        1:  429:    int vet_maxLimit[20] = {14, 3, 20, 7, 0, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  430:    int vet_less[20] = {0, 3, 7, 14, 20, 12, 17, 6, 4, 10, 19, 2, 11, 8, 5, 16, 17, 9, 18, 15};
+        1:  431:    int status = sort(vet_maxLimit, 5, complexity3, QUICK);
 call    0 returned 100%
-        1:  470:    TEST_ASSERT_EQUAL(0, status);
+        1:  432:    TEST_ASSERT_EQUAL(0, status);
 call    0 returned 100%
-        1:  471:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
+        1:  433:    TEST_ASSERT_EQUAL_INT_ARRAY(vet_maxLimit, vet_less, 20);
 call    0 returned 100%
-        1:  472:}
+        1:  434:}
 ------------------
 TEST_Sort_WrongLenghtQuick_run:
 function TEST_Sort_WrongLenghtQuick_run called 1 returned 100% blocks executed 100%
-        1:  466:TEST(Sort, WrongLenghtQuick) {
+        1:  428:TEST(Sort, WrongLenghtQuick) {
 call    0 returned 100%
 ------------------
-        -:  473:
-        -:  474:
-        -:  475:
-        -:  476://
-        -:  477:/*
-        -:  478:TEST(Sort, InvalidLengthBelowMin) {
-        -:  479:    int a[1] = {5};
-        -:  480:    int status = sort(a, 1, complexity1, COUNTING);
-        -:  481:    TEST_ASSERT_EQUAL(1, status);
-        -:  482:}
-        -:  483:
-        -:  484:TEST(Sort, InvalidLengthAboveMax) {
-        -:  485:    int a[21] = {0};
-        -:  486:    int status = sort(a, 21, complexity1, COUNTING);
-        -:  487:    TEST_ASSERT_EQUAL(1, status);
-        -:  488:}
-        -:  489:
-        -:  490:
-        -:  491:TEST(Sort, ValidLengthAndCountingSort) {
-        -:  492:    int a[3] = {3, 1, 2};
-        -:  493:    int expected[3] = {1, 2, 3};
-        -:  494:    int status = sort(a, 3, complexity1, COUNTING);
-        -:  495:    TEST_ASSERT_EQUAL(0, status);
-        -:  496:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  497:}
-        -:  498:
-        -:  499:TEST(Sort, InvalidTypeForCountingSort) {
-        -:  500:    int a[3] = {3, 1, 2};
-        -:  501:    int status = sort(a, 3, complexity2, COUNTING);
-        -:  502:    TEST_ASSERT_EQUAL(1, status);
-        -:  503:}
-        -:  504:
-        -:  505:TEST(Sort, ValidLengthAndRadixSort) {
-        -:  506:    int a[3] = {3, 1, 2};
-        -:  507:    int expected[3] = {1, 2, 3};
-        -:  508:    int status = sort(a, 3, complexity1, RADIX);
-        -:  509:    TEST_ASSERT_EQUAL(0, status);
-        -:  510:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  511:}
-        -:  512:
-        -:  513:TEST(Sort, ValidLengthAndBubbleSort) {
-        -:  514:    int a[3] = {3, 1, 2};
-        -:  515:    int expected[3] = {1, 2, 3};
-        -:  516:    int status = sort(a, 3, complexity2, BUBBLE);
-        -:  517:    TEST_ASSERT_EQUAL(0, status);
-        -:  518:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  519:}
-        -:  520:
-        -:  521:TEST(Sort, ValidLengthAndInsertionSort) {
-        -:  522:    int a[3] = {3, 1, 2};
-        -:  523:    int expected[3] = {1, 2, 3};
-        -:  524:    int status = sort(a, 3, complexity2, INSERTION);
-        -:  525:    TEST_ASSERT_EQUAL(0, status);
-        -:  526:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  527:}
-        -:  528:
-        -:  529:TEST(Sort, ValidLengthAndSelectionSort) {
-        -:  530:    int a[3] = {3, 1, 2};
-        -:  531:    int expected[3] = {1, 2, 3};
-        -:  532:    int status = sort(a, 3, complexity2, SELECTION);
-        -:  533:    TEST_ASSERT_EQUAL(0, status);
-        -:  534:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  535:}
-        -:  536:
-        -:  537:TEST(Sort, ValidLengthAndHeapSort) {
-        -:  538:    int a[3] = {3, 1, 2};
-        -:  539:    int expected[3] = {1, 2, 3};
-        -:  540:    int status = sort(a, 3, complexity3, HEAP);
-        -:  541:    TEST_ASSERT_EQUAL(0, status);
-        -:  542:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  543:}
-        -:  544:
-        -:  545:TEST(Sort, ValidLengthAndMergeSort) {
-        -:  546:    int a[3] = {3, 1, 2};
-        -:  547:    int expected[3] = {1, 2, 3};
-        -:  548:    int status = sort(a, 3, complexity3, MERGE);
-        -:  549:    TEST_ASSERT_EQUAL(0, status);
-        -:  550:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  551:}
-        -:  552:
-        -:  553:TEST(Sort, ValidLengthAndQuickSort) {
-        -:  554:    int a[3] = {3, 1, 2};
-        -:  555:    int expected[3] = {1, 2, 3};
-        -:  556:    int status = sort(a, 3, complexity3, QUICK);
-        -:  557:    TEST_ASSERT_EQUAL(0, status);
-        -:  558:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  559:}
-        -:  560:*/
-        -:  561:
-        -:  562:/*
-        -:  563:TEST(Sort, InvalidAlgorithm) {
-        -:  564:    int a[3] = {3, 1, 2};
-        -:  565:    int status = sort(a, 3, complexity1, 999);
-        -:  566:    TEST_ASSERT_EQUAL(1, status);
-        -:  567:}
-        -:  568:
-        -:  569:// Additional test cases to maximize code coverage
-        -:  570:TEST(Sort, CountingSortAlreadySorted) {
-        -:  571:    int a[3] = {1, 2, 3};
-        -:  572:    int expected[3] = {1, 2, 3};
-        -:  573:    int status = sort(a, 3, complexity1, COUNTING);
-        -:  574:    TEST_ASSERT_EQUAL(0, status);
-        -:  575:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  576:}
-        -:  577:
-        -:  578:TEST(Sort, CountingSortReversed) {
-        -:  579:    int a[3] = {3, 2, 1};
-        -:  580:    int expected[3] = {1, 2, 3};
-        -:  581:    int status = sort(a, 3, complexity1, COUNTING);
-        -:  582:    TEST_ASSERT_EQUAL(0, status);
-        -:  583:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  584:}
-        -:  585:
-        -:  586:TEST(Sort, BubbleSortWithDuplicates) {
-        -:  587:    int a[5] = {3, 1, 2, 2, 3};
-        -:  588:    int expected[5] = {1, 2, 2, 3, 3};
-        -:  589:    int status = sort(a, 5, complexity2, BUBBLE);
-        -:  590:    TEST_ASSERT_EQUAL(0, status);
-        -:  591:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 5);
-        -:  592:}
-        -:  593:
-        -:  594:TEST(Sort, QuickSortEdgeCases) {
-        -:  595:    int a[2] = {2, 1};
-        -:  596:    int expected[2] = {1, 2};
-        -:  597:    int status = sort(a, 2, complexity3, QUICK);
-        -:  598:    TEST_ASSERT_EQUAL(0, status);
-        -:  599:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 2);
-        -:  600:
-        -:  601:    int b[20];
-        -:  602:    for(int i = 0; i < 20; i++) b[i] = 20 - i;
-        -:  603:    int expected_b[20];
-        -:  604:    for(int i = 0; i < 20; i++) expected_b[i] = i + 1;
-        -:  605:    status = sort(b, 20, complexity3, QUICK);
-        -:  606:    TEST_ASSERT_EQUAL(0, status);
-        -:  607:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_b, b, 20);
-        -:  608:}
-        -:  609:
-        -:  610:TEST(Sort, MergeSortEmpty) {
-        -:  611:    int a[2] = {2, 1};
-        -:  612:    int status = sort(a, 2, complexity3, MERGE);
-        -:  613:    TEST_ASSERT_EQUAL(0, status);
-        -:  614:}
-        -:  615:
-        -:  616:TEST(Sort, RadixSortLargeNumbers) {
-        -:  617:    int a[3] = {300, 100, 200};
-        -:  618:    int expected[3] = {100, 200, 300};
-        -:  619:    int status = sort(a, 3, complexity1, RADIX);
-        -:  620:    TEST_ASSERT_EQUAL(0, status);
-        -:  621:    TEST_ASSERT_EQUAL_INT_ARRAY(expected, a, 3);
-        -:  622:}
-        -:  623:
-        -:  624:// Verifica se a função retorna status = 1 para algoritmos com tipos de complexidade inválidos
-        -:  625:TEST(Sort, InvalidTypeForRadixSort) {
-        -:  626:    int a[3] = {3, 1, 2};
-        -:  627:    int status = sort(a, 3, complexity2, RADIX);
-        -:  628:    TEST_ASSERT_EQUAL(1, status);
-        -:  629:}
-        -:  630:
-        -:  631:TEST(Sort, InvalidTypeForBubbleSort) {
-        -:  632:    int a[3] = {3, 1, 2};
-        -:  633:    int status = sort(a, 3, complexity1, BUBBLE);
-        -:  634:    TEST_ASSERT_EQUAL(1, status);
-        -:  635:}
-        -:  636:
-        -:  637:TEST(Sort, InvalidTypeForInsertionSort) {
-        -:  638:    int a[3] = {3, 1, 2};
-        -:  639:    int status = sort(a, 3, complexity1, INSERTION);
-        -:  640:    TEST_ASSERT_EQUAL(1, status);
-        -:  641:}
-        -:  642:
-        -:  643:TEST(Sort, InvalidTypeForSelectionSort) {
-        -:  644:    int a[3] = {3, 1, 2};
-        -:  645:    int status = sort(a, 3, complexity1, SELECTION);
-        -:  646:    TEST_ASSERT_EQUAL(1, status);
-        -:  647:}
-        -:  648:
-        -:  649:TEST(Sort, InvalidTypeForHeapSort) {
-        -:  650:    int a[3] = {3, 1, 2};
-        -:  651:    int status = sort(a, 3, complexity2, HEAP);
-        -:  652:    TEST_ASSERT_EQUAL(1, status);
-        -:  653:}
-        -:  654:
-        -:  655:TEST(Sort, InvalidTypeForMergeSort) {
-        -:  656:    int a[3] = {3, 1, 2};
-        -:  657:    int status = sort(a, 3, complexity2, MERGE);
-        -:  658:    TEST_ASSERT_EQUAL(1, status);
-        -:  659:}
-        -:  660:
-        -:  661:TEST(Sort, InvalidTypeForQuickSort) {
-        -:  662:    int a[3] = {3, 1, 2};
-        -:  663:    int status = sort(a, 3, complexity2, QUICK);
-        -:  664:    TEST_ASSERT_EQUAL(1, status);
-        -:  665:}*/
-        -:  666:
-        -:  667:// Verifica se a função retorna status = 1 para um algoritmo não listado no switch
-        -:  668://TEST(Sort, InvalidAlgorithmOutOfSwitch) {
-        -:  669://    int a[3] = {3, 1, 2};
-        -:  670://    int status = sort(a, 3, complexity1, -1); // Algoritmo não listado
-        -:  671://    TEST_ASSERT_EQUAL(1, status);
-        -:  672://}
-        -:  673:
-        -:  674:
+        -:  435:
+        2:  436:TEST(Sort, WrongAlgorithm) {
+        1:  437:    int vet_maxLimit[5] = {14, 3, 20, 7, 0};
+        1:  438:    int status = sort(vet_maxLimit, 5, complexity2, -1);
+        1:  439:    TEST_ASSERT_EQUAL(1, status);
+        1:  440:}
+------------------
+TEST_Sort_WrongAlgorithm_:
+function TEST_Sort_WrongAlgorithm_ called 1 returned 100% blocks executed 100%
+        1:  436:TEST(Sort, WrongAlgorithm) {
+        1:  437:    int vet_maxLimit[5] = {14, 3, 20, 7, 0};
+        1:  438:    int status = sort(vet_maxLimit, 5, complexity2, -1);
+call    0 returned 100%
+        1:  439:    TEST_ASSERT_EQUAL(1, status);
+call    0 returned 100%
+        1:  440:}
+------------------
+TEST_Sort_WrongAlgorithm_run:
+function TEST_Sort_WrongAlgorithm_run called 1 returned 100% blocks executed 100%
+        1:  436:TEST(Sort, WrongAlgorithm) {
+call    0 returned 100%
+------------------
+        -:  441:
+        2:  442:TEST(Sort, Sorted) {
+        1:  443:    int vet_sorted[20] = {0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,17,18,19};
+        1:  444:    int expected_sorted[20] = {0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,17,18,19};
+        -:  445:    
+        1:  446:    int status = sort(vet_sorted, 20, complexity1, COUNTING);
+        1:  447:    TEST_ASSERT_EQUAL(0, status);
+        1:  448:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  449:     status = sort(vet_sorted, 20, complexity1, RADIX);
+        1:  450:      TEST_ASSERT_EQUAL(0, status);
+        1:  451:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  452:     status = sort(vet_sorted, 20, complexity2, BUBBLE);
+        1:  453:      TEST_ASSERT_EQUAL(0, status);
+        1:  454:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  455:     status = sort(vet_sorted, 20, complexity2, INSERTION);
+        1:  456:      TEST_ASSERT_EQUAL(0, status);
+        1:  457:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  458:    status = sort(vet_sorted, 20, complexity2, SELECTION);
+        1:  459:     TEST_ASSERT_EQUAL(0, status);
+        1:  460:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  461:     status = sort(vet_sorted, 20, complexity3, HEAP);
+        1:  462:      TEST_ASSERT_EQUAL(0, status);
+        1:  463:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  464:     status = sort(vet_sorted, 20, complexity3, MERGE);
+        1:  465:      TEST_ASSERT_EQUAL(0, status);
+        1:  466:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        1:  467:     status = sort(vet_sorted, 20, complexity3, QUICK);
+        1:  468:      TEST_ASSERT_EQUAL(0, status);
+        1:  469:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+        -:  470:
+        1:  471:    TEST_ASSERT_EQUAL(0, status);
+        1:  472:}
+------------------
+TEST_Sort_Sorted_:
+function TEST_Sort_Sorted_ called 1 returned 100% blocks executed 100%
+        1:  442:TEST(Sort, Sorted) {
+        1:  443:    int vet_sorted[20] = {0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,17,18,19};
+        1:  444:    int expected_sorted[20] = {0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,17,18,19};
+        -:  445:    
+        1:  446:    int status = sort(vet_sorted, 20, complexity1, COUNTING);
+call    0 returned 100%
+        1:  447:    TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  448:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  449:     status = sort(vet_sorted, 20, complexity1, RADIX);
+call    0 returned 100%
+        1:  450:      TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  451:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  452:     status = sort(vet_sorted, 20, complexity2, BUBBLE);
+call    0 returned 100%
+        1:  453:      TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  454:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  455:     status = sort(vet_sorted, 20, complexity2, INSERTION);
+call    0 returned 100%
+        1:  456:      TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  457:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  458:    status = sort(vet_sorted, 20, complexity2, SELECTION);
+call    0 returned 100%
+        1:  459:     TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  460:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  461:     status = sort(vet_sorted, 20, complexity3, HEAP);
+call    0 returned 100%
+        1:  462:      TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  463:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  464:     status = sort(vet_sorted, 20, complexity3, MERGE);
+call    0 returned 100%
+        1:  465:      TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  466:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        1:  467:     status = sort(vet_sorted, 20, complexity3, QUICK);
+call    0 returned 100%
+        1:  468:      TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  469:    TEST_ASSERT_EQUAL_INT_ARRAY(expected_sorted, vet_sorted, 20);
+call    0 returned 100%
+        -:  470:
+        1:  471:    TEST_ASSERT_EQUAL(0, status);
+call    0 returned 100%
+        1:  472:}
+------------------
+TEST_Sort_Sorted_run:
+function TEST_Sort_Sorted_run called 1 returned 100% blocks executed 100%
+        1:  442:TEST(Sort, Sorted) {
+call    0 returned 100%
+------------------

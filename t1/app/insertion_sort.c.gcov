@@ -5,24 +5,24 @@
         -:    4:typedef int TYPE;
         -:    5:void insertion_sort(TYPE [], int);
         -:    6:
-function insertion_sort called 4 returned 100% blocks executed 100%
-        4:    7:void insertion_sort(TYPE A[], int n) {
+function insertion_sort called 5 returned 100% blocks executed 100%
+        5:    7:void insertion_sort(TYPE A[], int n) {
         -:    8:    int i, j;
         -:    9:    TYPE temp;
         -:   10:    
-       30:   11:    for(i = 1; i < n; i++) {
-branch  0 taken 87%
-branch  1 taken 13% (fallthrough)
-       26:   12:        temp = A[i];
-       26:   13:        j = i;
-      116:   14:        while(j > 0 && A[j-1] > temp) {
-branch  0 taken 95% (fallthrough)
-branch  1 taken 5%
-branch  2 taken 82%
-branch  3 taken 18% (fallthrough)
+       50:   11:    for(i = 1; i < n; i++) {
+branch  0 taken 90%
+branch  1 taken 10% (fallthrough)
+       45:   12:        temp = A[i];
+       45:   13:        j = i;
+      135:   14:        while(j > 0 && A[j-1] > temp) {
+branch  0 taken 96% (fallthrough)
+branch  1 taken 4%
+branch  2 taken 70%
+branch  3 taken 30% (fallthrough)
        90:   15:            A[j] = A[j - 1];
        90:   16:            j--;
         -:   17:        }
-       26:   18:        A[j] = temp;
+       45:   18:        A[j] = temp;
         -:   19:    }
-        4:   20:}
+        5:   20:}

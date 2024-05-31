@@ -7,39 +7,39 @@
         -:    6:int partition(TYPE [], int, int);
         -:    7:void quick_sort(TYPE [], int, int);
         -:    8:
-function partition called 18 returned 100% blocks executed 100%
-       18:    9:int partition(TYPE A[], int p, int r) {
-       18:   10:    TYPE x = A[r]; //pivot
-       18:   11:    int i = p - 1, j;
-      103:   12:    for(j = p; j < r ; j++) {
-branch  0 taken 83%
-branch  1 taken 17% (fallthrough)
-       85:   13:        if(A[j] <= x) {
-branch  0 taken 53% (fallthrough)
-branch  1 taken 47%
-       45:   14:            i = i + 1;
-       45:   15:            swap(TYPE, A[i], A[j]); 
+function partition called 32 returned 100% blocks executed 100%
+       32:    9:int partition(TYPE A[], int p, int r) {
+       32:   10:    TYPE x = A[r]; //pivot
+       32:   11:    int i = p - 1, j;
+      181:   12:    for(j = p; j < r ; j++) {
+branch  0 taken 82%
+branch  1 taken 18% (fallthrough)
+      149:   13:        if(A[j] <= x) {
+branch  0 taken 56% (fallthrough)
+branch  1 taken 44%
+       83:   14:            i = i + 1;
+       83:   15:            swap(TYPE, A[i], A[j]); 
         -:   16:        }
         -:   17:    }
-       18:   18:    i = i + 1;
-       18:   19:    swap(TYPE, A[i], A[r]);
-       18:   20:    return i;
+       32:   18:    i = i + 1;
+       32:   19:    swap(TYPE, A[i], A[r]);
+       32:   20:    return i;
         -:   21:}
-function quick_sort called 40 returned 100% blocks executed 100%
-       40:   22:void quick_sort(TYPE A[], int p, int r) {
-       40:   23:    if(p < r) {
-branch  0 taken 45% (fallthrough)
-branch  1 taken 55%
-       18:   24:        int t = (rand() % ( r - p + 1) + p);
+function quick_sort called 69 returned 100% blocks executed 100%
+       69:   22:void quick_sort(TYPE A[], int p, int r) {
+       69:   23:    if(p < r) {
+branch  0 taken 46% (fallthrough)
+branch  1 taken 54%
+       32:   24:        int t = (rand() % ( r - p + 1) + p);
 call    0 returned 100%
-       18:   25:        swap(TYPE, A[t], A[r]); 
+       32:   25:        swap(TYPE, A[t], A[r]); 
         -:   26:        //Used to avoid O(n^2) worst case
         -:   27:        
-       18:   28:        int q = partition(A, p, r);
+       32:   28:        int q = partition(A, p, r);
 call    0 returned 100%
-       18:   29:        quick_sort(A, p, q - 1);
+       32:   29:        quick_sort(A, p, q - 1);
 call    0 returned 100%
-       18:   30:        quick_sort(A, q + 1, r);
+       32:   30:        quick_sort(A, q + 1, r);
 call    0 returned 100%
         -:   31:    }
-       40:   32:}
+       69:   32:}

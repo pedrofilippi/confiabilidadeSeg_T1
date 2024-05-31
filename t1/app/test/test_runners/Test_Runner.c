@@ -3,43 +3,6 @@
 
 TEST_GROUP_RUNNER(Sort)
 {
-  RUN_TEST_CASE(Sort, TestSort1);
-  RUN_TEST_CASE(Sort, TestSort2);
-  RUN_TEST_CASE(Sort, TestSort3);
-/*
-  RUN_TEST_CASE(Sort, InvalidLengthBelowMin);
-  RUN_TEST_CASE(Sort, InvalidLengthAboveMax);
-
-  RUN_TEST_CASE(Sort, ValidLengthAndCountingSort);
-  RUN_TEST_CASE(Sort, InvalidTypeForCountingSort);
-
-  RUN_TEST_CASE(Sort, ValidLengthAndRadixSort);
-  RUN_TEST_CASE(Sort, ValidLengthAndBubbleSort);
-  RUN_TEST_CASE(Sort, ValidLengthAndInsertionSort);
-  RUN_TEST_CASE(Sort, ValidLengthAndSelectionSort);
-  RUN_TEST_CASE(Sort, ValidLengthAndHeapSort);
-  RUN_TEST_CASE(Sort, ValidLengthAndMergeSort);
-  RUN_TEST_CASE(Sort, ValidLengthAndQuickSort);
-
-*/
-  /*RUN_TEST_CASE(Sort, InvalidAlgorithm);
-  
-  RUN_TEST_CASE(Sort, CountingSortAlreadySorted);
-  RUN_TEST_CASE(Sort, CountingSortReversed);
-  RUN_TEST_CASE(Sort, BubbleSortWithDuplicates);
-  RUN_TEST_CASE(Sort, QuickSortEdgeCases);
-  RUN_TEST_CASE(Sort, MergeSortEmpty);
-  RUN_TEST_CASE(Sort, RadixSortLargeNumbers);
-  RUN_TEST_CASE(Sort, InvalidTypeForRadixSort);
-
-  RUN_TEST_CASE(Sort, InvalidTypeForBubbleSort);
-  RUN_TEST_CASE(Sort, InvalidTypeForInsertionSort);
-  RUN_TEST_CASE(Sort, InvalidTypeForSelectionSort);
-  RUN_TEST_CASE(Sort, InvalidTypeForHeapSort);
-  RUN_TEST_CASE(Sort, InvalidTypeForMergeSort);
-  RUN_TEST_CASE(Sort, InvalidTypeForQuickSort);
-  RUN_TEST_CASE(Sort, InvalidAlgorithmOutOfSwitch);
-*/
   RUN_TEST_CASE(Sort, AllCorrectCounting);
   RUN_TEST_CASE(Sort, BellowLimitCounting);
   RUN_TEST_CASE(Sort,  minLimitCounting);
@@ -103,4 +66,9 @@ TEST_GROUP_RUNNER(Sort)
   RUN_TEST_CASE(Sort, aboveLimitQuick);
   RUN_TEST_CASE(Sort, WrongTypeQuick);
   RUN_TEST_CASE(Sort, WrongLenghtQuick);
+
+  RUN_TEST_CASE(Sort, WrongAlgorithm);
+  RUN_TEST_CASE(Sort, Sorted);
+
+
 }

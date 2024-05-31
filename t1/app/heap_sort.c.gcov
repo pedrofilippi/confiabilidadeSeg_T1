@@ -10,66 +10,66 @@
         -:    9:void build_max_heap(TYPE [], int);
         -:   10:void heap_sort(TYPE [], int);
         -:   11:
-function heap_sort called 4 returned 100% blocks executed 100%
-        4:   12:void heap_sort(TYPE a[], int length){
-        4:   13:    build_max_heap(a, length);
+function heap_sort called 5 returned 100% blocks executed 100%
+        5:   12:void heap_sort(TYPE a[], int length){
+        5:   13:    build_max_heap(a, length);
 call    0 returned 100%
-        4:   14:    int i = length - 1;
+        5:   14:    int i = length - 1;
         -:   15:    do {
-       30:   16:        TYPE temp = a[0];
-       30:   17:        a[0] = a[i];
-       30:   18:        a[i] = temp;
+       50:   16:        TYPE temp = a[0];
+       50:   17:        a[0] = a[i];
+       50:   18:        a[i] = temp;
         -:   19:        
-       30:   20:        max_heapify(a, 0, --length);
+       50:   20:        max_heapify(a, 0, --length);
 call    0 returned 100%
-       30:   21:    } while(--i >= 0);
-branch  0 taken 87%
-branch  1 taken 13% (fallthrough)
-        4:   22:}
-function build_max_heap called 4 returned 100% blocks executed 100%
-        4:   23:void build_max_heap(TYPE a[], int length){
-        4:   24:    int i = length/2;
+       50:   21:    } while(--i >= 0);
+branch  0 taken 90%
+branch  1 taken 10% (fallthrough)
+        5:   22:}
+function build_max_heap called 5 returned 100% blocks executed 100%
+        5:   23:void build_max_heap(TYPE a[], int length){
+        5:   24:    int i = length/2;
         -:   25:    do {
-       18:   26:        max_heapify(a, i, length);
+       29:   26:        max_heapify(a, i, length);
 call    0 returned 100%
-       18:   27:    }while(--i  >= 0); //first i = i - 1 is doen and then i >= 0 afterwards.
-branch  0 taken 78%
-branch  1 taken 22% (fallthrough)
-        4:   28:}
-function max_heapify called 108 returned 100% blocks executed 100%
-      108:   29:void max_heapify(TYPE a[], int i, int length){
-      108:   30:    int r = right(i);
+       29:   27:    }while(--i  >= 0); //first i = i - 1 is doen and then i >= 0 afterwards.
+branch  0 taken 83%
+branch  1 taken 17% (fallthrough)
+        5:   28:}
+function max_heapify called 201 returned 100% blocks executed 100%
+      201:   29:void max_heapify(TYPE a[], int i, int length){
+      201:   30:    int r = right(i);
 call    0 returned 100%
-      108:   31:    int l = left(i);
+      201:   31:    int l = left(i);
 call    0 returned 100%
-      108:   32:    int max = i;
-      108:   33:    if(l < length && a[max] < a[l]) max = l;
-branch  0 taken 63% (fallthrough)
-branch  1 taken 37%
-branch  2 taken 81% (fallthrough)
-branch  3 taken 19%
-      108:   34:    if(r < length && a[max] < a[r]) max = r;
-branch  0 taken 56% (fallthrough)
-branch  1 taken 44%
-branch  2 taken 39% (fallthrough)
-branch  3 taken 61%
-      108:   35:    if(max != i) {
-branch  0 taken 56% (fallthrough)
-branch  1 taken 44%
-       60:   36:        TYPE temp = a[i];
-       60:   37:        a[i] = a[max];
-       60:   38:        a[max] = temp;
-       60:   39:        max_heapify(a, max, length);
+      201:   32:    int max = i;
+      201:   33:    if(l < length && a[max] < a[l]) max = l;
+branch  0 taken 65% (fallthrough)
+branch  1 taken 35%
+branch  2 taken 87% (fallthrough)
+branch  3 taken 13%
+      201:   34:    if(r < length && a[max] < a[r]) max = r;
+branch  0 taken 59% (fallthrough)
+branch  1 taken 41%
+branch  2 taken 43% (fallthrough)
+branch  3 taken 57%
+      201:   35:    if(max != i) {
+branch  0 taken 61% (fallthrough)
+branch  1 taken 39%
+      122:   36:        TYPE temp = a[i];
+      122:   37:        a[i] = a[max];
+      122:   38:        a[max] = temp;
+      122:   39:        max_heapify(a, max, length);
 call    0 returned 100%
         -:   40:    }
-      108:   41:}
-function left called 108 returned 100% blocks executed 100%
-      108:   42:int left(int i) {
-      108:   43:    return 2*i + 1;
+      201:   41:}
+function left called 201 returned 100% blocks executed 100%
+      201:   42:int left(int i) {
+      201:   43:    return 2*i + 1;
         -:   44:}
-function right called 108 returned 100% blocks executed 100%
-      108:   45:int right(int i) {
-      108:   46:    return 2*i + 2;
+function right called 201 returned 100% blocks executed 100%
+      201:   45:int right(int i) {
+      201:   46:    return 2*i + 2;
         -:   47:}
 function parent called 0 returned 0% blocks executed 0%
     #####:   48:int parent(int i) {
